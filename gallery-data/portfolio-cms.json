@@ -46,7 +46,9 @@
       "date" : "2026-09-25T04:26:11Z",
       "featured" : false,
       "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
+      "latitude" : 51.176588,
       "location" : "Banff Canada",
+      "longitude" : -115.570936,
       "path" : "\/adventures\/banff\/",
       "photoCount" : 18,
       "photoOrder" : [
@@ -75,6 +77,6 @@
       "title" : "Banff"
     }
   ],
-  "generatedAt" : "2026-09-25T16:53:12Z",
+  "generatedAt" : "2026-09-25T16:54:28Z",
   "schemaVersion" : 1
 }
