@@ -1,9 +1,10 @@
 {
   "appVersion" : "1.0",
   "changedGalleryIDs" : [
-
+    "542A09B9-27A1-4188-804F-A130C97BD641",
+    "BA929CFC-03B8-4461-8A9A-D001F0E51D73"
   ],
-  "deploymentID" : "C69CAEDD-E6E6-4719-9A0C-2180E1A05F91",
-  "galleryCount" : 2,
-  "generatedAt" : "2026-09-25T18:28:46Z"
+  "deploymentID" : "DCA8BAD1-C041-4224-9910-EE062E4D9565",
+  "galleryCount" : 4,
+  "generatedAt" : "2026-09-25T18:42:49Z"
 }
