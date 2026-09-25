@@ -22,7 +22,7 @@
 <main class="gallery-index">
   <div class="gallery-heading"><h2>Galleries</h2><div class="gallery-count">25 projects</div></div>
   <div class="project-grid">
-    <a class="project-card featured-project" href="/adventures/banff/" data-gallery-id="8ABC018D-F18A-4E48-8D85-7BB2F661428D" data-gallery-link-override="/adventures/banff/" data-gallery-sort-order="0"><div class="project-number">18 moments</div>
+    <a class="project-card featured-project" href="/adventures/banff/" data-gallery-id="8ABC018D-F18A-4E48-8D85-7BB2F661428D" data-gallery-link-override="/adventures/banff/" data-gallery-sort-order="1"><div class="project-number">18 moments</div>
 <img src="/adventures/banff/photos/001.jpg" alt="Banff">
 <div class="featured-content"><div class="featured-tag">Featured · Latest</div><div class="project-name">Banff</div></div>
 <span class="project-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
@@ -183,6 +183,15 @@
   .project-grid>.project-card[data-card-aspect="square"]{aspect-ratio:1/1 !important;min-height:0 !important}
   .project-grid>.project-card[data-card-aspect="4x5"]{aspect-ratio:4/5 !important;min-height:0 !important}
   .project-grid>.project-card[data-card-aspect="3x4"]{aspect-ratio:3/4 !important;min-height:0 !important}
+  /* Dynamic editorial priority: the directory order controls the card hierarchy.
+     Dragging a gallery into slot 1 or 2 automatically gives it the hero shape;
+     everything after slot 2 returns to the regular one-column card width. */
+  @media(min-width:761px){
+    .project-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;grid-auto-flow:row dense !important;align-items:stretch !important}
+    .project-grid>:is(.project-card):nth-child(1){grid-column:span 2 !important;aspect-ratio:auto !important;height:clamp(360px,27vw,540px) !important;min-height:0 !important}
+    .project-grid>:is(.project-card):nth-child(2){grid-column:span 1 !important;aspect-ratio:auto !important;height:clamp(360px,27vw,540px) !important;min-height:0 !important}
+    .project-grid>:is(.project-card):nth-child(n+3){grid-column:span 1 !important}
+  }
   .project-grid .project-card .project-number{position:absolute !important;z-index:4;left:18px !important;top:18px !important;right:auto !important;bottom:auto !important;margin:0 !important;padding:10px 16px !important;width:auto !important;height:auto !important;border-radius:999px !important;font-size:13px !important;line-height:1 !important;font-weight:600 !important;color:rgba(255,255,255,.94) !important;background:rgba(24,27,28,.48) !important;border:1px solid rgba(255,255,255,.15) !important;backdrop-filter:blur(16px) saturate(120%);-webkit-backdrop-filter:blur(16px) saturate(120%);opacity:1 !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
   /* Force the open arrow into one shared anchor box so featured cards (Banff included)
      line up exactly with every regular project card. */
@@ -433,7 +442,7 @@
 <!-- GALLERY_MANAGER:CARD_ORDER:START -->
 <script id="gallery-manager-card-order">
 (()=>{
-  const order=["8ABC018D-F18A-4E48-8D85-7BB2F661428D","BA929CFC-03B8-4461-8A9A-D001F0E51D73","542A09B9-27A1-4188-804F-A130C97BD641","B097918A-720F-4EC7-8E91-BC0AB0B842A2"];
+  const order=["BA929CFC-03B8-4461-8A9A-D001F0E51D73","8ABC018D-F18A-4E48-8D85-7BB2F661428D","542A09B9-27A1-4188-804F-A130C97BD641","B097918A-720F-4EC7-8E91-BC0AB0B842A2"];
   const run=()=>{
     const grid=document.querySelector('.project-grid');
     if(!grid)return;
@@ -503,9 +512,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- GALLERY_MANAGER:RECOVERED_CARDS:START -->
 <div id="gallery-manager-recovered-galleries" hidden>
-<a class="project-card gm-recovered-card" data-gallery-recovered="true" data-gallery-legacy-slug="oahu" href="/adventures/oahu/" data-gallery-id="BA929CFC-03B8-4461-8A9A-D001F0E51D73" data-gallery-sort-order="1">
+<a class="project-card gm-recovered-card" data-gallery-recovered="true" data-gallery-legacy-slug="oahu" href="/adventures/oahu/" data-gallery-id="BA929CFC-03B8-4461-8A9A-D001F0E51D73" data-gallery-sort-order="0">
   <img src="/adventures/oahu/photos/014.jpg" alt="Oahu" loading="lazy" decoding="async">
   <div class="project-number">19 moments</div>
   <div class="project-name">Oahu</div>

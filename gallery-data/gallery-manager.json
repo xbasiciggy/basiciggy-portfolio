@@ -1,22 +1,6 @@
 [
   {
     "category" : "adventures",
-    "cover" : "adventures\/banff\/photos\/001.jpg",
-    "date" : "2026-09-25T04:26:11Z",
-    "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
-    "isHidden" : false,
-    "latitude" : 51.176588,
-    "location" : "Banff Canada",
-    "longitude" : -115.570936,
-    "page" : "adventures\/banff\/index.html",
-    "photoCount" : 18,
-    "publishedAt" : "2026-09-25T21:25:37Z",
-    "slug" : "banff",
-    "sortOrder" : 0,
-    "title" : "Banff"
-  },
-  {
-    "category" : "adventures",
     "cover" : "adventures\/oahu\/photos\/014.jpg",
     "date" : "2026-09-25T18:32:26Z",
     "id" : "BA929CFC-03B8-4461-8A9A-D001F0E51D73",
@@ -26,10 +10,26 @@
     "longitude" : -157.858164,
     "page" : "adventures\/oahu\/index.html",
     "photoCount" : 19,
-    "publishedAt" : "2026-09-25T21:24:22Z",
+    "publishedAt" : "2026-09-25T21:40:31Z",
     "slug" : "oahu",
-    "sortOrder" : 1,
+    "sortOrder" : 0,
     "title" : "Oahu"
+  },
+  {
+    "category" : "adventures",
+    "cover" : "adventures\/banff\/photos\/001.jpg",
+    "date" : "2026-09-25T04:26:11Z",
+    "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
+    "isHidden" : false,
+    "latitude" : 51.176588,
+    "location" : "Banff Canada",
+    "longitude" : -115.570936,
+    "page" : "adventures\/banff\/index.html",
+    "photoCount" : 18,
+    "publishedAt" : "2026-09-25T21:41:59Z",
+    "slug" : "banff",
+    "sortOrder" : 1,
+    "title" : "Banff"
   },
   {
     "category" : "adventures",
@@ -42,7 +42,7 @@
     "longitude" : -118.73095,
     "page" : "adventures\/sequoia\/index.html",
     "photoCount" : 18,
-    "publishedAt" : "2026-09-25T21:22:11Z",
+    "publishedAt" : "2026-09-25T21:39:24Z",
     "slug" : "sequoia",
     "sortOrder" : 2,
     "title" : "Sequoia"
@@ -58,7 +58,7 @@
     "longitude" : -104.8199,
     "page" : "adventures\/wyoming\/index.html",
     "photoCount" : 24,
-    "publishedAt" : "2026-09-25T21:25:06Z",
+    "publishedAt" : "2026-09-25T21:41:28Z",
     "slug" : "wyoming",
     "sortOrder" : 3,
     "title" : "Wyoming"
