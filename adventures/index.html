@@ -189,12 +189,32 @@
   .project-grid .project-card .project-open{position:absolute !important;z-index:4 !important;top:18px !important;right:18px !important;bottom:auto !important;left:auto !important;margin:0 !important;padding:0 !important;transform:none !important;width:44px !important;height:44px !important;display:grid !important;place-items:center !important;line-height:1 !important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(20,20,20,.48);border-radius:999px}
   .project-grid .project-card .project-open svg{display:block !important;width:20px !important;height:20px !important;margin:0 !important;transform:none !important}
   @media(max-width:760px){
-    .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:1/-1 !important}
-    .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important}
-    .project-grid .project-card{border-radius:28px;will-change:transform,opacity;transform-origin:center 76%;backface-visibility:hidden}
-    .project-grid .project-card .project-name{left:0 !important;right:0 !important;bottom:16px !important;padding:18px 18px 24px !important;font-size:clamp(76px,24vw,136px) !important;line-height:.72 !important;letter-spacing:-.082em !important;font-weight:720 !important;color:rgba(255,255,255,.72) !important;text-shadow:0 3px 26px rgba(0,0,0,.28) !important;text-align:center !important;justify-content:center !important;white-space:nowrap !important}
-    .project-grid .project-card .project-number{left:14px !important;top:14px !important;padding:9px 14px !important;font-size:13px !important}
-    .project-grid .project-card .project-open{top:14px !important;right:14px !important;width:46px !important;height:46px !important;background:rgba(24,27,28,.52) !important;border:1px solid rgba(255,255,255,.14) !important}
+    /* Mobile stack: each new card glides above the previous one. The card underneath
+       stays visible just long enough to read as a physical layered stack. */
+    .project-grid{display:flex !important;flex-direction:column !important;gap:18px !important;overflow:visible !important;align-items:stretch !important;padding-bottom:clamp(42px,12vh,110px) !important;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 92px)}
+    .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:auto !important}
+    .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important;width:100% !important}
+    .project-grid .project-card{
+      position:sticky !important;
+      top:calc(env(safe-area-inset-top,0px) + 82px) !important;
+      border-radius:28px;
+      will-change:transform,filter;
+      transform-origin:center 82%;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      touch-action:pan-y;
+      box-shadow:
+        0 34px 72px rgba(0,0,0,.58),
+        0 14px 34px rgba(0,0,0,.38),
+        0 2px 0 rgba(255,255,255,.08) inset,
+        0 -1px 0 rgba(0,0,0,.30) inset;
+      transition:box-shadow .34s cubic-bezier(.16,1,.3,1),filter .28s ease;
+    }
+    .project-grid .project-card::before{content:"";position:absolute;z-index:3;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);opacity:.9}
+    .project-grid .project-card:active{box-shadow:0 24px 54px rgba(0,0,0,.52),0 9px 24px rgba(0,0,0,.34),0 2px 0 rgba(255,255,255,.08) inset}
+    .project-grid .project-card .project-name{left:0 !important;right:0 !important;bottom:16px !important;padding:18px 18px 24px !important;font-size:clamp(76px,24vw,136px) !important;line-height:.72 !important;letter-spacing:-.082em !important;font-weight:720 !important;color:rgba(255,255,255,.72) !important;text-shadow:0 5px 34px rgba(0,0,0,.42) !important;text-align:center !important;justify-content:center !important;white-space:nowrap !important;transition:opacity .24s ease,transform .34s cubic-bezier(.16,1,.3,1)}
+    .project-grid .project-card .project-number{left:14px !important;top:14px !important;padding:9px 14px !important;font-size:13px !important;box-shadow:0 8px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.10) !important}
+    .project-grid .project-card .project-open{top:14px !important;right:14px !important;width:46px !important;height:46px !important;background:rgba(24,27,28,.52) !important;border:1px solid rgba(255,255,255,.14) !important;box-shadow:0 9px 26px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08) !important}
   }
   @media(prefers-reduced-motion:reduce){.project-grid .project-card>img{transition:none !important}.project-grid .project-card:hover>img{transform:none !important}}
   @view-transition{navigation:auto}
@@ -270,33 +290,84 @@
   const media=window.matchMedia('(max-width: 760px)');
   const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let ticking=false;
+
   const cards=()=>[...document.querySelectorAll('.project-grid .project-card')];
-  const reset=()=>cards().forEach(card=>{card.style.transform='';card.style.opacity='';card.style.filter='';});
+  const clamp=(v,min=0,max=1)=>Math.max(min,Math.min(max,v));
+  const smooth=t=>t*t*(3-2*t);
+
+  const reset=()=>cards().forEach((card,index)=>{
+    card.style.transform='';
+    card.style.opacity='';
+    card.style.filter='';
+    card.style.zIndex='';
+    card.style.setProperty('--gm-stack-depth','0');
+    const img=card.querySelector(':scope > img');
+    if(img)img.style.transform='';
+    const title=card.querySelector('.project-name');
+    if(title){title.style.transform='';title.style.opacity='';}
+  });
+
   if(reduceMotion){reset();return;}
+
   const update=()=>{
     ticking=false;
     if(!media.matches){reset();return;}
+
+    const list=cards();
     const vh=window.innerHeight||document.documentElement.clientHeight;
-    cards().forEach((card,index)=>{
+    const stickyTop=Math.max(82,Math.min(126,vh*.105));
+
+    list.forEach((card,index)=>{
+      // Later cards sit above earlier cards when their sticky positions overlap.
+      card.style.zIndex=String(20+index);
+
       const rect=card.getBoundingClientRect();
-      const trigger=vh*.18;
-      const distance=Math.max(vh*.72,420);
-      const raw=Math.max(0,Math.min(1,(trigger-rect.top)/distance));
-      // smootherstep: much softer start/end than the previous fade
-      const progress=raw*raw*raw*(raw*(raw*6-15)+10);
-      const direction=index%2===0?-1:1;
-      const rotate=direction*progress*1.15;
-      const lift=-progress*18;
-      const scale=1-progress*.018;
-      const opacity=1-progress*.94;
-      card.style.transform=`translate3d(0,${lift}px,0) rotate(${rotate}deg) scale(${scale})`;
+      const next=list[index+1];
+      const nextRect=next?.getBoundingClientRect();
+      const cardH=Math.max(rect.height,1);
+
+      // As the following card approaches the sticky card, compress/darken the card
+      // underneath. Reverses naturally when scrolling back up.
+      let covered=0;
+      if(nextRect && rect.top<=stickyTop+3){
+        const start=stickyTop+cardH*.94;
+        const end=stickyTop+cardH*.18;
+        covered=smooth(clamp((start-nextRect.top)/(start-end)));
+      }
+
+      const scale=1-covered*.052;
+      const sink=-covered*10;
+      const rotate=((index%2===0)?-.22:.22)*covered;
+      const brightness=1-covered*.18;
+      const saturation=1-covered*.10;
+      const blur=covered*.22;
+      const opacity=1-covered*.10;
+
+      card.style.transform=`translate3d(0,${sink}px,0) rotate(${rotate}deg) scale(${scale})`;
       card.style.opacity=String(opacity);
-      card.style.filter=`blur(${progress*.28}px)`;
+      card.style.filter=`brightness(${brightness}) saturate(${saturation}) blur(${blur}px)`;
+      card.style.setProperty('--gm-stack-depth',String(covered));
+
+      // Tiny image counter-motion gives the stack depth without moving the controls/text.
+      const img=card.querySelector(':scope > img');
+      if(img){
+        const center=(rect.top+rect.height*.5-vh*.5)/Math.max(vh,1);
+        const parallax=clamp(center,-1,1)*-5;
+        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.035+covered*.012})`;
+      }
+
+      const title=card.querySelector('.project-name');
+      if(title){
+        title.style.transform=`translate3d(0,${covered*2}px,0) scale(${1-covered*.018})`;
+        title.style.opacity=String(1-covered*.14);
+      }
     });
   };
+
   const request=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
   window.addEventListener('scroll',request,{passive:true});
   window.addEventListener('resize',request,{passive:true});
+  window.addEventListener('orientationchange',request,{passive:true});
   media.addEventListener?.('change',request);
   request();
 })();
@@ -377,26 +448,17 @@
 
 
 
-<!-- GALLERY_MANAGER:START -->
-<section id="gallery-manager-galleries" class="gm-section" data-site-section>
-  <style>
-    .gm-section{max-width:1400px;margin:60px auto;padding:0 24px}.gm-section-title{color:inherit;font:600 clamp(32px,5vw,64px)/1 -apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.045em;margin:0 0 26px}.gm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.gm-grid .project-card{position:relative;color:inherit;text-decoration:none;display:block;min-height:240px;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}.gm-grid .project-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gm-grid .project-name{position:absolute;left:18px;right:18px;bottom:18px;font-size:42px;font-weight:700;color:white}.gm-grid .project-number{position:absolute;left:14px;top:14px}.gm-grid .project-open{position:absolute;right:14px;top:14px}
-  </style>
-  <h2 class="gm-section-title">Recent galleries</h2>
-  <div class="gm-grid"><a class="project-card gm-managed-card" data-gallery-id="542A09B9-27A1-4188-804F-A130C97BD641" data-gallery-sort-order="1" href="/adventures/sequoia/">
-  <img src="/adventures/sequoia/photos/017.jpg" alt="Sequoia" loading="lazy" decoding="async">
-  <div class="project-number">18 moments</div>
-  <div class="project-name">Sequoia</div>
-  <span class="project-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-  <span class="gm-card-location" hidden>sequoia national park</span>
-</a>
-<a class="project-card gm-managed-card" data-gallery-id="BA929CFC-03B8-4461-8A9A-D001F0E51D73" data-gallery-sort-order="2" href="/adventures/oahu/">
-  <img src="/adventures/oahu/photos/014.jpg" alt="Oahu" loading="lazy" decoding="async">
-  <div class="project-number">19 moments</div>
-  <div class="project-name">Oahu</div>
-  <span class="project-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-  <span class="gm-card-location" hidden>honolulu hawaii</span>
-</a></div>
-</section>
-<!-- GALLERY_MANAGER:END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body></html>
