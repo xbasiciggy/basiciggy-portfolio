@@ -359,15 +359,20 @@
 <!-- GALLERY_MANAGER:HERO_FADE:START -->
 <style id="gallery-manager-hero-fade">
   /* Screen-fitting category hero with a seamless edge into the gallery list. */
-  .section-hero{position:relative !important;overflow:hidden !important;min-height:620px !important;height:100svh !important;background:#08080a !important}
-  .section-hero-media{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important}
-  .section-hero-media>img{width:100% !important;height:100% !important;object-fit:cover !important;object-position:center center !important}
+  /* The hero begins at the very top of the document. The fixed header overlays the
+     photograph instead of reserving a black spacer above it. */
+  html,body{margin:0 !important;padding:0 !important}
+  body:has(.section-hero){padding-top:0 !important}
+  .section-hero{position:relative !important;overflow:hidden !important;min-height:620px !important;height:100svh !important;background:#08080a !important;margin:0 !important;padding:0 !important;top:0 !important}
+  .section-hero-media{position:absolute !important;inset:0 !important;top:0 !important;margin:0 !important;padding:0 !important;width:100% !important;height:100% !important;transform:none !important}
+  .section-hero-media>img{display:block !important;margin:0 !important;width:100% !important;height:100% !important;object-fit:cover !important;object-position:center center !important}
   .section-hero::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,10,0) 0%,rgba(8,8,10,0) 62%,rgba(8,8,10,.08) 73%,rgba(8,8,10,.34) 84%,rgba(8,8,10,.82) 95%,#08080a 100%)}
   .section-hero>.topbar,.section-hero>.section-hero-inner{position:relative;z-index:2}
   .section-hero>.topbar,.section-hero .topbar.compact{position:fixed !important;z-index:1400 !important;top:0 !important;left:0 !important;right:0 !important;width:100% !important;margin:0 !important;background:linear-gradient(180deg,rgba(7,8,9,.82) 0%,rgba(7,8,9,.48) 62%,rgba(7,8,9,0) 100%) !important;backdrop-filter:blur(18px) saturate(118%);-webkit-backdrop-filter:blur(18px) saturate(118%);border-bottom:1px solid rgba(255,255,255,.04);transform:translateZ(0)}
   .gallery-index{position:relative;z-index:2;background:#08080a !important;margin-top:-1px !important}
   @media(max-width:760px){
-    .section-hero{height:100svh !important;min-height:560px !important}
+    .section-hero{height:100svh !important;min-height:560px !important;margin:0 !important;padding:0 !important}
+    .section-hero-media{inset:0 !important;top:0 !important}
     .section-hero-media>img{object-position:center center !important}
     .section-hero::after{background:linear-gradient(180deg,rgba(8,8,10,0) 0%,rgba(8,8,10,0) 60%,rgba(8,8,10,.06) 72%,rgba(8,8,10,.28) 84%,rgba(8,8,10,.78) 95%,#08080a 100%)}
     .section-hero .topbar.compact{position:fixed !important;top:0 !important;left:0 !important;right:0 !important;padding-top:max(14px,env(safe-area-inset-top)) !important}
@@ -426,6 +431,30 @@
 })();
 </script>
 <!-- GALLERY_MANAGER:CARD_ORDER:END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

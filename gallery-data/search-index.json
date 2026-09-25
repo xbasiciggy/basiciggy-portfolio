@@ -1,0 +1,72 @@
+{
+  "generatedAt" : "2026-09-25T23:20:05Z",
+  "items" : [
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T18:32:26Z",
+      "featured" : false,
+      "id" : "BA929CFC-03B8-4461-8A9A-D001F0E51D73",
+      "keywords" : [
+        "2026",
+        "adventure",
+        "hawaii",
+        "honolulu",
+        "oahu"
+      ],
+      "location" : "honolulu hawaii",
+      "photoCount" : 19,
+      "route" : "\/adventures\/oahu\/",
+      "title" : "Oahu"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T04:26:11Z",
+      "featured" : false,
+      "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
+      "keywords" : [
+        "2026",
+        "adventure",
+        "banff",
+        "canada"
+      ],
+      "location" : "Banff Canada",
+      "photoCount" : 18,
+      "route" : "\/adventures\/banff\/",
+      "title" : "Banff"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T18:36:08Z",
+      "featured" : false,
+      "id" : "542A09B9-27A1-4188-804F-A130C97BD641",
+      "keywords" : [
+        "2026",
+        "adventure",
+        "national",
+        "park",
+        "sequoia"
+      ],
+      "location" : "sequoia national park",
+      "photoCount" : 18,
+      "route" : "\/adventures\/sequoia\/",
+      "title" : "Sequoia"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T06:07:43Z",
+      "featured" : false,
+      "id" : "B097918A-720F-4EC7-8E91-BC0AB0B842A2",
+      "keywords" : [
+        "2026",
+        "adventure",
+        "usa",
+        "wyoming"
+      ],
+      "location" : "Wyoming, USA",
+      "photoCount" : 24,
+      "route" : "\/adventures\/wyoming\/",
+      "title" : "Wyoming"
+    }
+  ],
+  "schemaVersion" : 1
+}

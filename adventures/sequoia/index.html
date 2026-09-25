@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#050505">
   <meta name="color-scheme" content="dark">
-  <meta name="gallery-manager-template" content="19">
+  <meta name="gallery-manager-template" content="21">
   <title>Sequoia — Basiciggy</title>
   <meta name="description" content="Sequoia — sequoia national park · September 2026">
   
@@ -26,11 +26,11 @@
     .gallery-nav{position:fixed;z-index:50;top:0;left:0;right:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 24px;background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,0));pointer-events:none}.gallery-nav a{pointer-events:auto;color:#fff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.02em}.gallery-nav .brand{grid-column:2;grid-row:1;justify-self:center;text-transform:uppercase;letter-spacing:.16em;font-size:11px}.gallery-nav .back{grid-column:1;grid-row:1;justify-self:start;opacity:.82;white-space:nowrap}
     .gallery-hero{position:relative;height:min(72vh,760px);min-height:500px;overflow:hidden;background:#111}.gallery-hero picture{position:absolute;inset:0;width:100%;height:100%;display:block}.gallery-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;transform:scale(1.002)}.gallery-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.04) 44%,rgba(0,0,0,.44) 78%,#050505 100%);pointer-events:none}
     .hero-copy{position:absolute;z-index:2;left:clamp(20px,5vw,76px);right:clamp(20px,5vw,76px);bottom:clamp(30px,6vh,72px);display:flex;align-items:flex-end;justify-content:space-between;gap:30px}.hero-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.2em;opacity:.7;margin-bottom:14px}.hero-title{margin:0;font-size:clamp(62px,10vw,158px);line-height:.78;letter-spacing:-.07em;font-weight:600;max-width:1100px}.hero-meta{font-size:13px;line-height:1.5;opacity:.72;text-align:right;white-space:nowrap;padding-bottom:8px}
-    .gallery-intro{max-width:1320px;margin:0 auto;padding:46px clamp(12px,2vw,24px) 22px;display:flex;justify-content:space-between;align-items:end;gap:30px}.gallery-intro h2{font-size:clamp(26px,3.6vw,48px);line-height:1;letter-spacing:-.045em;margin:0}.gallery-intro p{max-width:520px;margin:0;color:rgba(255,255,255,.52);font-size:13px;line-height:1.6}
-    .gallery-grid{--gm-gutter:.66%;position:relative;max-width:1560px;margin:0 auto;padding:0 clamp(8px,1vw,14px) 94px;min-height:120px}.photo{position:absolute;left:0;top:0;margin:0;min-width:0;overflow:hidden;border-radius:6px;background:#0a0a0a;opacity:0;will-change:transform,opacity;transition:opacity .42s ease,box-shadow .3s ease}.photo.gm-laid-out{opacity:1}.photo.gm-animate{transition:opacity .42s ease,box-shadow .3s ease,transform .4s cubic-bezier(.22,.61,.36,1)}.photo-button{position:relative;appearance:none;border:0;padding:0;margin:0;width:100%;height:100%;display:block;background:#0a0a0a;cursor:zoom-in;overflow:hidden}.photo-button::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(105deg,#0b0b0b 18%,#181818 40%,#0b0b0b 62%);background-size:220% 100%;animation:gmSkeleton 1.15s ease-in-out infinite;opacity:1;transition:opacity .28s ease}.photo.gm-loaded .photo-button::before{opacity:0;pointer-events:none}.photo img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:transform .45s cubic-bezier(.17,.84,.44,1),filter .35s ease,opacity .5s ease}.photo img.gm-loaded{opacity:1}.photo-button:hover img{transform:scale(1.018);filter:brightness(.92)}@keyframes gmSkeleton{0%{background-position:120% 0}100%{background-position:-120% 0}}
+    main{padding-top:clamp(20px,3.4vw,48px)}
+    .gallery-grid{--gm-gutter:.66%;position:relative;max-width:1560px;margin:0 auto;padding:0 clamp(8px,1vw,14px) 94px;min-height:120px}.photo{position:absolute;left:0;top:0;margin:0;min-width:0;overflow:hidden;border-radius:6px;background:#050505;opacity:0;will-change:transform,opacity;transition:opacity .42s ease,box-shadow .3s ease}.photo.gm-laid-out{opacity:1}.photo.gm-animate{transition:opacity .42s ease,box-shadow .3s ease,transform .4s cubic-bezier(.22,.61,.36,1)}.photo-button{position:relative;appearance:none;border:0;padding:0;margin:0;width:100%;height:100%;display:block;background:#050505;cursor:zoom-in;overflow:hidden}.photo-button::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(105deg,#0b0b0b 18%,#181818 40%,#0b0b0b 62%);background-size:220% 100%;animation:gmSkeleton 1.15s ease-in-out infinite;opacity:1;transition:opacity .28s ease}.photo.gm-loaded .photo-button::before{opacity:0;pointer-events:none}.photo img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;background:#050505;opacity:0;transition:transform .45s cubic-bezier(.17,.84,.44,1),filter .35s ease,opacity .5s ease}.photo img.gm-loaded{opacity:1}.photo-button:hover img{transform:scale(1.012);filter:brightness(.94)}@keyframes gmSkeleton{0%{background-position:120% 0}100%{background-position:-120% 0}}
     .gallery-footer{max-width:1320px;margin:0 auto;padding:28px clamp(12px,2vw,24px) 80px;border-top:1px solid rgba(255,255,255,.09);display:flex;justify-content:space-between;gap:20px}.gallery-footer a{color:#fff;text-decoration:none;font-size:clamp(20px,2.6vw,38px);letter-spacing:-.035em}.gallery-footer span{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.45;margin-bottom:8px}
     html.gm-lightbox-open,body.gm-lightbox-open{overflow:hidden !important;overscroll-behavior:none !important;height:100% !important}dialog.lightbox{position:fixed !important;inset:0 !important;margin:0 !important;border:0;padding:0;background:rgba(0,0,0,.96);width:100% !important;height:100vh !important;height:100dvh !important;max-width:none !important;max-height:none !important;color:#fff;overflow:hidden !important;overscroll-behavior:none;touch-action:none}.lightbox::backdrop{background:#000}.lightbox-stage{position:absolute;inset:0;width:100%;height:100%;display:grid;place-items:center;padding:40px;overflow:hidden;overscroll-behavior:none;touch-action:none}.lightbox-media{position:relative;width:100%;height:100%;display:grid;place-items:center;overflow:hidden;background:#060606}.lightbox-skeleton{grid-area:1/1;width:min(78vw,1180px);height:min(70vh,780px);border-radius:12px;background:linear-gradient(105deg,#070707 15%,#161616 38%,#242424 50%,#161616 62%,#070707 85%);background-size:240% 100%;animation:gmLightboxSkeleton 1.05s ease-in-out infinite;opacity:.9;transition:opacity .28s ease}.lightbox-preview,.lightbox-full{grid-area:1/1;max-width:100%;max-height:100%;object-fit:contain;transform:translate3d(0,0,0) scale(1);transform-origin:center center;will-change:transform,opacity,filter;user-select:none;-webkit-user-drag:none}.lightbox-preview{z-index:1;opacity:1;filter:blur(12px) brightness(.72) saturate(.85);transition:opacity .28s ease,filter .32s ease}.lightbox-full{z-index:2;opacity:0;transition:opacity .26s ease}.lightbox-media.gm-full-ready .lightbox-full{opacity:1}.lightbox-media.gm-full-ready .lightbox-preview{opacity:0;filter:blur(3px) brightness(.9)}.lightbox-media.gm-full-ready .lightbox-skeleton{opacity:0}.lightbox-loading{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;padding:8px 11px;border-radius:999px;background:rgba(20,20,20,.44);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font:10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.62);transition:opacity .2s ease}.lightbox-media.gm-full-ready .lightbox-loading{opacity:0;pointer-events:none}.lightbox-loading::before{content:"";width:8px;height:8px;border-radius:999px;border:1.5px solid rgba(255,255,255,.25);border-top-color:#fff;animation:gmSpin .72s linear infinite}@keyframes gmSpin{to{transform:rotate(360deg)}}@keyframes gmLightboxSkeleton{0%{background-position:130% 0}100%{background-position:-130% 0}}.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;z-index:4;appearance:none;border:0;background:rgba(20,20,20,.62);backdrop-filter:blur(16px);color:white;border:1px solid rgba(255,255,255,.12);width:48px;height:48px;border-radius:999px;font-size:22px;cursor:pointer}.lightbox-close{right:18px;top:18px}.lightbox-prev{left:18px;top:50%}.lightbox-next{right:18px;top:50%}.lightbox-info{position:absolute;z-index:4;left:18px;bottom:18px;max-width:min(70vw,680px);padding:11px 14px;border-radius:16px;background:rgba(18,18,18,.5);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.lightbox-meta{font-size:12px;font-weight:600;letter-spacing:.02em}.lightbox-caption{margin-top:4px;font-size:12px;line-height:1.35;color:rgba(255,255,255,.76)}.lightbox-submeta{margin-top:3px;font:10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.58}.lightbox-count{position:absolute;z-index:4;bottom:18px;left:50%;transform:translateX(-50%);font:12px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.6}
-    @media(max-width:720px){.gallery-nav{padding:16px;grid-template-columns:1fr auto 1fr}.gallery-nav .brand{display:none}.gallery-nav .back{grid-column:1;justify-self:start}.gallery-hero{height:62vh;min-height:440px}.hero-copy{display:block;left:18px;right:18px;bottom:28px}.hero-title{font-size:clamp(52px,18vw,92px);line-height:.82}.hero-meta{text-align:left;margin-top:16px}.gallery-intro{padding:30px 8px 16px;display:block}.gallery-intro p{margin-top:12px}.gallery-grid{padding:0 6px 64px;--gm-gutter:2.4%}.photo{border-radius:5px}.gallery-footer{padding:24px 10px 54px}.lightbox-stage{padding:10px 8px 86px}.lightbox-prev,.lightbox-next{top:auto;bottom:16px}.lightbox-info{left:12px;right:12px;bottom:76px;max-width:none}.lightbox-count{bottom:31px}}
+    @media(max-width:720px){.gallery-nav{padding:16px;grid-template-columns:1fr auto 1fr}.gallery-nav .brand{display:none}.gallery-nav .back{grid-column:1;justify-self:start}.gallery-hero{height:62vh;min-height:440px}.hero-copy{display:block;left:18px;right:18px;bottom:28px}.hero-title{font-size:clamp(52px,18vw,92px);line-height:.82}.hero-meta{text-align:left;margin-top:16px}main{padding-top:12px}.gallery-grid{padding:0 6px 64px;--gm-gutter:2.4%}.photo{border-radius:5px}.gallery-footer{padding:24px 10px 54px}.lightbox-stage{padding:10px 8px 86px}.lightbox-prev,.lightbox-next{top:auto;bottom:16px}.lightbox-info{left:12px;right:12px;bottom:76px;max-width:none}.lightbox-count{bottom:31px}}
     @media(prefers-reduced-motion:reduce){.photo,.photo.gm-animate,.photo img,.lightbox-preview,.lightbox-full,.lightbox-skeleton,.lightbox-loading{transition:none !important;animation:none !important}.photo-button::before{animation:none !important}.photo-button:hover img{transform:none !important}}
     @view-transition{navigation:auto}
   </style>
@@ -51,10 +51,6 @@
     </div>
   </section>
   <main>
-    <section class="gallery-intro">
-      <h2>Sequoia</h2>
-      <p>Photography from sequoia national park. Select any image to view it full screen.</p>
-    </section>
     <section class="gallery-grid"><figure class="photo" data-index="0" data-favorite="false" data-ratio="1.50000">
   <button class="photo-button" type="button" aria-label="Open Sequoia photograph 1" data-full="photos/001.jpg" data-thumb="thumbs/001.jpg" data-medium="medium/001.jpg" data-caption="">
     <img src="thumbs/001.jpg" srcset="thumbs/001.jpg 640w, medium/001.jpg 1200w" alt="Sequoia photograph" width="4500" height="3000" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
@@ -181,104 +177,47 @@
       if(!r||!isFinite(r))r=4/3;
       return Math.min(Math.max(r,.42),2.6);
     };
-    // Gap-free balanced masonry:
-    // 1. place photos in order into the shortest column,
-    // 2. move/swap photos between the tallest and shortest columns until they
-    //    are as even as possible (photos rearrange themselves to fill holes),
-    // 3. keep reading order inside each column,
-    // 4. stretch or trim each column by a few pixels so every column ends on
-    //    exactly the same line (object-fit: cover absorbs the difference).
+    // Aspect-preserving masonry. Every tile keeps the source photo's true
+    // ratio, so portrait photographs are never cropped just to square up a row.
+    // Items still flow into the shortest column to keep the desktop grid compact.
     const plan=(cols,width)=>{
       const gutter=cols<=2?Math.max(6,width*.018):Math.max(6,width*.0066);
       const colWidth=(width-gutter*(cols-1))/cols;
-      const items=figures.map((figure,index)=>({figure,index,h:colWidth/ratioOf(figure)}));
       const columns=Array.from({length:cols},()=>({items:[],h:0}));
-      const heightOf=(c)=>c.items.reduce((sum,it)=>sum+it.h,0)+gutter*Math.max(0,c.items.length-1);
-
-      items.forEach(it=>{
+      figures.forEach((figure,index)=>{
+        const h=colWidth/ratioOf(figure);
         let target=columns[0];
         columns.forEach(c=>{if(c.h<target.h-.5)target=c;});
-        target.items.push(it);
-        target.h=heightOf(target);
+        target.items.push({figure,index,h});
+        target.h+=h+(target.items.length>1?gutter:0);
       });
-
-      for(let pass=0;pass<60&&cols>1;pass++){
-        columns.forEach(c=>{c.h=heightOf(c);});
-        const ordered=[...columns].sort((a,b)=>a.h-b.h);
-        const low=ordered[0],high=ordered[ordered.length-1];
-        const spread=high.h-low.h;
-        if(spread<1)break;
-        let best=null,bestSpread=spread-.5;
-        if(high.items.length>1){
-          high.items.forEach((it,i)=>{
-            const next=Math.abs((high.h-it.h-gutter)-(low.h+it.h+gutter));
-            if(next<bestSpread){bestSpread=next;best={move:i};}
-          });
-        }
-        high.items.forEach((a,i)=>low.items.forEach((b,j)=>{
-          const d=a.h-b.h;
-          if(d<=0)return;
-          const next=Math.abs(spread-2*d);
-          if(next<bestSpread){bestSpread=next;best={swap:[i,j]};}
-        }));
-        if(!best)break;
-        if(best.move!==undefined){
-          low.items.push(high.items.splice(best.move,1)[0]);
-        }else{
-          const [i,j]=best.swap;
-          const a=high.items[i];
-          high.items[i]=low.items[j];
-          low.items[j]=a;
-        }
-      }
-
-      columns.forEach(c=>{c.items.sort((a,b)=>a.index-b.index);c.h=heightOf(c);});
-      // The column holding the first photo sits on the left so the gallery still opens with it.
-      columns.sort((a,b)=>a.items[0].index-b.items[0].index);
-      const target=columns.reduce((sum,c)=>sum+c.h,0)/cols;
-      const deviation=Math.max(...columns.map(c=>{
-        const gutters=gutter*(c.items.length-1);
-        return Math.abs((target-gutters)/Math.max(1,c.h-gutters)-1);
-      }));
-      return {cols,gutter,colWidth,columns,target,deviation};
+      // Keep the column containing the earliest image on the left while preserving
+      // natural photo heights inside every column.
+      columns.sort((a,b)=>(a.items[0]?.index??1e9)-(b.items[0]?.index??1e9));
+      return {gutter,colWidth,columns,height:Math.max(...columns.map(c=>c.h),0)};
     };
     const layout=()=>{
       const width=grid.clientWidth;
       if(width<80||!figures.length)return;
-      // Use the preferred column count unless squaring up the bottom would crop
-      // photos by more than ~12%; then try fewer columns (small galleries).
-      const preferred=Math.max(1,Math.min(columnCount(),figures.length));
-      const floor=figures.length>1?Math.min(2,preferred):1;
-      let chosen=null;
-      for(let c=preferred;c>=floor;c--){
-        const candidate=plan(c,width);
-        if(!chosen||candidate.deviation<chosen.deviation)chosen=candidate;
-        if(candidate.deviation<=.12){chosen=candidate;break;}
-      }
-      const {gutter,colWidth,columns,target}=chosen;
-
+      const cols=Math.max(1,Math.min(columnCount(),figures.length));
+      const {gutter,colWidth,columns,height}=plan(cols,width);
       columns.forEach((c,ci)=>{
-        const gutters=gutter*(c.items.length-1);
-        const scale=(target-gutters)/Math.max(1,c.h-gutters);
         const x=Math.round(ci*(colWidth+gutter)*10)/10;
         const w=Math.round(colWidth*10)/10;
         let y=0;
-        c.items.forEach((it,k)=>{
-          const top=Math.round(y);
-          const bottom=k===c.items.length-1?Math.round(target):Math.round(y+it.h*scale);
+        c.items.forEach(it=>{
+          const h=Math.max(1,Math.round(it.h*10)/10);
           it.figure.style.width=`${w}px`;
-          it.figure.style.height=`${Math.max(1,bottom-top)}px`;
-          it.figure.style.transform=`translate3d(${x}px,${top}px,0)`;
+          it.figure.style.height=`${h}px`;
+          it.figure.style.transform=`translate3d(${x}px,${Math.round(y*10)/10}px,0)`;
           it.figure.classList.add('gm-laid-out');
-          y=bottom+gutter;
+          y+=h+gutter;
         });
       });
-      grid.style.height=`${Math.round(target)}px`;
+      grid.style.height=`${Math.ceil(height)}px`;
       if(!firstLayoutDone){
         firstLayoutDone=true;
-        if(!reduceMotion){
-          requestAnimationFrame(()=>figures.forEach(f=>f.classList.add('gm-animate')));
-        }
+        if(!reduceMotion){requestAnimationFrame(()=>figures.forEach(f=>f.classList.add('gm-animate')));}
       }
     };
     const schedule=()=>requestAnimationFrame(layout);
@@ -306,16 +245,16 @@
     const cacheImage=(src)=>{if(!src||imageCache.has(src))return imageCache.get(src);const preload=new Image();preload.decoding='async';preload.src=src;imageCache.set(src,preload);return preload;};
     const preloadAround=()=>{
       if(!buttons.length)return;
-      [1,-1,2,-2,3].forEach(offset=>{const button=buttons[(i+offset+buttons.length)%buttons.length];if(!button)return;[button.dataset.thumb,button.dataset.medium,button.dataset.full].filter(Boolean).forEach(cacheImage);});
+      [1,-1,2,-2,3,-3].forEach(offset=>{const button=buttons[(i+offset+buttons.length)%buttons.length];if(!button)return;[button.dataset.thumb,button.dataset.medium,button.dataset.full].filter(Boolean).forEach(cacheImage);});
       if(imageCache.size>18){const keep=new Set();[-3,-2,-1,0,1,2,3].forEach(offset=>{const b=buttons[(i+offset+buttons.length)%buttons.length];if(b){if(b.dataset.thumb)keep.add(b.dataset.thumb);if(b.dataset.medium)keep.add(b.dataset.medium);if(b.dataset.full)keep.add(b.dataset.full);}});[...imageCache.keys()].forEach(key=>{if(!keep.has(key))imageCache.delete(key);});}
     };
     const swapLightboxImage=n=>{
       i=(n+buttons.length)%buttons.length;
-      const button=buttons[i],thumb=button.dataset.thumb,full=button.dataset.full,token=++loadToken;
+      const button=buttons[i],thumb=button.dataset.thumb,medium=button.dataset.medium,full=button.dataset.full,token=++loadToken;
       resetZoom();
       media.classList.remove('gm-full-ready');
       media.setAttribute('aria-busy','true');
-      previewImg.src=thumb||full;
+      previewImg.src=medium||thumb||full;
       img.removeAttribute('src');
       img.fetchPriority='high';
       img.onload=()=>{if(token!==loadToken)return;media.classList.add('gm-full-ready');media.setAttribute('aria-busy','false');};
