@@ -33,7 +33,7 @@
       ],
       "route" : "adventures",
       "slug" : "sequoia",
-      "sortOrder" : 0,
+      "sortOrder" : 1,
       "state" : "published",
       "title" : "Sequoia"
     },
@@ -71,7 +71,7 @@
       ],
       "route" : "adventures",
       "slug" : "oahu",
-      "sortOrder" : 1,
+      "sortOrder" : 2,
       "state" : "published",
       "title" : "Oahu"
     },
@@ -114,7 +114,7 @@
       ],
       "route" : "adventures",
       "slug" : "wyoming",
-      "sortOrder" : 2,
+      "sortOrder" : 3,
       "state" : "published",
       "title" : "Wyoming"
     },
@@ -151,11 +151,11 @@
       ],
       "route" : "adventures",
       "slug" : "banff",
-      "sortOrder" : 3,
+      "sortOrder" : 0,
       "state" : "published",
       "title" : "Banff"
     }
   ],
-  "generatedAt" : "2026-09-25T19:23:23Z",
+  "generatedAt" : "2026-09-25T19:26:46Z",
   "schemaVersion" : 2
 }

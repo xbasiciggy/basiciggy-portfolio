@@ -10,8 +10,8 @@
       "photoCount" : 18,
       "routePrefix" : "adventures",
       "slug" : "sequoia",
-      "sortOrder" : 0,
-      "status" : "draft",
+      "sortOrder" : 1,
+      "status" : "published",
       "title" : "Sequoia"
     },
     {
@@ -24,8 +24,8 @@
       "photoCount" : 19,
       "routePrefix" : "adventures",
       "slug" : "oahu",
-      "sortOrder" : 1,
-      "status" : "draft",
+      "sortOrder" : 2,
+      "status" : "published",
       "title" : "Oahu"
     },
     {
@@ -38,8 +38,8 @@
       "photoCount" : 24,
       "routePrefix" : "adventures",
       "slug" : "wyoming",
-      "sortOrder" : 2,
-      "status" : "draft",
+      "sortOrder" : 3,
+      "status" : "published",
       "title" : "Wyoming"
     },
     {
@@ -52,12 +52,12 @@
       "photoCount" : 18,
       "routePrefix" : "adventures",
       "slug" : "banff",
-      "sortOrder" : 3,
-      "status" : "draft",
+      "sortOrder" : 0,
+      "status" : "published",
       "title" : "Banff"
     }
   ],
-  "generatedAt" : "2026-09-25T19:23:23Z",
+  "generatedAt" : "2026-09-25T19:26:46Z",
   "navigation" : [
     {
       "createdAt" : "2026-09-25T19:18:44Z",
