@@ -188,8 +188,9 @@
   .project-grid .project-card .project-open{backdrop-filter:blur(16px);background:rgba(20,20,20,.48);border-radius:999px}
   @media(max-width:760px){
     .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:1/-1 !important}
-    .project-grid .project-card{min-height:330px;border-radius:28px;will-change:transform,opacity;transform-origin:center 82%;backface-visibility:hidden}
-    .project-grid .project-card .project-name{padding:20px 20px 32px !important;font-size:clamp(88px,24vw,154px);line-height:.74}
+    .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important}
+    .project-grid .project-card{border-radius:28px;will-change:transform,opacity;transform-origin:center 76%;backface-visibility:hidden}
+    .project-grid .project-card .project-name{padding:18px 18px 24px !important;font-size:clamp(58px,18vw,104px);line-height:.76}
   }
 </style>
 <script id="gallery-manager-card-title-fit">
@@ -269,18 +270,19 @@
     const vh=window.innerHeight||document.documentElement.clientHeight;
     cards().forEach((card,index)=>{
       const rect=card.getBoundingClientRect();
-      const trigger=vh*.25;
-      const distance=Math.max(vh*.52,300);
+      const trigger=vh*.18;
+      const distance=Math.max(vh*.72,420);
       const raw=Math.max(0,Math.min(1,(trigger-rect.top)/distance));
-      const progress=raw*raw*(3-2*raw);
+      // smootherstep: much softer start/end than the previous fade
+      const progress=raw*raw*raw*(raw*(raw*6-15)+10);
       const direction=index%2===0?-1:1;
-      const rotate=direction*progress*2.4;
-      const lift=-progress*30;
-      const scale=1-progress*.028;
-      const opacity=1-progress*.985;
+      const rotate=direction*progress*1.15;
+      const lift=-progress*18;
+      const scale=1-progress*.018;
+      const opacity=1-progress*.94;
       card.style.transform=`translate3d(0,${lift}px,0) rotate(${rotate}deg) scale(${scale})`;
       card.style.opacity=String(opacity);
-      card.style.filter=`blur(${progress*.65}px)`;
+      card.style.filter=`blur(${progress*.28}px)`;
     });
   };
   const request=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
@@ -307,6 +309,10 @@
     .section-hero .topbar.compact{position:relative !important}
     .section-hero .topbar.compact>a:first-of-type{position:absolute !important;left:50% !important;top:50% !important;transform:translate(-50%,-50%) !important;z-index:7 !important;margin:0 !important}
     .section-hero .topbar.compact>a:first-of-type .logo{display:block !important;margin:0 auto !important}
+    .section-hero .section-hero-inner{position:absolute !important;left:0 !important;right:0 !important;bottom:clamp(70px,11vh,112px) !important;width:100% !important;max-width:none !important;margin:0 !important;padding:0 18px !important;text-align:center !important;display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:flex-end !important}
+    .section-hero .section-kicker{display:flex !important;justify-content:center !important;align-items:center !important;text-align:center !important;margin-left:auto !important;margin-right:auto !important}
+    .section-hero .section-title{display:block !important;width:100% !important;max-width:calc(100vw - 36px) !important;margin:10px auto 0 !important;padding:0 !important;text-align:center !important;white-space:nowrap !important;font-size:clamp(46px,15.4vw,76px) !important;line-height:.82 !important;letter-spacing:-.065em !important;overflow:visible !important}
+    .section-hero .section-subtitle{max-width:330px !important;margin:16px auto 0 !important;text-align:center !important}
   }
 </style>
 <!-- GALLERY_MANAGER:HERO_FADE:END -->
