@@ -71,7 +71,7 @@
       ],
       "route" : "adventures",
       "slug" : "oahu",
-      "sortOrder" : 2,
+      "sortOrder" : 0,
       "state" : "published",
       "title" : "Oahu"
     },
@@ -151,11 +151,11 @@
       ],
       "route" : "adventures",
       "slug" : "banff",
-      "sortOrder" : 0,
+      "sortOrder" : 2,
       "state" : "published",
       "title" : "Banff"
     }
   ],
-  "generatedAt" : "2026-09-25T21:07:37Z",
+  "generatedAt" : "2026-09-25T21:12:02Z",
   "schemaVersion" : 2
 }
