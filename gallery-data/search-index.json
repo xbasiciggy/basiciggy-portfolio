@@ -1,22 +1,21 @@
 {
-  "generatedAt" : "2026-09-25T23:20:05Z",
+  "generatedAt" : "2026-09-25T23:24:44Z",
   "items" : [
     {
       "category" : "Adventure",
-      "date" : "2026-09-25T18:32:26Z",
+      "date" : "2026-09-25T06:07:43Z",
       "featured" : false,
-      "id" : "BA929CFC-03B8-4461-8A9A-D001F0E51D73",
+      "id" : "B097918A-720F-4EC7-8E91-BC0AB0B842A2",
       "keywords" : [
         "2026",
         "adventure",
-        "hawaii",
-        "honolulu",
-        "oahu"
+        "usa",
+        "wyoming"
       ],
-      "location" : "honolulu hawaii",
-      "photoCount" : 19,
-      "route" : "\/adventures\/oahu\/",
-      "title" : "Oahu"
+      "location" : "Wyoming, USA",
+      "photoCount" : 24,
+      "route" : "\/adventures\/wyoming\/",
+      "title" : "Wyoming"
     },
     {
       "category" : "Adventure",
@@ -36,6 +35,23 @@
     },
     {
       "category" : "Adventure",
+      "date" : "2026-09-25T18:32:26Z",
+      "featured" : false,
+      "id" : "BA929CFC-03B8-4461-8A9A-D001F0E51D73",
+      "keywords" : [
+        "2026",
+        "adventure",
+        "hawaii",
+        "honolulu",
+        "oahu"
+      ],
+      "location" : "honolulu hawaii",
+      "photoCount" : 19,
+      "route" : "\/adventures\/oahu\/",
+      "title" : "Oahu"
+    },
+    {
+      "category" : "Adventure",
       "date" : "2026-09-25T18:36:08Z",
       "featured" : false,
       "id" : "542A09B9-27A1-4188-804F-A130C97BD641",
@@ -50,22 +66,6 @@
       "photoCount" : 18,
       "route" : "\/adventures\/sequoia\/",
       "title" : "Sequoia"
-    },
-    {
-      "category" : "Adventure",
-      "date" : "2026-09-25T06:07:43Z",
-      "featured" : false,
-      "id" : "B097918A-720F-4EC7-8E91-BC0AB0B842A2",
-      "keywords" : [
-        "2026",
-        "adventure",
-        "usa",
-        "wyoming"
-      ],
-      "location" : "Wyoming, USA",
-      "photoCount" : 24,
-      "route" : "\/adventures\/wyoming\/",
-      "title" : "Wyoming"
     }
   ],
   "schemaVersion" : 1
