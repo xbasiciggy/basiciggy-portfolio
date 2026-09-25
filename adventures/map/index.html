@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#070809">
+  <title>Adventure Map — Basiciggy</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#070809;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}.map-shell{position:relative;width:100%;height:100%;overflow:hidden}.map{position:absolute;inset:0;background:#0a0b0c}.map-top{position:absolute;z-index:1000;left:18px;right:18px;top:max(16px,env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;pointer-events:none}.map-top a,.map-top .count{pointer-events:auto;color:#fff;text-decoration:none;background:rgba(10,10,12,.68);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:999px;padding:11px 15px;font-size:12px;font-weight:600}.map-top .brand{letter-spacing:.16em;text-transform:uppercase}.map-bottom{position:absolute;z-index:900;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(720px,calc(100% - 28px));pointer-events:none}.map-note{pointer-events:auto;background:rgba(10,10,12,.72);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:22px;padding:14px 16px;color:rgba(255,255,255,.7);font-size:12px;text-align:center}.leaflet-container{font-family:inherit;background:#0a0b0c}.leaflet-control-attribution{background:rgba(0,0,0,.46)!important;color:rgba(255,255,255,.5)!important}.leaflet-control-attribution a{color:rgba(255,255,255,.72)!important}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#111214;color:#fff}.leaflet-popup-content-wrapper{border-radius:18px;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 60px rgba(0,0,0,.45)}.leaflet-popup-content{margin:0;width:260px!important}.gm-popup img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.gm-popup-copy{padding:13px}.gm-popup h3{margin:0 0 4px;font-size:25px;letter-spacing:-.045em}.gm-popup p{margin:0;color:rgba(255,255,255,.55);font-size:12px}.gm-popup a{display:inline-flex;margin-top:12px;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:9px 12px;border-radius:999px;background:#1ccf63}.gm-pin{width:18px;height:18px;border-radius:999px;background:#40ff7e;border:3px solid rgba(7,8,9,.92);box-shadow:0 0 0 3px rgba(64,255,126,.22),0 6px 20px rgba(0,0,0,.35)}
+  </style>
+</head>
+<body>
+  <div class="map-shell">
+    <div id="map" class="map"></div>
+    <div class="map-top"><a class="brand" href="/adventures/">← Adventures</a><div class="count">0 mapped galleries</div></div>
+    <div class="map-bottom"><div class="map-note">Tap a pin to open its gallery. Add or edit gallery coordinates in Gallery Manager → Galleries.</div></div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (()=>{
+    const pins=[];
+    const map=L.map('map',{zoomControl:false,worldCopyJump:true,attributionControl:true});
+    L.control.zoom({position:'bottomright'}).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
+    const icon=L.divIcon({className:'',html:'<div class="gm-pin"></div>',iconSize:[18,18],iconAnchor:[9,9],popupAnchor:[0,-10]});
+    const bounds=[];
+    pins.forEach(pin=>{
+      const marker=L.marker([pin.latitude,pin.longitude],{icon}).addTo(map);
+      const safe=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      marker.bindPopup(`<div class="gm-popup"><img src="${safe(pin.cover)}" alt="${safe(pin.title)}"><div class="gm-popup-copy"><h3>${safe(pin.title)}</h3><p>${safe(pin.location)} · ${pin.photoCount} photos</p><a href="${safe(pin.url)}">Open Gallery ↗</a></div></div>`,{maxWidth:280,minWidth:260});
+      bounds.push([pin.latitude,pin.longitude]);
+    });
+    if(bounds.length>1)map.fitBounds(bounds,{padding:[70,70],maxZoom:8});
+    else if(bounds.length===1)map.setView(bounds[0],7);
+    else map.setView([39,-98],4);
+  })();
+  </script>
+</body>
+</html>

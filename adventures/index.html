@@ -12,7 +12,7 @@
     <h1 class="page-label">Adventures</h1>
     <a href="../index.html"><img class="logo" src="https://images.squarespace-cdn.com/content/574df21d40261ddf2101a3f1/0fe84dd4-bc34-45db-b3ff-e416fa0c7fb2/basiciggy+logo+2026.png?content-type=image%2Fpng" alt="Basiciggy"></a>
     <nav class="desktop-nav"><a href="../index.html">Home</a><a href="../lifestyle/index.html">Lifestyle</a><a href="../adventures/index.html">Trips</a></nav>
-  </header>
+  <a class="gm-map-header-link" href="/adventures/map/" aria-label="Open Adventures map" title="Adventure map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg></a></header>
   <div class="section-hero-inner">
     <div class="section-kicker"><span class="dot"></span>Featured · Banff</div>
     <h2 class="section-title">Adventures</h2>
@@ -188,7 +188,7 @@
   .project-grid .project-card .project-open{backdrop-filter:blur(16px);background:rgba(20,20,20,.48);border-radius:999px}
   @media(max-width:760px){
     .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:1/-1 !important}
-    .project-grid .project-card{min-height:330px;border-radius:28px}
+    .project-grid .project-card{min-height:330px;border-radius:28px;will-change:transform,opacity;transform-origin:center 82%;backface-visibility:hidden}
     .project-grid .project-card .project-name{padding:20px 20px 32px !important;font-size:clamp(88px,24vw,154px);line-height:.74}
   }
 </style>
@@ -255,20 +255,66 @@
   schedule();
 })();
 </script>
+<script id="gallery-manager-mobile-card-motion">
+(()=>{
+  if(window.__gmMobileCardMotionInstalled)return;
+  window.__gmMobileCardMotionInstalled=true;
+  const media=window.matchMedia('(max-width: 760px)');
+  let ticking=false;
+  const cards=()=>[...document.querySelectorAll('.project-grid .project-card')];
+  const reset=()=>cards().forEach(card=>{card.style.transform='';card.style.opacity='';card.style.filter='';});
+  const update=()=>{
+    ticking=false;
+    if(!media.matches){reset();return;}
+    const vh=window.innerHeight||document.documentElement.clientHeight;
+    cards().forEach((card,index)=>{
+      const rect=card.getBoundingClientRect();
+      const trigger=vh*.34;
+      const distance=Math.max(vh*.36,220);
+      const progress=Math.max(0,Math.min(1,(trigger-rect.top)/distance));
+      const direction=index%2===0?-1:1;
+      const rotate=direction*progress*5.5;
+      const lift=-progress*58;
+      const scale=1-progress*.075;
+      const opacity=1-progress*.96;
+      card.style.transform=`translate3d(0,${lift}px,0) rotate(${rotate}deg) scale(${scale})`;
+      card.style.opacity=String(opacity);
+      card.style.filter=`blur(${progress*1.5}px)`;
+    });
+  };
+  const request=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
+  window.addEventListener('scroll',request,{passive:true});
+  window.addEventListener('resize',request,{passive:true});
+  media.addEventListener?.('change',request);
+  request();
+})();
+</script>
 <!-- GALLERY_MANAGER:CARD_TYPOGRAPHY:END -->
 <!-- GALLERY_MANAGER:HERO_FADE:START -->
 <style id="gallery-manager-hero-fade">
-  /* Extend the category hero and fade it fully into the site background before the grid begins. */
-  .section-hero{position:relative !important;overflow:hidden !important;min-height:calc(100svh + 180px) !important;background:#08080a !important}
+  /* Tighter category hero: crop away the empty lower third and fade cleanly into the grid. */
+  .section-hero{position:relative !important;overflow:hidden !important;min-height:0 !important;height:clamp(520px,72svh,760px) !important;background:#08080a !important}
   .section-hero-media{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important}
-  .section-hero-media>img{width:100% !important;height:100% !important;object-fit:cover !important}
-  .section-hero::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,10,0) 0%,rgba(8,8,10,0) 62%,rgba(8,8,10,.12) 72%,rgba(8,8,10,.58) 86%,#08080a 100%)}
+  .section-hero-media>img{width:100% !important;height:100% !important;object-fit:cover !important;object-position:center 38% !important}
+  .section-hero::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,8,10,0) 0%,rgba(8,8,10,0) 55%,rgba(8,8,10,.16) 68%,rgba(8,8,10,.66) 86%,#08080a 100%)}
   .section-hero>.topbar,.section-hero>.section-hero-inner{position:relative;z-index:2}
   .gallery-index{position:relative;z-index:2;background:#08080a !important;margin-top:-1px !important}
   @media(max-width:760px){
-    .section-hero{min-height:calc(100svh + 110px) !important}
-    .section-hero::after{background:linear-gradient(180deg,rgba(8,8,10,0) 0%,rgba(8,8,10,0) 58%,rgba(8,8,10,.18) 72%,rgba(8,8,10,.68) 88%,#08080a 100%)}
+    .section-hero{height:clamp(460px,64svh,620px) !important}
+    .section-hero-media>img{object-position:center 34% !important}
+    .section-hero::after{background:linear-gradient(180deg,rgba(8,8,10,0) 0%,rgba(8,8,10,0) 50%,rgba(8,8,10,.18) 66%,rgba(8,8,10,.72) 87%,#08080a 100%)}
   }
 </style>
 <!-- GALLERY_MANAGER:HERO_FADE:END -->
+
+<!-- GALLERY_MANAGER:MAP_LINK:START -->
+<style id="gallery-manager-map-link-style">
+  .section-hero .topbar.compact{position:relative !important}
+  .gm-map-header-link{position:absolute;z-index:8;right:clamp(18px,3vw,38px);top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:999px;display:grid;place-items:center;color:#fff;text-decoration:none;background:rgba(16,16,18,.56);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:transform .2s ease,background .2s ease,border-color .2s ease}
+  .gm-map-header-link:hover{transform:translateY(-50%) scale(1.06);background:rgba(22,22,24,.78);border-color:rgba(255,255,255,.28)}
+  .gm-map-header-link svg{width:21px;height:21px}
+  .section-hero .desktop-nav{margin-right:56px}
+  @media(max-width:760px){.gm-map-header-link{right:18px;width:46px;height:46px}.section-hero .desktop-nav{margin-right:0}}
+</style>
+<!-- GALLERY_MANAGER:MAP_LINK:END -->
 </body></html>
