@@ -1,13 +1,20 @@
 {
+  "captions" : {
+
+  },
   "category" : "adventures",
   "cover" : "adventures\/oahu\/photos\/014.jpg",
   "date" : "2026-09-25T18:32:26Z",
+  "favorites" : [
+
+  ],
   "generatedBy" : "Gallery Manager",
   "hidden" : false,
   "id" : "BA929CFC-03B8-4461-8A9A-D001F0E51D73",
   "latitude" : 21.305054,
   "location" : "honolulu hawaii",
   "longitude" : -157.858164,
+  "noIndex" : false,
   "photos" : [
     "photos\/001.jpg",
     "photos\/002.jpg",
@@ -28,6 +35,27 @@
     "photos\/017.jpg",
     "photos\/018.jpg",
     "photos\/019.jpg"
+  ],
+  "responsive1200" : [
+    "medium\/001.jpg",
+    "medium\/002.jpg",
+    "medium\/003.jpg",
+    "medium\/004.jpg",
+    "medium\/005.jpg",
+    "medium\/006.jpg",
+    "medium\/007.jpg",
+    "medium\/008.jpg",
+    "medium\/009.jpg",
+    "medium\/010.jpg",
+    "medium\/011.jpg",
+    "medium\/012.jpg",
+    "medium\/013.jpg",
+    "medium\/014.jpg",
+    "medium\/015.jpg",
+    "medium\/016.jpg",
+    "medium\/017.jpg",
+    "medium\/018.jpg",
+    "medium\/019.jpg"
   ],
   "slug" : "oahu",
   "thumbnails" : [

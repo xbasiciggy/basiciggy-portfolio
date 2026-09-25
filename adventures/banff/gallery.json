@@ -1,13 +1,20 @@
 {
+  "captions" : {
+
+  },
   "category" : "adventures",
   "cover" : "adventures\/banff\/photos\/001.jpg",
   "date" : "2026-09-25T04:26:11Z",
+  "favorites" : [
+
+  ],
   "generatedBy" : "Gallery Manager",
   "hidden" : false,
   "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
   "latitude" : 51.176588,
   "location" : "Banff Canada",
   "longitude" : -115.570936,
+  "noIndex" : false,
   "photos" : [
     "photos\/001.jpg",
     "photos\/002.jpg",
@@ -27,6 +34,26 @@
     "photos\/016.jpg",
     "photos\/017.jpg",
     "photos\/018.jpg"
+  ],
+  "responsive1200" : [
+    "medium\/001.jpg",
+    "medium\/002.jpg",
+    "medium\/003.jpg",
+    "medium\/004.jpg",
+    "medium\/005.jpg",
+    "medium\/006.jpg",
+    "medium\/007.jpg",
+    "medium\/008.jpg",
+    "medium\/009.jpg",
+    "medium\/010.jpg",
+    "medium\/011.jpg",
+    "medium\/012.jpg",
+    "medium\/013.jpg",
+    "medium\/014.jpg",
+    "medium\/015.jpg",
+    "medium\/016.jpg",
+    "medium\/017.jpg",
+    "medium\/018.jpg"
   ],
   "slug" : "banff",
   "thumbnails" : [

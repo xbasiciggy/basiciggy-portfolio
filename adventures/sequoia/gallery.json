@@ -1,13 +1,20 @@
 {
+  "captions" : {
+
+  },
   "category" : "adventures",
   "cover" : "adventures\/sequoia\/photos\/017.jpg",
   "date" : "2026-09-25T18:36:08Z",
+  "favorites" : [
+
+  ],
   "generatedBy" : "Gallery Manager",
   "hidden" : false,
   "id" : "542A09B9-27A1-4188-804F-A130C97BD641",
   "latitude" : 36.604366,
   "location" : "sequoia national park",
   "longitude" : -118.73095,
+  "noIndex" : false,
   "photos" : [
     "photos\/001.jpg",
     "photos\/002.jpg",
@@ -27,6 +34,26 @@
     "photos\/016.jpg",
     "photos\/017.jpg",
     "photos\/018.jpg"
+  ],
+  "responsive1200" : [
+    "medium\/001.jpg",
+    "medium\/002.jpg",
+    "medium\/003.jpg",
+    "medium\/004.jpg",
+    "medium\/005.jpg",
+    "medium\/006.jpg",
+    "medium\/007.jpg",
+    "medium\/008.jpg",
+    "medium\/009.jpg",
+    "medium\/010.jpg",
+    "medium\/011.jpg",
+    "medium\/012.jpg",
+    "medium\/013.jpg",
+    "medium\/014.jpg",
+    "medium\/015.jpg",
+    "medium\/016.jpg",
+    "medium\/017.jpg",
+    "medium\/018.jpg"
   ],
   "slug" : "sequoia",
   "thumbnails" : [

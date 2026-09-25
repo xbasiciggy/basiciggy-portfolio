@@ -1,13 +1,20 @@
 {
+  "captions" : {
+
+  },
   "category" : "adventures",
   "cover" : "adventures\/wyoming\/photos\/024.jpg",
   "date" : "2026-09-25T06:07:43Z",
+  "favorites" : [
+
+  ],
   "generatedBy" : "Gallery Manager",
   "hidden" : false,
   "id" : "B097918A-720F-4EC7-8E91-BC0AB0B842A2",
   "latitude" : 41.1398,
   "location" : "Wyoming, USA",
   "longitude" : -104.8199,
+  "noIndex" : false,
   "photos" : [
     "photos\/001.jpg",
     "photos\/002.jpg",
@@ -33,6 +40,32 @@
     "photos\/022.jpg",
     "photos\/023.jpg",
     "photos\/024.jpg"
+  ],
+  "responsive1200" : [
+    "medium\/001.jpg",
+    "medium\/002.jpg",
+    "medium\/003.jpg",
+    "medium\/004.jpg",
+    "medium\/005.jpg",
+    "medium\/006.jpg",
+    "medium\/007.jpg",
+    "medium\/008.jpg",
+    "medium\/009.jpg",
+    "medium\/010.jpg",
+    "medium\/011.jpg",
+    "medium\/012.jpg",
+    "medium\/013.jpg",
+    "medium\/014.jpg",
+    "medium\/015.jpg",
+    "medium\/016.jpg",
+    "medium\/017.jpg",
+    "medium\/018.jpg",
+    "medium\/019.jpg",
+    "medium\/020.jpg",
+    "medium\/021.jpg",
+    "medium\/022.jpg",
+    "medium\/023.jpg",
+    "medium\/024.jpg"
   ],
   "slug" : "wyoming",
   "thumbnails" : [

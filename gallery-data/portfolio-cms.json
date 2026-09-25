@@ -158,8 +158,242 @@
       "sortOrder" : 1,
       "state" : "published",
       "title" : "Banff"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "6BE961DF-7BE9-4CD5-B718-47691F44C7DF",
+      "location" : "",
+      "path" : "\/adventures\/japan\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "japan",
+      "sortOrder" : 4,
+      "state" : "hidden",
+      "title" : "Japan"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "8093331F-E1FB-4CEC-ADE8-6E4DF9854AEA",
+      "location" : "",
+      "path" : "\/adventures\/italy-63ply\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "italy-63ply",
+      "sortOrder" : 5,
+      "state" : "hidden",
+      "title" : "Italy"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "64647E55-C539-4A10-944F-C16B8812E3A9",
+      "location" : "",
+      "path" : "\/adventures\/paris\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "paris",
+      "sortOrder" : 6,
+      "state" : "hidden",
+      "title" : "Paris"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "9EE842BC-A15B-4A81-B739-42C22A292E9A",
+      "location" : "",
+      "path" : "\/adventures\/hwy395\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "hwy395",
+      "sortOrder" : 7,
+      "state" : "hidden",
+      "title" : "HWY 395"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "8F7F23AA-4031-4CC2-AFFB-4FAE756491F4",
+      "location" : "",
+      "path" : "\/adventures\/thailand-c6ztr\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "thailand-c6ztr",
+      "sortOrder" : 8,
+      "state" : "hidden",
+      "title" : "Thailand"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "952B41D5-1269-465E-85BE-9F6C6CE74C7D",
+      "location" : "",
+      "path" : "\/adventures\/flynyon\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "flynyon",
+      "sortOrder" : 9,
+      "state" : "hidden",
+      "title" : "FlyNyon NY"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "C9562342-9E22-4A66-9A2A-A9CA6F467ED2",
+      "location" : "",
+      "path" : "\/adventures\/canadian-outback-rafting-pkgl9\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "canadian-outback-rafting-pkgl9",
+      "sortOrder" : 18,
+      "state" : "hidden",
+      "title" : "Canadian Outback Rafting"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "6D7AF230-5E22-4288-AD72-5C86B0B86E57",
+      "location" : "",
+      "path" : "\/adventures\/new-york-4epsh\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "new-york-4epsh",
+      "sortOrder" : 20,
+      "state" : "hidden",
+      "title" : "New York"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "4BFA9304-D709-4C0C-A6A8-4D96A1CB01FA",
+      "location" : "",
+      "path" : "\/adventures\/utah-8el4m\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "utah-8el4m",
+      "sortOrder" : 22,
+      "state" : "hidden",
+      "title" : "Utah"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "AE30B3E4-E4C3-4FA3-AB5B-D9C6A587768C",
+      "location" : "",
+      "path" : "\/adventures\/banzai-divers-hawaii-5thha\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "banzai-divers-hawaii-5thha",
+      "sortOrder" : 23,
+      "state" : "hidden",
+      "title" : "Banzai Divers Hawaii"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "274C86C7-D1BF-433D-B396-FE9D1AFADD4D",
+      "location" : "",
+      "path" : "\/adventures\/happy-flights-cabo-parasailing-whmxb\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "happy-flights-cabo-parasailing-whmxb",
+      "sortOrder" : 24,
+      "state" : "hidden",
+      "title" : "Happy Flights Cabo Parasailing"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "5054542B-E9CE-4758-9763-72D4534E3AEC",
+      "location" : "",
+      "path" : "\/adventures\/havasupai-kb8en\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "havasupai-kb8en",
+      "sortOrder" : 25,
+      "state" : "hidden",
+      "title" : "Havasupai"
+    },
+    {
+      "category" : "Adventure",
+      "date" : "2026-09-25T21:02:50Z",
+      "featured" : false,
+      "hidden" : true,
+      "id" : "F1C83D5A-ACEE-4DEE-A0E9-342ABE340506",
+      "location" : "",
+      "path" : "\/adventures\/abandoned-hospital-ymx8t\/",
+      "photoCount" : 0,
+      "photoOrder" : [
+
+      ],
+      "route" : "adventures",
+      "slug" : "abandoned-hospital-ymx8t",
+      "sortOrder" : 26,
+      "state" : "hidden",
+      "title" : "Abandoned USC Hospital"
     }
   ],
-  "generatedAt" : "2026-09-25T21:42:00Z",
+  "generatedAt" : "2026-09-25T22:15:44Z",
   "schemaVersion" : 2
 }
