@@ -11,7 +11,7 @@
       "photoCount" : 18,
       "routePrefix" : "adventures",
       "slug" : "sequoia",
-      "sortOrder" : 1,
+      "sortOrder" : 2,
       "status" : "published",
       "title" : "Sequoia"
     },
@@ -26,7 +26,7 @@
       "photoCount" : 19,
       "routePrefix" : "adventures",
       "slug" : "oahu",
-      "sortOrder" : 0,
+      "sortOrder" : 1,
       "status" : "published",
       "title" : "Oahu"
     },
@@ -56,7 +56,7 @@
       "photoCount" : 18,
       "routePrefix" : "adventures",
       "slug" : "banff",
-      "sortOrder" : 2,
+      "sortOrder" : 0,
       "status" : "published",
       "title" : "Banff"
     },
@@ -826,7 +826,7 @@
       "title" : "Abandoned USC Hospital"
     }
   ],
-  "generatedAt" : "2026-09-25T21:25:37Z",
+  "generatedAt" : "2026-09-25T21:27:54Z",
   "navigation" : [
     {
       "createdAt" : "2026-09-25T19:18:44Z",
