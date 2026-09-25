@@ -5,19 +5,31 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#050505">
   <meta name="color-scheme" content="dark">
-  <meta name="gallery-manager-template" content="12">
+  <meta name="gallery-manager-template" content="13">
   <title>Banff — Basiciggy</title>
+  <meta name="description" content="Banff — Banff Canada · September 2026">
+  <link rel="canonical" href="https://basiciggy-portfolio.pages.dev/adventures/banff/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Basiciggy">
+  <meta property="og:title" content="Banff — Basiciggy">
+  <meta property="og:description" content="Banff — Banff Canada · September 2026">
+  <meta property="og:url" content="https://basiciggy-portfolio.pages.dev/adventures/banff/">
+  <meta property="og:image" content="https://basiciggy-portfolio.pages.dev/adventures/banff/photos/001.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Banff — Basiciggy">
+  <meta name="twitter:description" content="Banff — Banff Canada · September 2026">
+  <meta name="twitter:image" content="https://basiciggy-portfolio.pages.dev/adventures/banff/photos/001.jpg">
   <link rel="stylesheet" href="../../assets/styles.css">
   <style>
     *{box-sizing:border-box}html{background:#050505;color:#f5f5f5}body{margin:0;background:#050505;color:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
     .gallery-nav{position:fixed;z-index:50;top:0;left:0;right:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 24px;background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,0));pointer-events:none}.gallery-nav a{pointer-events:auto;color:#fff;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.02em}.gallery-nav .brand{text-transform:uppercase;letter-spacing:.16em;font-size:11px}.gallery-nav .back{justify-self:end;opacity:.75}
-    .gallery-hero{position:relative;height:min(72vh,760px);min-height:500px;overflow:hidden;background:#111}.gallery-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;transform:scale(1.002)}.gallery-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.04) 44%,rgba(0,0,0,.44) 78%,#050505 100%);pointer-events:none}
+    .gallery-hero{position:relative;height:min(72vh,760px);min-height:500px;overflow:hidden;background:#111}.gallery-hero picture{position:absolute;inset:0;width:100%;height:100%;display:block}.gallery-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;transform:scale(1.002)}.gallery-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.04) 44%,rgba(0,0,0,.44) 78%,#050505 100%);pointer-events:none}
     .hero-copy{position:absolute;z-index:2;left:clamp(20px,5vw,76px);right:clamp(20px,5vw,76px);bottom:clamp(30px,6vh,72px);display:flex;align-items:flex-end;justify-content:space-between;gap:30px}.hero-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.2em;opacity:.7;margin-bottom:14px}.hero-title{margin:0;font-size:clamp(62px,10vw,158px);line-height:.78;letter-spacing:-.07em;font-weight:600;max-width:1100px}.hero-meta{font-size:13px;line-height:1.5;opacity:.72;text-align:right;white-space:nowrap;padding-bottom:8px}
     .gallery-intro{max-width:1320px;margin:0 auto;padding:46px clamp(12px,2vw,24px) 22px;display:flex;justify-content:space-between;align-items:end;gap:30px}.gallery-intro h2{font-size:clamp(26px,3.6vw,48px);line-height:1;letter-spacing:-.045em;margin:0}.gallery-intro p{max-width:520px;margin:0;color:rgba(255,255,255,.52);font-size:13px;line-height:1.6}
     .gallery-grid{--gm-gutter:.66%;position:relative;max-width:1560px;margin:0 auto;padding:0 clamp(8px,1vw,14px) 94px;min-height:120px}.photo{position:absolute;left:0;top:0;margin:0;min-width:0;overflow:hidden;border-radius:6px;background:#0a0a0a;opacity:0;will-change:transform,opacity;transition:opacity .42s ease,box-shadow .3s ease}.photo.gm-laid-out{opacity:1}.photo.gm-animate{transition:opacity .42s ease,box-shadow .3s ease,transform .4s cubic-bezier(.22,.61,.36,1)}.photo-button{appearance:none;border:0;padding:0;margin:0;width:100%;height:100%;display:block;background:#0a0a0a;cursor:zoom-in;overflow:hidden}.photo img{display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:transform .45s cubic-bezier(.17,.84,.44,1),filter .35s ease,opacity .5s ease}.photo img.gm-loaded{opacity:1}.photo-button:hover img{transform:scale(1.018);filter:brightness(.92)}
     .gallery-footer{max-width:1320px;margin:0 auto;padding:28px clamp(12px,2vw,24px) 80px;border-top:1px solid rgba(255,255,255,.09);display:flex;justify-content:space-between;gap:20px}.gallery-footer a{color:#fff;text-decoration:none;font-size:clamp(20px,2.6vw,38px);letter-spacing:-.035em}.gallery-footer span{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.45;margin-bottom:8px}
-    dialog.lightbox{border:0;padding:0;background:rgba(0,0,0,.96);width:100vw;height:100vh;max-width:none;max-height:none;color:#fff}.lightbox::backdrop{background:#000}.lightbox-stage{position:relative;width:100%;height:100%;display:grid;place-items:center;padding:40px}.lightbox img{max-width:100%;max-height:100%;object-fit:contain;opacity:1;transition:opacity .22s ease}.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;z-index:3;appearance:none;border:0;background:rgba(20,20,20,.62);backdrop-filter:blur(16px);color:white;border:1px solid rgba(255,255,255,.12);width:48px;height:48px;border-radius:999px;font-size:22px;cursor:pointer}.lightbox-close{right:18px;top:18px}.lightbox-prev{left:18px;top:50%}.lightbox-next{right:18px;top:50%}.lightbox-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font:12px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.6}
-    @media(max-width:720px){.gallery-nav{padding:16px;grid-template-columns:1fr 1fr}.gallery-nav .brand{display:none}.gallery-hero{height:62vh;min-height:440px}.hero-copy{display:block;left:18px;right:18px;bottom:28px}.hero-title{font-size:clamp(52px,18vw,92px);line-height:.82}.hero-meta{text-align:left;margin-top:16px}.gallery-intro{padding:30px 8px 16px;display:block}.gallery-intro p{margin-top:12px}.gallery-grid{padding:0 6px 64px;--gm-gutter:2.4%}.photo{border-radius:5px}.gallery-footer{padding:24px 10px 54px}.lightbox-stage{padding:18px}.lightbox-prev,.lightbox-next{top:auto;bottom:16px}.lightbox-count{bottom:31px}}
+    dialog.lightbox{border:0;padding:0;background:rgba(0,0,0,.96);width:100vw;height:100vh;max-width:none;max-height:none;color:#fff}.lightbox::backdrop{background:#000}.lightbox-stage{position:relative;width:100%;height:100%;display:grid;place-items:center;padding:40px;overflow:hidden;touch-action:none}.lightbox-media{position:relative;width:100%;height:100%;display:grid;place-items:center;overflow:hidden}.lightbox img{max-width:100%;max-height:100%;object-fit:contain;opacity:1;transition:opacity .22s ease;transform:translate3d(0,0,0) scale(1);transform-origin:center center;will-change:transform;user-select:none;-webkit-user-drag:none}.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;z-index:4;appearance:none;border:0;background:rgba(20,20,20,.62);backdrop-filter:blur(16px);color:white;border:1px solid rgba(255,255,255,.12);width:48px;height:48px;border-radius:999px;font-size:22px;cursor:pointer}.lightbox-close{right:18px;top:18px}.lightbox-prev{left:18px;top:50%}.lightbox-next{right:18px;top:50%}.lightbox-info{position:absolute;z-index:4;left:18px;bottom:18px;max-width:min(70vw,680px);padding:11px 14px;border-radius:16px;background:rgba(18,18,18,.5);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}.lightbox-meta{font-size:12px;font-weight:600;letter-spacing:.02em}.lightbox-submeta{margin-top:3px;font:10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.58}.lightbox-count{position:absolute;z-index:4;bottom:18px;left:50%;transform:translateX(-50%);font:12px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.6}
+    @media(max-width:720px){.gallery-nav{padding:16px;grid-template-columns:1fr 1fr}.gallery-nav .brand{display:none}.gallery-hero{height:62vh;min-height:440px}.hero-copy{display:block;left:18px;right:18px;bottom:28px}.hero-title{font-size:clamp(52px,18vw,92px);line-height:.82}.hero-meta{text-align:left;margin-top:16px}.gallery-intro{padding:30px 8px 16px;display:block}.gallery-intro p{margin-top:12px}.gallery-grid{padding:0 6px 64px;--gm-gutter:2.4%}.photo{border-radius:5px}.gallery-footer{padding:24px 10px 54px}.lightbox-stage{padding:10px 8px 86px}.lightbox-prev,.lightbox-next{top:auto;bottom:16px}.lightbox-info{left:12px;right:12px;bottom:76px;max-width:none}.lightbox-count{bottom:31px}}
     @media(prefers-reduced-motion:reduce){.photo,.photo.gm-animate,.photo img,.lightbox img{transition:none !important}.photo-button:hover img{transform:none !important}}
     @view-transition{navigation:auto}
   </style>
@@ -28,7 +40,10 @@
     <a href="/adventures/" class="back">← Adventures</a>
   </nav>
   <section class="gallery-hero">
-    <img src="photos/001.jpg" alt="Banff">
+    <picture>
+      <source media="(max-width: 900px)" srcset="thumbs/001.jpg">
+      <img src="photos/001.jpg" alt="Banff" fetchpriority="high" decoding="async">
+    </picture>
     <div class="hero-copy">
       <div><div class="hero-kicker">Adventure · September 2026</div><h1 class="hero-title">Banff</h1></div>
       <div class="hero-meta">Banff Canada<br>18 photographs</div>
@@ -40,93 +55,93 @@
       <p>Photography from Banff Canada. Select any image to view it full screen.</p>
     </section>
     <section class="gallery-grid"><figure class="photo" data-index="0" data-ratio="1.50263">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 1" data-full="photos/001.jpg">
-    <img src="photos/001.jpg" alt="Banff photograph" width="4000" height="2662" loading="eager" fetchpriority="high" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 1" data-full="photos/001.jpg" data-thumb="thumbs/001.jpg">
+    <img src="thumbs/001.jpg" alt="Banff photograph" width="4000" height="2662" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="1" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 2" data-full="photos/002.jpg">
-    <img src="photos/002.jpg" alt="Banff photograph" width="2662" height="4000" loading="eager" fetchpriority="high" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 2" data-full="photos/002.jpg" data-thumb="thumbs/002.jpg">
+    <img src="thumbs/002.jpg" alt="Banff photograph" width="2662" height="4000" loading="eager" fetchpriority="high" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="2" data-ratio="1.50250">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 3" data-full="photos/003.jpg">
-    <img src="photos/003.jpg" alt="Banff photograph" width="4500" height="2995" loading="eager" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 3" data-full="photos/003.jpg" data-thumb="thumbs/003.jpg">
+    <img src="thumbs/003.jpg" alt="Banff photograph" width="4500" height="2995" loading="eager" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="3" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 4" data-full="photos/004.jpg">
-    <img src="photos/004.jpg" alt="Banff photograph" width="2662" height="4000" loading="eager" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 4" data-full="photos/004.jpg" data-thumb="thumbs/004.jpg">
+    <img src="thumbs/004.jpg" alt="Banff photograph" width="2662" height="4000" loading="eager" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="4" data-ratio="1.50263">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 5" data-full="photos/005.jpg">
-    <img src="photos/005.jpg" alt="Banff photograph" width="4000" height="2662" loading="eager" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 5" data-full="photos/005.jpg" data-thumb="thumbs/005.jpg">
+    <img src="thumbs/005.jpg" alt="Banff photograph" width="4000" height="2662" loading="eager" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="5" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 6" data-full="photos/006.jpg">
-    <img src="photos/006.jpg" alt="Banff photograph" width="2662" height="4000" loading="eager" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 6" data-full="photos/006.jpg" data-thumb="thumbs/006.jpg">
+    <img src="thumbs/006.jpg" alt="Banff photograph" width="2662" height="4000" loading="eager" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="6" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 7" data-full="photos/007.jpg">
-    <img src="photos/007.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 7" data-full="photos/007.jpg" data-thumb="thumbs/007.jpg">
+    <img src="thumbs/007.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="7" data-ratio="0.75000">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 8" data-full="photos/008.jpg">
-    <img src="photos/008.jpg" alt="Banff photograph" width="3000" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 8" data-full="photos/008.jpg" data-thumb="thumbs/008.jpg">
+    <img src="thumbs/008.jpg" alt="Banff photograph" width="3000" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="8" data-ratio="1.50263">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 9" data-full="photos/009.jpg">
-    <img src="photos/009.jpg" alt="Banff photograph" width="4000" height="2662" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 9" data-full="photos/009.jpg" data-thumb="thumbs/009.jpg">
+    <img src="thumbs/009.jpg" alt="Banff photograph" width="4000" height="2662" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="9" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 10" data-full="photos/010.jpg">
-    <img src="photos/010.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 10" data-full="photos/010.jpg" data-thumb="thumbs/010.jpg">
+    <img src="thumbs/010.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="10" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 11" data-full="photos/011.jpg">
-    <img src="photos/011.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 11" data-full="photos/011.jpg" data-thumb="thumbs/011.jpg">
+    <img src="thumbs/011.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="11" data-ratio="1.50263">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 12" data-full="photos/012.jpg">
-    <img src="photos/012.jpg" alt="Banff photograph" width="4000" height="2662" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 12" data-full="photos/012.jpg" data-thumb="thumbs/012.jpg">
+    <img src="thumbs/012.jpg" alt="Banff photograph" width="4000" height="2662" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="12" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 13" data-full="photos/013.jpg">
-    <img src="photos/013.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 13" data-full="photos/013.jpg" data-thumb="thumbs/013.jpg">
+    <img src="thumbs/013.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="13" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 14" data-full="photos/014.jpg">
-    <img src="photos/014.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 14" data-full="photos/014.jpg" data-thumb="thumbs/014.jpg">
+    <img src="thumbs/014.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="14" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 15" data-full="photos/015.jpg">
-    <img src="photos/015.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 15" data-full="photos/015.jpg" data-thumb="thumbs/015.jpg">
+    <img src="thumbs/015.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="15" data-ratio="1.33333">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 16" data-full="photos/016.jpg">
-    <img src="photos/016.jpg" alt="Banff photograph" width="6500" height="4875" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 16" data-full="photos/016.jpg" data-thumb="thumbs/016.jpg">
+    <img src="thumbs/016.jpg" alt="Banff photograph" width="6500" height="4875" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="16" data-ratio="0.66550">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 17" data-full="photos/017.jpg">
-    <img src="photos/017.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 17" data-full="photos/017.jpg" data-thumb="thumbs/017.jpg">
+    <img src="thumbs/017.jpg" alt="Banff photograph" width="2662" height="4000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure>
 <figure class="photo" data-index="17" data-ratio="1.33333">
-  <button class="photo-button" type="button" aria-label="Open Banff photograph 18" data-full="photos/018.jpg">
-    <img src="photos/018.jpg" alt="Banff photograph" width="4000" height="3000" loading="lazy" decoding="async">
+  <button class="photo-button" type="button" aria-label="Open Banff photograph 18" data-full="photos/018.jpg" data-thumb="thumbs/018.jpg">
+    <img src="thumbs/018.jpg" alt="Banff photograph" width="4000" height="3000" loading="lazy" decoding="async" sizes="(max-width: 740px) 50vw, (max-width: 1100px) 34vw, (max-width: 1500px) 25vw, 20vw">
   </button>
 </figure></section>
   </main>
@@ -138,8 +153,9 @@
     <div class="lightbox-stage">
       <button class="lightbox-close" aria-label="Close">×</button>
       <button class="lightbox-prev" aria-label="Previous">‹</button>
-      <img alt="Expanded gallery photograph">
+      <div class="lightbox-media"><img alt="Expanded gallery photograph" draggable="false"></div>
       <button class="lightbox-next" aria-label="Next">›</button>
+      <div class="lightbox-info"><div class="lightbox-meta">Banff Canada</div><div class="lightbox-submeta">September 2026</div></div>
       <div class="lightbox-count"></div>
     </div>
   </dialog>
@@ -280,14 +296,39 @@
     if('ResizeObserver'in window)new ResizeObserver(scheduleResize).observe(grid);
     layout();
 
-    const buttons=[...document.querySelectorAll('.photo-button')],box=document.getElementById('lightbox'),img=box.querySelector('img'),count=box.querySelector('.lightbox-count');let i=0;
-    const swapLightboxImage=n=>{i=(n+buttons.length)%buttons.length;img.src=buttons[i].dataset.full;count.textContent=`${String(i+1).padStart(2,'0')} / ${String(buttons.length).padStart(2,'0')}`;};
+    const buttons=[...document.querySelectorAll('.photo-button')],box=document.getElementById('lightbox'),img=box.querySelector('img'),media=box.querySelector('.lightbox-media'),count=box.querySelector('.lightbox-count');let i=0;
+    let zoom=1,tx=0,ty=0,startX=0,startY=0,lastDistance=0,startZoom=1,dragging=false;
+    const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+    const applyTransform=()=>{img.style.transform=`translate3d(${tx}px,${ty}px,0) scale(${zoom})`;};
+    const resetZoom=()=>{zoom=1;tx=0;ty=0;lastDistance=0;dragging=false;applyTransform();};
+    const preloadAround=()=>{
+      if(!buttons.length)return;
+      [1,-1].forEach(offset=>{const next=buttons[(i+offset+buttons.length)%buttons.length]?.dataset.full;if(next){const preload=new Image();preload.src=next;}});
+    };
+    const swapLightboxImage=n=>{i=(n+buttons.length)%buttons.length;resetZoom();img.src=buttons[i].dataset.full;count.textContent=`${String(i+1).padStart(2,'0')} / ${String(buttons.length).padStart(2,'0')}`;preloadAround();};
     const show=n=>{
       if(reduceMotion){swapLightboxImage(n);return;}
       img.style.opacity='0';
       window.setTimeout(()=>{swapLightboxImage(n);requestAnimationFrame(()=>{img.style.opacity='1'});},120);
     };
-    buttons.forEach((b,n)=>b.addEventListener('click',()=>{show(n);box.showModal()}));box.querySelector('.lightbox-close').onclick=()=>box.close();box.querySelector('.lightbox-prev').onclick=()=>show(i-1);box.querySelector('.lightbox-next').onclick=()=>show(i+1);document.addEventListener('keydown',e=>{if(!box.open)return;if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);if(e.key==='Escape')box.close()});let x=0;box.addEventListener('touchstart',e=>x=e.touches[0].clientX,{passive:true});box.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-x;if(Math.abs(d)>45)show(i+(d<0?1:-1))},{passive:true});
+    const distance=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
+    media.addEventListener('touchstart',e=>{
+      if(e.touches.length===2){lastDistance=distance(e.touches);startZoom=zoom;e.preventDefault();return;}
+      if(e.touches.length===1){startX=e.touches[0].clientX;startY=e.touches[0].clientY;dragging=zoom>1;}
+    },{passive:false});
+    media.addEventListener('touchmove',e=>{
+      if(e.touches.length===2){const d=distance(e.touches);if(lastDistance>0){zoom=clamp(startZoom*(d/lastDistance),1,5);applyTransform();}e.preventDefault();return;}
+      if(e.touches.length===1&&zoom>1){const nx=e.touches[0].clientX,ny=e.touches[0].clientY;tx+=nx-startX;ty+=ny-startY;startX=nx;startY=ny;dragging=true;applyTransform();e.preventDefault();}
+    },{passive:false});
+    media.addEventListener('touchend',e=>{
+      if(e.touches.length<2)lastDistance=0;
+      if(!e.touches.length&&zoom<=1.01)resetZoom();
+    },{passive:true});
+    let swipeStartX=0,swipeStartY=0;
+    box.addEventListener('touchstart',e=>{if(e.touches.length===1&&zoom===1){swipeStartX=e.touches[0].clientX;swipeStartY=e.touches[0].clientY;}},{passive:true});
+    box.addEventListener('touchend',e=>{if(zoom!==1||dragging||!e.changedTouches.length)return;const dx=e.changedTouches[0].clientX-swipeStartX,dy=e.changedTouches[0].clientY-swipeStartY;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.2)show(i+(dx<0?1:-1));},{passive:true});
+    img.addEventListener('dblclick',()=>{zoom=zoom>1?1:2.5;tx=0;ty=0;applyTransform();});
+    buttons.forEach((b,n)=>b.addEventListener('click',()=>{show(n);box.showModal()}));box.querySelector('.lightbox-close').onclick=()=>box.close();box.querySelector('.lightbox-prev').onclick=()=>show(i-1);box.querySelector('.lightbox-next').onclick=()=>show(i+1);document.addEventListener('keydown',e=>{if(!box.open)return;if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);if(e.key==='Escape')box.close()});
   })();
   </script>
 </body>

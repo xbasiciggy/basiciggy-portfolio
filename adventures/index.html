@@ -183,9 +183,11 @@
   .project-grid>.project-card[data-card-aspect="square"]{aspect-ratio:1/1 !important;min-height:0 !important}
   .project-grid>.project-card[data-card-aspect="4x5"]{aspect-ratio:4/5 !important;min-height:0 !important}
   .project-grid>.project-card[data-card-aspect="3x4"]{aspect-ratio:3/4 !important;min-height:0 !important}
-  .project-grid .project-card .project-number,.project-grid .project-card .project-open{position:relative;z-index:3}
-  .project-grid .project-card .project-number{opacity:.72}
-  .project-grid .project-card .project-open{backdrop-filter:blur(16px);background:rgba(20,20,20,.48);border-radius:999px}
+  .project-grid .project-card .project-number{position:relative;z-index:3;opacity:.72}
+  /* Force the open arrow into one shared anchor box so featured cards (Banff included)
+     line up exactly with every regular project card. */
+  .project-grid .project-card .project-open{position:absolute !important;z-index:4 !important;top:18px !important;right:18px !important;bottom:auto !important;left:auto !important;margin:0 !important;padding:0 !important;transform:none !important;width:44px !important;height:44px !important;display:grid !important;place-items:center !important;line-height:1 !important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(20,20,20,.48);border-radius:999px}
+  .project-grid .project-card .project-open svg{display:block !important;width:20px !important;height:20px !important;margin:0 !important;transform:none !important}
   @media(max-width:760px){
     .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:1/-1 !important}
     .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important}

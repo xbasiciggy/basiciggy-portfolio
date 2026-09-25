@@ -34,5 +34,31 @@
     "photos\/024.jpg"
   ],
   "slug" : "wyoming",
+  "thumbnails" : [
+    "thumbs\/001.jpg",
+    "thumbs\/002.jpg",
+    "thumbs\/003.jpg",
+    "thumbs\/004.jpg",
+    "thumbs\/005.jpg",
+    "thumbs\/006.jpg",
+    "thumbs\/007.jpg",
+    "thumbs\/008.jpg",
+    "thumbs\/009.jpg",
+    "thumbs\/010.jpg",
+    "thumbs\/011.jpg",
+    "thumbs\/012.jpg",
+    "thumbs\/013.jpg",
+    "thumbs\/014.jpg",
+    "thumbs\/015.jpg",
+    "thumbs\/016.jpg",
+    "thumbs\/017.jpg",
+    "thumbs\/018.jpg",
+    "thumbs\/019.jpg",
+    "thumbs\/020.jpg",
+    "thumbs\/021.jpg",
+    "thumbs\/022.jpg",
+    "thumbs\/023.jpg",
+    "thumbs\/024.jpg"
+  ],
   "title" : "Wyoming"
 }
