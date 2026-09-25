@@ -54,12 +54,12 @@
       "path" : "\/adventures\/banff\/",
       "photoCount" : 18,
       "photoOrder" : [
-        "001-L1010401.jpg",
-        "002-L1010567.jpg",
-        "005-L1010562.jpg",
-        "014-L1003652.jpg",
         "011-L1010195.jpg",
+        "005-L1010562.jpg",
+        "001-L1010401.jpg",
         "008-L1010407.jpg",
+        "002-L1010567.jpg",
+        "014-L1003652.jpg",
         "003-L1010694.jpg",
         "017-DSCF8261.jpg",
         "004-L1010688.jpg",
@@ -79,6 +79,6 @@
       "title" : "Banff"
     }
   ],
-  "generatedAt" : "2026-09-25T18:07:05Z",
+  "generatedAt" : "2026-09-25T18:12:12Z",
   "schemaVersion" : 1
 }
