@@ -1,0 +1,85 @@
+{
+  "galleries" : [
+    {
+      "categoryID" : "A11E0000-0000-4000-8000-000000000001",
+      "date" : "2026-09-25T18:36:08Z",
+      "featured" : false,
+      "id" : "542A09B9-27A1-4188-804F-A130C97BD641",
+      "location" : "sequoia national park",
+      "path" : "\/adventures\/sequoia\/",
+      "photoCount" : 18,
+      "routePrefix" : "adventures",
+      "slug" : "sequoia",
+      "sortOrder" : 0,
+      "status" : "draft",
+      "title" : "Sequoia"
+    },
+    {
+      "categoryID" : "A11E0000-0000-4000-8000-000000000001",
+      "date" : "2026-09-25T18:32:26Z",
+      "featured" : false,
+      "id" : "BA929CFC-03B8-4461-8A9A-D001F0E51D73",
+      "location" : "honolulu hawaii",
+      "path" : "\/adventures\/oahu\/",
+      "photoCount" : 19,
+      "routePrefix" : "adventures",
+      "slug" : "oahu",
+      "sortOrder" : 1,
+      "status" : "draft",
+      "title" : "Oahu"
+    },
+    {
+      "categoryID" : "A11E0000-0000-4000-8000-000000000001",
+      "date" : "2026-09-25T06:07:43Z",
+      "featured" : false,
+      "id" : "B097918A-720F-4EC7-8E91-BC0AB0B842A2",
+      "location" : "Wyoming, USA",
+      "path" : "\/adventures\/wyoming\/",
+      "photoCount" : 24,
+      "routePrefix" : "adventures",
+      "slug" : "wyoming",
+      "sortOrder" : 2,
+      "status" : "draft",
+      "title" : "Wyoming"
+    },
+    {
+      "categoryID" : "A11E0000-0000-4000-8000-000000000001",
+      "date" : "2026-09-25T04:26:11Z",
+      "featured" : false,
+      "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
+      "location" : "Banff Canada",
+      "path" : "\/adventures\/banff\/",
+      "photoCount" : 18,
+      "routePrefix" : "adventures",
+      "slug" : "banff",
+      "sortOrder" : 3,
+      "status" : "draft",
+      "title" : "Banff"
+    }
+  ],
+  "generatedAt" : "2026-09-25T19:23:23Z",
+  "navigation" : [
+    {
+      "createdAt" : "2026-09-25T19:18:44Z",
+      "id" : "A11E0000-0000-4000-8000-000000000002",
+      "kind" : "Gallery Category",
+      "order" : 0,
+      "orderingMode" : "Manual",
+      "slug" : "lifestyle",
+      "title" : "Lifestyle",
+      "visible" : true
+    },
+    {
+      "createdAt" : "2026-09-25T19:18:44Z",
+      "id" : "A11E0000-0000-4000-8000-000000000001",
+      "kind" : "Gallery Category",
+      "order" : 1,
+      "orderingMode" : "Manual",
+      "slug" : "adventures",
+      "title" : "Adventures",
+      "visible" : true
+    }
+  ],
+  "schemaVersion" : 2,
+  "syncWebsiteNavigation" : true
+}
