@@ -1,6 +1,20 @@
 [
   {
     "category" : "adventures",
+    "cover" : "adventures\/banff\/photos\/005.jpg",
+    "date" : "2026-09-25T04:26:11Z",
+    "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
+    "latitude" : 51.176588,
+    "location" : "Banff Canada",
+    "longitude" : -115.570936,
+    "page" : "adventures\/banff\/index.html",
+    "photoCount" : 18,
+    "publishedAt" : "2026-09-25T18:00:07Z",
+    "slug" : "banff",
+    "title" : "Banff"
+  },
+  {
+    "category" : "adventures",
     "cover" : "adventures\/wyoming\/photos\/024.jpg",
     "date" : "2026-09-25T06:07:43Z",
     "id" : "B097918A-720F-4EC7-8E91-BC0AB0B842A2",
@@ -12,19 +26,5 @@
     "publishedAt" : "2026-09-25T17:13:20Z",
     "slug" : "wyoming",
     "title" : "Wyoming"
-  },
-  {
-    "category" : "adventures",
-    "cover" : "adventures\/banff\/photos\/011.jpg",
-    "date" : "2026-09-25T04:26:11Z",
-    "id" : "8ABC018D-F18A-4E48-8D85-7BB2F661428D",
-    "latitude" : 51.176588,
-    "location" : "Banff Canada",
-    "longitude" : -115.570936,
-    "page" : "adventures\/banff\/index.html",
-    "photoCount" : 18,
-    "publishedAt" : "2026-09-25T16:54:28Z",
-    "slug" : "banff",
-    "title" : "Banff"
   }
 ]
