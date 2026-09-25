@@ -1,0 +1,3 @@
+/galleries/wyoming /adventures/wyoming/ 301
+/galleries/wyoming/ /adventures/wyoming/ 301
+/galleries/wyoming/* /adventures/wyoming/:splat 301
