@@ -154,4 +154,49 @@
 <script src="../assets/site.js"></script>
 
 
+
+<!-- GALLERY_MANAGER:CARD_TYPOGRAPHY:START -->
+<style id="gallery-manager-card-typography">
+  /* Gallery Manager: centered editorial titles for category cards. */
+  .project-grid .project-card:not(.featured-project){position:relative;isolation:isolate}
+  .project-grid .project-card:not(.featured-project) .project-name{
+    position:absolute !important;
+    inset:0 !important;
+    z-index:2;
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    width:auto !important;
+    max-width:none !important;
+    min-width:0;
+    margin:0 !important;
+    padding:42px 54px !important;
+    box-sizing:border-box;
+    text-align:center !important;
+    font-size:clamp(18px,2.05vw,30px);
+    line-height:1.04;
+    letter-spacing:-.035em;
+    font-weight:560;
+    text-wrap:balance;
+    overflow-wrap:break-word;
+    hyphens:auto;
+    pointer-events:none;
+  }
+  .project-grid .project-card:not(.featured-project) .project-number,
+  .project-grid .project-card:not(.featured-project) .project-open{
+    position:relative;
+    z-index:3;
+  }
+  .project-grid .project-card:not(.featured-project) img~.project-name,
+  .project-grid .project-card:not(.featured-project) img+.project-name{
+    text-shadow:0 2px 18px rgba(0,0,0,.5);
+  }
+  @media(max-width:760px){
+    .project-grid .project-card:not(.featured-project) .project-name{
+      padding:34px 42px !important;
+      font-size:clamp(17px,5.2vw,24px);
+    }
+  }
+</style>
+<!-- GALLERY_MANAGER:CARD_TYPOGRAPHY:END -->
 </body></html>
