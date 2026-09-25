@@ -13,13 +13,13 @@
 <body>
   <div class="map-shell">
     <div id="map" class="map"></div>
-    <div class="map-top"><a class="brand" href="/adventures/">← Adventures</a><div class="count">1 mapped galleries</div></div>
+    <div class="map-top"><a class="brand" href="/adventures/">← Adventures</a><div class="count">2 mapped galleries</div></div>
     <div class="map-bottom"><div class="map-note">Tap a pin to open its gallery. Add or edit gallery coordinates in Gallery Manager → Galleries.</div></div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
   (()=>{
-    const pins=[{"latitude":51.176588000000002,"id":"8ABC018D-F18A-4E48-8D85-7BB2F661428D","title":"Banff","longitude":-115.570936,"photoCount":18,"location":"Banff Canada","url":"\/adventures\/banff\/","cover":"\/adventures\/banff\/photos\/011.jpg"}];
+    const pins=[{"latitude":41.139800000000001,"id":"B097918A-720F-4EC7-8E91-BC0AB0B842A2","title":"Wyoming","longitude":-104.8199,"photoCount":24,"location":"Wyoming, USA","url":"\/adventures\/wyoming\/","cover":"\/adventures\/wyoming\/photos\/024.jpg"},{"url":"\/adventures\/banff\/","photoCount":18,"location":"Banff Canada","latitude":51.176588000000002,"id":"8ABC018D-F18A-4E48-8D85-7BB2F661428D","longitude":-115.570936,"cover":"\/adventures\/banff\/photos\/011.jpg","title":"Banff"}];
     const map=L.map('map',{zoomControl:false,worldCopyJump:true,attributionControl:true});
     L.control.zoom({position:'bottomright'}).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
