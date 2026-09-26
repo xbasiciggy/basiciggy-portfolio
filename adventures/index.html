@@ -590,12 +590,18 @@
 
 <!-- GALLERY_MANAGER:CINEMATIC_CARDS:START -->
 <style id="gallery-manager-cinematic-cards-style">
-  .project-grid .project-card{isolation:isolate}
-  .project-grid .project-card .gm-hover-preview{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;z-index:0 !important;object-fit:cover !important;object-position:center !important;opacity:0 !important;pointer-events:none !important;transition:opacity .58s cubic-bezier(.2,.7,.2,1),transform .72s cubic-bezier(.2,.7,.2,1),filter .5s ease !important;will-change:opacity,transform}
-  .project-grid .project-card .gm-hover-preview.gm-preview-visible{opacity:1 !important}
+  .project-grid .project-card,.gm-grid .project-card,.gm-grid .gm-card{isolation:isolate}
+  .project-grid .project-card .gm-hover-preview-stage,.gm-grid .project-card .gm-hover-preview-stage,.gm-grid .gm-card .gm-hover-preview-stage{position:absolute !important;inset:0 !important;z-index:0 !important;overflow:hidden !important;pointer-events:none !important}
+  .project-grid .project-card .gm-hover-preview,.gm-grid .project-card .gm-hover-preview,.gm-grid .gm-card .gm-hover-preview{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:cover !important;object-position:center !important;opacity:0 !important;pointer-events:none !important;transform:scale(1.012);filter:brightness(.98) saturate(.98);transition:opacity .44s cubic-bezier(.2,.7,.2,1),transform 1.75s cubic-bezier(.2,.7,.2,1),filter .44s ease !important;will-change:opacity,transform}
+  .project-grid .project-card .gm-hover-preview.gm-preview-visible,.gm-grid .project-card .gm-hover-preview.gm-preview-visible,.gm-grid .gm-card .gm-hover-preview.gm-preview-visible{opacity:1 !important;transform:scale(1.025);filter:brightness(1) saturate(1)}
+  @media(hover:hover) and (pointer:fine) and (min-width:761px){
+    .project-grid .project-card,.gm-grid .project-card,.gm-grid .gm-card{scale:1;transition:scale .38s cubic-bezier(.2,.78,.2,1),box-shadow .32s ease,border-color .32s ease;transform-origin:center center}
+    .project-grid.gm-card-hovering .project-card,.gm-grid.gm-card-hovering .project-card,.gm-grid.gm-card-hovering .gm-card{scale:.95}
+    .project-grid.gm-card-hovering .project-card.gm-card-hovered,.gm-grid.gm-card-hovering .project-card.gm-card-hovered,.gm-grid.gm-card-hovering .gm-card.gm-card-hovered{scale:1.04;z-index:12}
+  }
   .gm-card-flight{position:fixed !important;z-index:2147483001 !important;margin:0 !important;pointer-events:none !important;max-width:none !important;max-height:none !important;will-change:left,top,width,height,border-radius,transform,filter;transition:left .48s cubic-bezier(.2,.8,.2,1),top .48s cubic-bezier(.2,.8,.2,1),width .48s cubic-bezier(.2,.8,.2,1),height .48s cubic-bezier(.2,.8,.2,1),border-radius .42s ease,transform .48s cubic-bezier(.2,.8,.2,1),filter .38s ease !important;box-shadow:0 36px 110px rgba(0,0,0,.58)}
   .gm-card-flight-backdrop{position:fixed;z-index:2147483000;inset:0;background:#050505;opacity:0;pointer-events:none;transition:opacity .42s ease}
-  @media(prefers-reduced-motion:reduce){.project-grid .project-card .gm-hover-preview{transition:none !important}}
+  @media(prefers-reduced-motion:reduce){.project-grid .project-card .gm-hover-preview,.gm-grid .project-card .gm-hover-preview,.gm-grid .gm-card .gm-hover-preview{transition:none !important}.project-grid .project-card,.gm-grid .project-card,.gm-grid .gm-card{scale:1 !important}}
 </style>
 <script id="gallery-manager-cinematic-cards">
 (()=>{
@@ -612,43 +618,104 @@
       return path;
     }catch(_){return value||'';}
   };
-  const cards=[...document.querySelectorAll('.project-grid .project-card')];
+  const cardSelector='.project-grid .project-card, .gm-grid .project-card, .gm-grid .gm-card';
+  const cards=[...document.querySelectorAll(cardSelector)];
+  const hoverGroups=new Set();
+  const setupHoverFocus=card=>{
+    if(!canHover.matches||reduce)return;
+    const group=card.closest('.project-grid,.gm-grid');
+    if(!group)return;
+    hoverGroups.add(group);
+    card.addEventListener('mouseenter',()=>{
+      group.classList.add('gm-card-hovering');
+      group.querySelectorAll('.gm-card-hovered').forEach(item=>item.classList.remove('gm-card-hovered'));
+      card.classList.add('gm-card-hovered');
+    });
+    card.addEventListener('mouseleave',()=>{
+      requestAnimationFrame(()=>{
+        if(group.querySelector('.project-card:hover,.gm-card:hover'))return;
+        group.classList.remove('gm-card-hovering');
+        group.querySelectorAll('.gm-card-hovered').forEach(item=>item.classList.remove('gm-card-hovered'));
+      });
+    });
+  };
   cards.forEach(card=>{
-    const route=normalize(card.getAttribute('href')||'');
+    setupHoverFocus(card);
+    const route=normalize(card.getAttribute('href')||card.querySelector('a[href]')?.getAttribute('href')||'');
     const urls=previewMap[route]||[];
     if(urls.length && canHover.matches && !reduce){
-      const overlay=new Image();
-      overlay.className='gm-hover-preview';
-      overlay.alt='';
-      overlay.setAttribute('aria-hidden','true');
-      overlay.decoding='async';
-      card.appendChild(overlay);
-      let timer=0,swapTimer=0,index=0,active=false;
-      const swap=()=>{
-        if(!active||!urls.length)return;
-        const url=urls[index++%urls.length];
+      const stage=document.createElement('span');
+      stage.className='gm-hover-preview-stage';
+      stage.setAttribute('aria-hidden','true');
+      const layers=[0,1].map(()=>{
+        const image=new Image();
+        image.className='gm-hover-preview';
+        image.alt='';
+        image.setAttribute('aria-hidden','true');
+        image.decoding='async';
+        stage.appendChild(image);
+        return image;
+      });
+      card.appendChild(stage);
+      let timer=0,index=0,active=false,session=0,current=-1;
+      const warm=src=>{
         const preload=new Image();
         preload.decoding='async';
-        preload.onload=()=>{
-          if(!active)return;
-          overlay.classList.remove('gm-preview-visible');
-          clearTimeout(swapTimer);
-          swapTimer=window.setTimeout(()=>{
-            if(!active)return;
-            overlay.src=url;
-            requestAnimationFrame(()=>overlay.classList.add('gm-preview-visible'));
-          },220);
-        };
-        preload.src=url;
+        preload.src=src;
+        if(preload.decode)preload.decode().catch(()=>{});
+      };
+      const ready=async(image,url)=>{
+        image.src=url;
+        try{
+          if(image.decode)await image.decode();
+          else if(!image.complete)await new Promise(resolve=>{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',resolve,{once:true});});
+        }catch(_){}
+        return image.complete&&image.naturalWidth>0;
+      };
+      const present=async(url,token)=>{
+        const next=current===0?1:0;
+        const incoming=layers[next];
+        const outgoing=current>=0?layers[current]:null;
+        incoming.classList.remove('gm-preview-visible','gm-preview-current');
+        incoming.style.zIndex='2';
+        if(outgoing)outgoing.style.zIndex='1';
+        const loaded=await ready(incoming,url);
+        if(!loaded||!active||token!==session)return false;
+        incoming.classList.add('gm-preview-visible','gm-preview-current');
+        if(outgoing){
+          outgoing.classList.remove('gm-preview-current');
+          window.setTimeout(()=>{
+            if(token!==session)return;
+            outgoing.classList.remove('gm-preview-visible');
+            outgoing.style.zIndex='0';
+          },460);
+        }
+        current=next;
+        return true;
+      };
+      const advance=async token=>{
+        if(!active||token!==session||!urls.length)return;
+        const url=urls[index++%urls.length];
+        const shown=await present(url,token);
+        if(shown&&active&&token===session)timer=window.setTimeout(()=>advance(token),1650);
       };
       card.addEventListener('mouseenter',()=>{
-        active=true; index=0; swap();
-        clearInterval(timer);
-        timer=window.setInterval(swap,1650);
+        active=true;
+        session+=1;
+        const token=session;
+        index=0;
+        current=-1;
+        clearTimeout(timer);
+        urls.forEach(warm);
+        layers.forEach(layer=>{layer.classList.remove('gm-preview-visible','gm-preview-current');layer.style.zIndex='0';});
+        advance(token);
       });
       card.addEventListener('mouseleave',()=>{
-        active=false; clearInterval(timer); clearTimeout(swapTimer);
-        overlay.classList.remove('gm-preview-visible');
+        active=false;
+        session+=1;
+        clearTimeout(timer);
+        layers.forEach(layer=>{layer.classList.remove('gm-preview-visible','gm-preview-current');layer.style.zIndex='0';});
+        current=-1;
       });
     }
   });
@@ -657,14 +724,16 @@
   let navigating=false;
   cards.forEach(card=>card.addEventListener('click',event=>{
     if(navigating||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
-    if(card.target && card.target!=='_self')return;
-    const href=card.href;
+    const anchor=card.matches('a[href]')?card:card.querySelector('a[href]');
+    if(!anchor)return;
+    if(anchor.target && anchor.target!=='_self')return;
+    const href=anchor.href;
     if(!href)return;
     let targetURL;
     try{targetURL=new URL(href,location.href);}catch(_){return;}
     if(targetURL.origin!==location.origin)return;
-    const visiblePreview=card.querySelector('.gm-hover-preview.gm-preview-visible');
-    const source=visiblePreview||card.querySelector(':scope > img:not(.gm-hover-preview)');
+    const visiblePreview=card.querySelector('.gm-hover-preview.gm-preview-current.gm-preview-visible')||card.querySelector('.gm-hover-preview.gm-preview-visible');
+    const source=visiblePreview||card.querySelector(':scope > img:not(.gm-hover-preview)')||card.querySelector('img:not(.gm-hover-preview)');
     if(!source)return;
     event.preventDefault();
     navigating=true;
@@ -692,6 +761,14 @@
 })();
 </script>
 <!-- GALLERY_MANAGER:CINEMATIC_CARDS:END -->
+
+
+
+
+
+
+
+
 
 
 
