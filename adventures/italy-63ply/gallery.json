@@ -11,7 +11,9 @@
   "generatedBy" : "Gallery Manager",
   "hidden" : false,
   "id" : "8093331F-E1FB-4CEC-ADE8-6E4DF9854AEA",
-  "location" : "",
+  "latitude" : 42.672999,
+  "location" : "Italy",
+  "longitude" : 12.592684,
   "noIndex" : false,
   "photos" : [
     "photos\/001.jpg",
