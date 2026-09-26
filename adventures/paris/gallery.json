@@ -1,0 +1,42 @@
+{
+  "captions" : {
+
+  },
+  "category" : "adventures",
+  "cover" : "adventures\/paris\/photos\/001.jpg",
+  "date" : "2026-09-25T21:02:50Z",
+  "favorites" : [
+
+  ],
+  "generatedBy" : "Gallery Manager",
+  "hidden" : false,
+  "id" : "64647E55-C539-4A10-944F-C16B8812E3A9",
+  "location" : "Paris, France",
+  "noIndex" : false,
+  "photos" : [
+    "photos\/001.jpg",
+    "photos\/002.jpg",
+    "photos\/003.jpg",
+    "photos\/004.jpg",
+    "photos\/005.jpg",
+    "photos\/006.jpg"
+  ],
+  "responsive1200" : [
+    "medium\/001.jpg",
+    "medium\/002.jpg",
+    "medium\/003.jpg",
+    "medium\/004.jpg",
+    "medium\/005.jpg",
+    "medium\/006.jpg"
+  ],
+  "slug" : "paris",
+  "thumbnails" : [
+    "thumbs\/001.jpg",
+    "thumbs\/002.jpg",
+    "thumbs\/003.jpg",
+    "thumbs\/004.jpg",
+    "thumbs\/005.jpg",
+    "thumbs\/006.jpg"
+  ],
+  "title" : "Paris"
+}

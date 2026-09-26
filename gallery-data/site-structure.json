@@ -486,12 +486,12 @@
       "featured" : false,
       "hidden" : true,
       "id" : "6BE961DF-7BE9-4CD5-B718-47691F44C7DF",
-      "location" : "",
+      "location" : "Japan",
       "path" : "\/adventures\/japan\/",
-      "photoCount" : 0,
+      "photoCount" : 30,
       "routePrefix" : "adventures",
       "slug" : "japan",
-      "sortOrder" : 5,
+      "sortOrder" : 6,
       "status" : "hidden",
       "title" : "Japan"
     },
@@ -507,22 +507,22 @@
       "routePrefix" : "adventures",
       "slug" : "italy-63ply",
       "sortOrder" : 4,
-      "status" : "draft",
+      "status" : "published",
       "title" : "Italy"
     },
     {
       "categoryID" : "A11E0000-0000-4000-8000-000000000001",
       "date" : "2026-09-25T21:02:50Z",
       "featured" : false,
-      "hidden" : true,
+      "hidden" : false,
       "id" : "64647E55-C539-4A10-944F-C16B8812E3A9",
-      "location" : "",
+      "location" : "Paris, France",
       "path" : "\/adventures\/paris\/",
-      "photoCount" : 0,
+      "photoCount" : 6,
       "routePrefix" : "adventures",
       "slug" : "paris",
-      "sortOrder" : 6,
-      "status" : "hidden",
+      "sortOrder" : 5,
+      "status" : "draft",
       "title" : "Paris"
     },
     {
@@ -826,7 +826,7 @@
       "title" : "Abandoned USC Hospital"
     }
   ],
-  "generatedAt" : "2026-09-26T16:48:03Z",
+  "generatedAt" : "2026-09-26T16:58:31Z",
   "navigation" : [
     {
       "createdAt" : "2026-09-25T19:18:44Z",

@@ -1,6 +1,13 @@
 {
-  "generatedAt" : "2026-09-26T16:48:03Z",
+  "generatedAt" : "2026-09-26T16:58:31Z",
   "recent" : [
+    {
+      "category" : "Adventure",
+      "coverFileName" : "001-001-IJGX4526.webp",
+      "id" : "64647E55-C539-4A10-944F-C16B8812E3A9",
+      "route" : "\/adventures\/paris\/",
+      "title" : "Paris"
+    },
     {
       "category" : "Adventure",
       "coverFileName" : "001-001-IJGX6033.webp",

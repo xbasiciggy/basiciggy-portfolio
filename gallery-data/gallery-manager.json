@@ -78,5 +78,35 @@
     "slug" : "italy-63ply",
     "sortOrder" : 4,
     "title" : "Italy"
+  },
+  {
+    "category" : "adventures",
+    "cover" : "adventures\/paris\/photos\/001.jpg",
+    "date" : "2026-09-25T21:02:50Z",
+    "id" : "64647E55-C539-4A10-944F-C16B8812E3A9",
+    "isHidden" : false,
+    "location" : "Paris, France",
+    "page" : "adventures\/paris\/index.html",
+    "photoCount" : 6,
+    "publishedAt" : "2026-09-26T16:58:31Z",
+    "slug" : "paris",
+    "sortOrder" : 5,
+    "title" : "Paris"
+  },
+  {
+    "category" : "adventures",
+    "cover" : "adventures\/japan\/photos\/001.jpg",
+    "date" : "2026-09-25T21:02:50Z",
+    "id" : "6BE961DF-7BE9-4CD5-B718-47691F44C7DF",
+    "isHidden" : true,
+    "latitude" : 35.672792,
+    "location" : "Japan",
+    "longitude" : 136.690816,
+    "page" : "adventures\/japan\/index.html",
+    "photoCount" : 30,
+    "publishedAt" : "2026-09-26T16:58:27Z",
+    "slug" : "japan",
+    "sortOrder" : 6,
+    "title" : "Japan"
   }
 ]
