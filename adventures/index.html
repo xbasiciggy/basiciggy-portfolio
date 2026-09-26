@@ -156,7 +156,7 @@
   @media(max-width:760px){
     /* Mobile stack: each new card glides above the previous one. The card underneath
        stays visible just long enough to read as a physical layered stack. */
-    .project-grid{display:flex !important;flex-direction:column !important;gap:18px !important;overflow:visible !important;align-items:stretch !important;padding-bottom:clamp(42px,12vh,110px) !important;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 92px)}
+    .project-grid{display:flex !important;flex-direction:column !important;gap:18px !important;overflow:visible !important;align-items:stretch !important;padding-bottom:clamp(42px,12vh,110px) !important;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 92px);background:#020202 !important}
     .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:auto !important}
     .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important;width:100% !important}
     .project-grid .project-card{
@@ -178,7 +178,7 @@
     }
     /* As a card slips behind the next sticky card, this veil turns it into shadow
        instead of leaving a bright rectangle visible underneath. */
-    .project-grid .project-card::before{content:"";position:absolute;z-index:3;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);background:rgba(0,0,0,var(--gm-shadow-fade,0));opacity:1;transition:background .18s linear}
+    .project-grid .project-card::before{content:"";position:absolute;z-index:3;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 -150px 145px rgba(0,0,0,var(--gm-shadow-fade,0));background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,var(--gm-shadow-fade,0)) 72%,rgba(0,0,0,var(--gm-shadow-fade,0)) 100%);opacity:1;transition:background .12s linear,box-shadow .12s linear}
     .project-grid .project-card:active{box-shadow:0 24px 54px rgba(0,0,0,.52),0 9px 24px rgba(0,0,0,.34),0 2px 0 rgba(255,255,255,.08) inset}
     .project-grid .project-card .project-name{left:0 !important;right:0 !important;bottom:16px !important;padding:18px 18px 24px !important;font-size:clamp(42px,19vw,126px) !important;line-height:.72 !important;letter-spacing:-.082em !important;font-weight:720 !important;color:rgba(255,255,255,.72) !important;text-shadow:0 5px 34px rgba(0,0,0,.42) !important;text-align:center !important;justify-content:center !important;white-space:nowrap !important;transition:opacity .24s ease,transform .34s cubic-bezier(.16,1,.3,1)}
     .project-grid .project-card .project-number{left:14px !important;top:14px !important;padding:9px 14px !important;font-size:13px !important;box-shadow:0 8px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.10) !important}
@@ -287,62 +287,84 @@
 
   const update=()=>{
     ticking=false;
-    if(!media.matches){reset();return;}
 
     const list=cards();
     const vh=window.innerHeight||document.documentElement.clientHeight;
+
+    // Desktop gets a restrained abyss exit as rows pass under the fixed header.
+    // Mobile keeps the sticky stack and gets the full sink-into-darkness treatment.
+    if(!media.matches){
+      const fadeStart=Math.max(118,Math.min(170,vh*.16));
+      list.forEach((card,index)=>{
+        const rect=card.getBoundingClientRect();
+        const cardH=Math.max(rect.height,1);
+        const fadeEnd=-cardH*.32;
+        const abyss=smooth(clamp((fadeStart-rect.top)/(fadeStart-fadeEnd)));
+        const strength=Math.max(0,(abyss-.18)/.82);
+        const eased=smooth(strength);
+        card.style.zIndex='';
+        card.style.setProperty('--gm-stack-depth','0');
+        card.style.setProperty('--gm-shadow-fade',String(eased*.48));
+        card.style.transform=`translate3d(0,${-eased*8}px,0) scale(${1-eased*.018})`;
+        card.style.opacity=String(1-eased*.44);
+        card.style.filter=`brightness(${1-eased*.42}) saturate(${1-eased*.24}) blur(${eased*.7}px)`;
+        card.style.boxShadow=eased>0.01?`0 ${24+eased*26}px ${54+eased*54}px rgba(0,0,0,${.34+eased*.36})`:'';
+        const img=card.querySelector(':scope > img');
+        if(img)img.style.transform=`scale(${1.025+eased*.012})`;
+        const title=card.querySelector('.project-name');
+        if(title){title.style.transform=`translate3d(0,${eased*3}px,0)`;title.style.opacity=String(1-eased*.40);}
+      });
+      return;
+    }
+
     const stickyTop=Math.max(82,Math.min(126,vh*.105));
 
     list.forEach((card,index)=>{
       // Later cards sit above earlier cards when their sticky positions overlap.
-      card.style.zIndex=String(20+index);
+      card.style.zIndex=String(40+index);
 
       const rect=card.getBoundingClientRect();
       const next=list[index+1];
       const nextRect=next?.getBoundingClientRect();
       const cardH=Math.max(rect.height,1);
 
-      // As the following card approaches the sticky card, compress/darken the card
-      // underneath. Reverses naturally when scrolling back up.
+      // Start the disappearance earlier so the outgoing card visibly sinks into
+      // black before the incoming card fully covers it.
       let covered=0;
-      if(nextRect && rect.top<=stickyTop+3){
-        const start=stickyTop+cardH*.94;
-        const end=stickyTop+cardH*.18;
+      if(nextRect && rect.top<=stickyTop+4){
+        const start=stickyTop+cardH*1.24;
+        const end=stickyTop+cardH*.28;
         covered=smooth(clamp((start-nextRect.top)/(start-end)));
       }
 
-      const scale=1-covered*.052;
-      const sink=-covered*10;
-      const rotate=((index%2===0)?-.22:.22)*covered;
-      // The card being covered should visually disappear into the stack's shadow.
-      // Keep the first half readable, then accelerate the fade as the incoming card
-      // crosses it. This is symmetric, so scrolling back down restores it smoothly.
-      const fade=smooth(clamp((covered-.10)/.90));
-      const brightness=1-fade*.58;
-      const saturation=1-fade*.34;
-      const blur=fade*1.25;
-      const opacity=1-fade*.72;
-      const shadowFade=fade*.72;
+      const scale=1-covered*.082;
+      const sink=-covered*24;
+      const rotate=((index%2===0)?-.38:.38)*covered;
+      const fade=smooth(clamp((covered-.02)/.98));
+      const brightness=1-fade*.82;
+      const saturation=1-fade*.70;
+      const blur=fade*2.8;
+      const opacity=1-fade*.86;
+      const shadowFade=Math.min(.98,fade*.98);
 
       card.style.transform=`translate3d(0,${sink}px,0) rotate(${rotate}deg) scale(${scale})`;
       card.style.opacity=String(opacity);
       card.style.filter=`brightness(${brightness}) saturate(${saturation}) blur(${blur}px)`;
       card.style.setProperty('--gm-stack-depth',String(covered));
       card.style.setProperty('--gm-shadow-fade',String(shadowFade));
-      card.style.boxShadow=`0 ${34+fade*18}px ${72+fade*34}px rgba(0,0,0,${.58+fade*.24}), 0 ${14+fade*8}px ${34+fade*22}px rgba(0,0,0,${.38+fade*.20}), 0 2px 0 rgba(255,255,255,.08) inset, 0 -1px 0 rgba(0,0,0,.30) inset`;
+      card.style.boxShadow=`0 ${42+fade*54}px ${82+fade*88}px rgba(0,0,0,${.66+fade*.30}), 0 ${18+fade*20}px ${42+fade*46}px rgba(0,0,0,${.52+fade*.34}), 0 2px 0 rgba(255,255,255,.07) inset, 0 -1px 0 rgba(0,0,0,.36) inset`;
 
-      // Tiny image counter-motion gives the stack depth without moving the controls/text.
       const img=card.querySelector(':scope > img');
       if(img){
         const center=(rect.top+rect.height*.5-vh*.5)/Math.max(vh,1);
-        const parallax=clamp(center,-1,1)*-5;
-        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.035+covered*.012})`;
+        const parallax=clamp(center,-1,1)*-6-covered*3;
+        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.04+covered*.028})`;
       }
 
       const title=card.querySelector('.project-name');
       if(title){
-        title.style.transform=`translate3d(0,${covered*2}px,0) scale(${1-covered*.018})`;
-        title.style.opacity=String(1-fade*.62);
+        title.style.transform=`translate3d(0,${covered*5}px,0) scale(${1-covered*.032})`;
+        title.style.opacity=String(1-fade*.90);
       }
     });
   };
@@ -553,6 +575,27 @@
 
 
 
+
+
+
+
+
+
+
+
+<!-- GALLERY_MANAGER:ADVENTURE_HERO_SHADOW:START -->
+<style id="gallery-manager-adventure-hero-shadow">
+  /* Subtle depth for the Adventures hero title only. */
+  .section-hero .section-title{
+    text-shadow:0 4px 18px rgba(0,0,0,.34),0 12px 34px rgba(0,12,12,.22) !important;
+  }
+  @media(max-width:760px){
+    .section-hero .section-title{
+      text-shadow:0 3px 14px rgba(0,0,0,.38),0 10px 28px rgba(0,12,12,.24) !important;
+    }
+  }
+</style>
+<!-- GALLERY_MANAGER:ADVENTURE_HERO_SHADOW:END -->
 
 
 
