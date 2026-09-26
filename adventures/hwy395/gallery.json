@@ -11,7 +11,9 @@
   "generatedBy" : "Gallery Manager",
   "hidden" : false,
   "id" : "9EE842BC-A15B-4A81-B739-42C22A292E9A",
-  "location" : "",
+  "latitude" : 41.730438,
+  "location" : "Mammoth CA",
+  "longitude" : -121.354988,
   "noIndex" : false,
   "photos" : [
     "photos\/001.jpg",

@@ -11,7 +11,9 @@
   "generatedBy" : "Gallery Manager",
   "hidden" : false,
   "id" : "8F7F23AA-4031-4CC2-AFFB-4FAE756491F4",
-  "location" : "",
+  "latitude" : 13.743941,
+  "location" : "Thailand",
+  "longitude" : 100.5231,
   "noIndex" : false,
   "photos" : [
     "photos\/001.jpg",
