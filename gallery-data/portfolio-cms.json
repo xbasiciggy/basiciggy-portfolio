@@ -34,7 +34,7 @@
       ],
       "route" : "adventures",
       "slug" : "sequoia",
-      "sortOrder" : 3,
+      "sortOrder" : 4,
       "state" : "published",
       "title" : "Sequoia"
     },
@@ -73,7 +73,7 @@
       ],
       "route" : "adventures",
       "slug" : "oahu",
-      "sortOrder" : 2,
+      "sortOrder" : 3,
       "state" : "published",
       "title" : "Oahu"
     },
@@ -117,7 +117,7 @@
       ],
       "route" : "adventures",
       "slug" : "wyoming",
-      "sortOrder" : 0,
+      "sortOrder" : 2,
       "state" : "published",
       "title" : "Wyoming"
     },
@@ -205,7 +205,7 @@
       ],
       "route" : "adventures",
       "slug" : "japan",
-      "sortOrder" : 6,
+      "sortOrder" : 0,
       "state" : "published",
       "title" : "Japan"
     },
@@ -265,7 +265,7 @@
       ],
       "route" : "adventures",
       "slug" : "italy-63ply",
-      "sortOrder" : 4,
+      "sortOrder" : 5,
       "state" : "published",
       "title" : "Italy"
     },
@@ -289,7 +289,7 @@
       ],
       "route" : "adventures",
       "slug" : "paris",
-      "sortOrder" : 5,
+      "sortOrder" : 6,
       "state" : "published",
       "title" : "Paris"
     },
@@ -474,6 +474,6 @@
       "title" : "Abandoned USC Hospital"
     }
   ],
-  "generatedAt" : "2026-09-26T17:01:27Z",
+  "generatedAt" : "2026-09-26T17:04:28Z",
   "schemaVersion" : 2
 }
