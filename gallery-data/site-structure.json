@@ -533,7 +533,7 @@
       "id" : "9EE842BC-A15B-4A81-B739-42C22A292E9A",
       "location" : "",
       "path" : "\/adventures\/hwy395\/",
-      "photoCount" : 0,
+      "photoCount" : 35,
       "routePrefix" : "adventures",
       "slug" : "hwy395",
       "sortOrder" : 7,
@@ -548,7 +548,7 @@
       "id" : "8F7F23AA-4031-4CC2-AFFB-4FAE756491F4",
       "location" : "",
       "path" : "\/adventures\/thailand-c6ztr\/",
-      "photoCount" : 0,
+      "photoCount" : 73,
       "routePrefix" : "adventures",
       "slug" : "thailand-c6ztr",
       "sortOrder" : 8,
@@ -826,7 +826,7 @@
       "title" : "Abandoned USC Hospital"
     }
   ],
-  "generatedAt" : "2026-09-26T17:25:13Z",
+  "generatedAt" : "2026-09-26T17:31:48Z",
   "navigation" : [
     {
       "createdAt" : "2026-09-25T19:18:44Z",
