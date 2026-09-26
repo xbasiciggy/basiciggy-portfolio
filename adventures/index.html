@@ -191,22 +191,12 @@
   .project-grid .project-card .project-open{position:absolute !important;z-index:4 !important;top:18px !important;right:18px !important;bottom:auto !important;left:auto !important;margin:0 !important;padding:0 !important;transform:none !important;width:44px !important;height:44px !important;display:grid !important;place-items:center !important;line-height:1 !important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(20,20,20,.48);border-radius:999px}
   .project-grid .project-card .project-open svg{display:block !important;width:20px !important;height:20px !important;margin:0 !important;transform:none !important}
   @media(max-width:760px){
-    /* Mobile abyss rail: cards remain in normal document flow instead of stacking.
-       As each card approaches the top of the viewport, JavaScript sinks it into a
-       black fade zone so it appears to disappear into depth rather than being covered. */
+    /* Mobile intentionally uses a clean, normal-flow card list. The animated Shadow Abyss
+       treatment is desktop-only because iOS Safari's collapsing browser chrome can expose
+       seams when viewport-relative masks and transformed cards are combined. */
     .project-grid{display:flex !important;flex-direction:column !important;gap:18px !important;overflow:visible !important;align-items:stretch !important;padding-bottom:clamp(42px,12vh,110px) !important;background:#020202 !important;position:relative !important}
     .project-grid::before{content:none !important}
-    .gm-mobile-abyss-curtain{
-      display:block;
-      position:fixed;
-      z-index:1200;
-      left:0;
-      right:0;
-      top:calc(env(safe-area-inset-top,0px) + 54px);
-      height:118px;
-      pointer-events:none;
-      background:linear-gradient(180deg,#020202 0%,#020202 48%,rgba(2,2,2,.995) 62%,rgba(2,2,2,.93) 74%,rgba(2,2,2,.58) 88%,rgba(2,2,2,0) 100%);
-    }
+    .gm-mobile-abyss-curtain{display:none !important}
     .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:auto !important}
     .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important;width:100% !important}
     .project-grid .project-card{
@@ -214,24 +204,17 @@
       top:auto !important;
       z-index:auto !important;
       border-radius:28px;
-      will-change:transform,filter,opacity;
-      transform-origin:center 24%;
-      backface-visibility:hidden;
-      -webkit-backface-visibility:hidden;
+      transform:none !important;
+      filter:none !important;
+      opacity:1 !important;
       touch-action:pan-y;
-      box-shadow:
-        0 34px 72px rgba(0,0,0,.58),
-        0 14px 34px rgba(0,0,0,.38),
-        0 2px 0 rgba(255,255,255,.08) inset,
-        0 -1px 0 rgba(0,0,0,.30) inset;
-      transition:box-shadow .34s cubic-bezier(.16,1,.3,1),filter .28s ease,opacity .24s ease;
+      box-shadow:0 18px 42px rgba(0,0,0,.30),0 2px 0 rgba(255,255,255,.07) inset;
+      transition:box-shadow .22s ease;
       --gm-shadow-fade:0;
     }
-    /* As a card enters the upper abyss zone, this veil turns it into shadow
-       instead of leaving a bright rectangle visible while it fades out. */
-    .project-grid .project-card::before{content:"";position:absolute;z-index:3;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 -165px 150px rgba(0,0,0,var(--gm-shadow-fade,0));background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,calc(var(--gm-shadow-fade,0) * .42)) 56%,rgba(0,0,0,var(--gm-shadow-fade,0)) 100%);opacity:1;transition:background .10s linear,box-shadow .10s linear}
-    .project-grid .project-card:active{box-shadow:0 24px 54px rgba(0,0,0,.52),0 9px 24px rgba(0,0,0,.34),0 2px 0 rgba(255,255,255,.08) inset}
-    .project-grid .project-card .project-name{left:0 !important;right:0 !important;bottom:16px !important;padding:18px 18px 24px !important;font-size:clamp(42px,19vw,126px) !important;line-height:.72 !important;letter-spacing:-.082em !important;font-weight:720 !important;color:rgba(255,255,255,.72) !important;text-shadow:0 5px 34px rgba(0,0,0,.42) !important;text-align:center !important;justify-content:center !important;white-space:nowrap !important;transition:opacity .24s ease,transform .34s cubic-bezier(.16,1,.3,1)}
+    .project-grid .project-card::before{content:none !important}
+    .project-grid .project-card:active{box-shadow:0 14px 32px rgba(0,0,0,.26),0 2px 0 rgba(255,255,255,.06) inset}
+    .project-grid .project-card .project-name{left:0 !important;right:0 !important;bottom:16px !important;padding:18px 18px 24px !important;font-size:clamp(42px,19vw,126px) !important;line-height:.72 !important;letter-spacing:-.082em !important;font-weight:720 !important;color:rgba(255,255,255,.72) !important;text-shadow:0 5px 34px rgba(0,0,0,.42) !important;text-align:center !important;justify-content:center !important;white-space:nowrap !important;transform:none !important;opacity:1 !important}
     .project-grid .project-card .project-number{left:14px !important;top:14px !important;padding:9px 14px !important;font-size:13px !important;box-shadow:0 8px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.10) !important}
     .project-grid .project-card .project-open{top:14px !important;right:14px !important;width:46px !important;height:46px !important;background:rgba(24,27,28,.52) !important;border:1px solid rgba(255,255,255,.14) !important;box-shadow:0 9px 26px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08) !important}
   }
@@ -320,15 +303,7 @@
   const clamp=(v,min=0,max=1)=>Math.max(min,Math.min(max,v));
   const smooth=t=>t*t*(3-2*t);
 
-  let curtain=document.querySelector('.gm-mobile-abyss-curtain');
-  if(!curtain){
-    curtain=document.createElement('div');
-    curtain.className='gm-mobile-abyss-curtain';
-    curtain.setAttribute('aria-hidden','true');
-    document.body.appendChild(curtain);
-  }
-
-  const reset=()=>cards().forEach((card,index)=>{
+  const reset=()=>cards().forEach(card=>{
     card.style.transform='';
     card.style.opacity='';
     card.style.filter='';
@@ -343,90 +318,37 @@
     if(title){title.style.transform='';title.style.opacity='';}
   });
 
-  if(reduceMotion){reset();return;}
-
   const update=()=>{
     ticking=false;
 
-    const list=cards();
-    const vh=window.innerHeight||document.documentElement.clientHeight;
-
-    // Desktop gets a restrained abyss exit as rows pass under the fixed header.
-    // Mobile uses a non-stacking abyss rail and gets the full sink-into-darkness treatment.
-    if(!media.matches){
-      const fadeStart=Math.max(118,Math.min(170,vh*.16));
-      list.forEach((card,index)=>{
-        const rect=card.getBoundingClientRect();
-        const cardH=Math.max(rect.height,1);
-        const fadeEnd=-cardH*.32;
-        const abyss=smooth(clamp((fadeStart-rect.top)/(fadeStart-fadeEnd)));
-        const strength=Math.max(0,(abyss-.18)/.82);
-        const eased=smooth(strength);
-        card.style.zIndex='';
-        card.style.setProperty('--gm-stack-depth','0');
-        card.style.setProperty('--gm-shadow-fade',String(eased*.48));
-        card.style.transform=`translate3d(0,${-eased*8}px,0) scale(${1-eased*.018})`;
-        card.style.opacity=String(1-eased*.44);
-        card.style.filter=`brightness(${1-eased*.42}) saturate(${1-eased*.24}) blur(${eased*.7}px)`;
-        card.style.boxShadow=eased>0.01?`0 ${24+eased*26}px ${54+eased*54}px rgba(0,0,0,${.34+eased*.36})`:'';
-        const img=card.querySelector(':scope > img');
-        if(img)img.style.transform=`scale(${1.025+eased*.012})`;
-        const title=card.querySelector('.project-name');
-        if(title){title.style.transform=`translate3d(0,${eased*3}px,0)`;title.style.opacity=String(1-eased*.40);}
-      });
+    // Shadow Abyss is intentionally desktop-only. Mobile cards remain completely static
+    // in normal document flow to avoid iOS Safari viewport/chrome seams.
+    if(media.matches || reduceMotion){
+      reset();
       return;
     }
 
-    const curtainRect=curtain?.getBoundingClientRect?.();
-    const curtainBottom=curtainRect && curtainRect.height>0
-      ? curtainRect.bottom
-      : Math.max(136,Math.min(176,vh*.20));
-
-    list.forEach((card,index)=>{
-      // Keep cards in normal flow. The browser's natural scroll is the only upward motion;
-      // we no longer translate the whole card upward, which previously exposed a bright
-      // rounded top edge near the status/header area.
-      card.style.zIndex='1';
-
+    const list=cards();
+    const vh=window.innerHeight||document.documentElement.clientHeight;
+    const fadeStart=Math.max(118,Math.min(170,vh*.16));
+    list.forEach(card=>{
       const rect=card.getBoundingClientRect();
       const cardH=Math.max(rect.height,1);
-
-      // Finish the fade BEFORE the card reaches the opaque curtain. That guarantees there
-      // is never a visible card edge/line passing across the top of the phone viewport.
-      const abyssEnd=curtainBottom+18;
-      const abyssStart=Math.max(abyssEnd+cardH*.92,vh*.52);
-      const raw=clamp((abyssStart-rect.top)/Math.max(abyssStart-abyssEnd,1));
-      const fade=smooth(raw);
-
-      const scale=1-fade*.075;
-      const settle=fade*8; // slight downward resistance instead of an artificial upward push
-      const rotate=((index%2===0)?-.20:.20)*fade;
-      const brightness=Math.max(.03,1-fade*.97);
-      const saturation=Math.max(.10,1-fade*.90);
-      const blur=fade*3.6;
-      const opacity=Math.max(0,1-fade);
-      const shadowFade=Math.min(1,fade*1.18);
-
-      card.style.transform=`translate3d(0,${settle}px,0) rotate(${rotate}deg) scale(${scale})`;
-      card.style.opacity=String(opacity);
-      card.style.filter=`brightness(${brightness}) saturate(${saturation}) blur(${blur}px)`;
-      card.style.borderColor=`rgba(255,255,255,${Math.max(0,.08*(1-fade))})`;
-      card.style.setProperty('--gm-stack-depth',String(fade));
-      card.style.setProperty('--gm-shadow-fade',String(shadowFade));
-      card.style.boxShadow=`0 ${38+fade*92}px ${84+fade*148}px rgba(0,0,0,${.66+fade*.32}), 0 ${12+fade*42}px ${42+fade*90}px rgba(0,0,0,${.50+fade*.46})`;
-
+      const fadeEnd=-cardH*.32;
+      const abyss=smooth(clamp((fadeStart-rect.top)/(fadeStart-fadeEnd)));
+      const strength=Math.max(0,(abyss-.18)/.82);
+      const eased=smooth(strength);
+      card.style.zIndex='';
+      card.style.setProperty('--gm-stack-depth','0');
+      card.style.setProperty('--gm-shadow-fade',String(eased*.48));
+      card.style.transform=`translate3d(0,${-eased*8}px,0) scale(${1-eased*.018})`;
+      card.style.opacity=String(1-eased*.44);
+      card.style.filter=`brightness(${1-eased*.42}) saturate(${1-eased*.24}) blur(${eased*.7}px)`;
+      card.style.boxShadow=eased>0.01?`0 ${24+eased*26}px ${54+eased*54}px rgba(0,0,0,${.34+eased*.36})`:'';
       const img=card.querySelector(':scope > img');
-      if(img){
-        const center=(rect.top+rect.height*.5-vh*.5)/Math.max(vh,1);
-        const parallax=clamp(center,-1,1)*-4;
-        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.03+fade*.035})`;
-      }
-
+      if(img)img.style.transform=`scale(${1.025+eased*.012})`;
       const title=card.querySelector('.project-name');
-      if(title){
-        title.style.transform=`translate3d(0,${fade*5}px,0) scale(${1-fade*.04})`;
-        title.style.opacity=String(1-fade);
-      }
+      if(title){title.style.transform=`translate3d(0,${eased*3}px,0)`;title.style.opacity=String(1-eased*.40);}
     });
   };
 
@@ -770,6 +692,10 @@
 })();
 </script>
 <!-- GALLERY_MANAGER:CINEMATIC_CARDS:END -->
+
+
+
+
 
 
 
