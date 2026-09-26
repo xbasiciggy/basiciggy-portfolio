@@ -5,116 +5,36 @@
 <link rel="stylesheet" href="../assets/styles.css">
 
 <!-- GALLERY_MANAGER:THEME_SYSTEM:START -->
-<script id="gallery-manager-theme-boot">
+<script id="gallery-manager-dark-ui-boot">
 (()=>{
-  const key='basiciggy-theme';
-  let pref='system';
-  try{const saved=localStorage.getItem(key);if(['light','dark','system'].includes(saved))pref=saved;}catch(e){}
-  const mq=window.matchMedia('(prefers-color-scheme: dark)');
-  const resolved=()=>pref==='system'?(mq.matches?'dark':'light'):pref;
-  document.documentElement.dataset.gmThemePreference=pref;
-  document.documentElement.dataset.gmTheme=resolved();
+  document.documentElement.dataset.gmTheme='dark';
   document.documentElement.dataset.gmPage='adventures';
-  window.__gmTheme={
-    get preference(){return pref},
-    set(value){
-      pref=['light','dark','system'].includes(value)?value:'system';
-      try{localStorage.setItem(key,pref)}catch(e){}
-      document.documentElement.dataset.gmThemePreference=pref;
-      document.documentElement.dataset.gmTheme=resolved();
-      window.dispatchEvent(new CustomEvent('gm-theme-change',{detail:{preference:pref,resolved:resolved()}}));
-    },
-    refresh(){if(pref==='system')document.documentElement.dataset.gmTheme=resolved()}
-  };
-  mq.addEventListener?.('change',()=>window.__gmTheme.refresh());
+  document.documentElement.style.colorScheme='dark';
+  try{localStorage.removeItem('basiciggy-theme')}catch(e){}
+  const cleanup=()=>document.querySelectorAll('.gm-theme-toggle').forEach(node=>node.remove());
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',cleanup,{once:true});else cleanup();
 })();
 </script>
-<style id="gallery-manager-theme-style">
-  :root{
-    color-scheme:dark light;
-    --gm-bg:#050505;--gm-bg-soft:#0b0b0c;--gm-surface:rgba(17,18,19,.72);--gm-surface-solid:#111213;
-    --gm-text:#f7f7f5;--gm-muted:rgba(247,247,245,.62);--gm-border:rgba(255,255,255,.12);--gm-header:rgba(7,8,9,.66);
-    --gm-header-edge:rgba(255,255,255,.06);--gm-shadow:rgba(0,0,0,.55);--gm-photo-mat:#050505;--gm-accent:#9dffb1;
-  }
-  html[data-gm-theme="light"]{
-    color-scheme:light;
-    --gm-bg:#f7f7f3;--gm-bg-soft:#efefeb;--gm-surface:rgba(255,255,252,.78);--gm-surface-solid:#fff;
-    --gm-text:#151615;--gm-muted:rgba(21,22,21,.58);--gm-border:rgba(20,22,20,.12);--gm-header:rgba(250,250,247,.76);
-    --gm-header-edge:rgba(20,22,20,.08);--gm-shadow:rgba(24,27,24,.16);--gm-photo-mat:#efefec;--gm-accent:#176a32;
-  }
-  html,body{background:var(--gm-bg);color:var(--gm-text)}
-  body,main,.page,.site,.site-wrapper,.content,.content-wrapper{transition:background-color .34s ease,color .28s ease}
-  body{background-color:var(--gm-bg) !important;color:var(--gm-text) !important}
-  body>main,main:not(.lightbox-stage){color:var(--gm-text)}
-  a{color:inherit}
-  .gm-theme-toggle{
-    position:fixed;z-index:2147482000;right:18px;top:max(16px,calc(env(safe-area-inset-top,0px) + 10px));width:42px;height:42px;padding:0;
-    display:grid;place-items:center;border-radius:999px;border:1px solid var(--gm-border);color:var(--gm-text);background:var(--gm-surface);
-    box-shadow:0 10px 34px var(--gm-shadow),inset 0 1px 0 rgba(255,255,255,.10);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
-    cursor:pointer;font:600 17px/1 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;transition:transform .2s ease,background .25s ease,color .25s ease,border-color .25s ease
-  }
-  .gm-theme-toggle:hover{transform:scale(1.06)}.gm-theme-toggle:active{transform:scale(.96)}
-  .gm-theme-toggle span{display:block;transform:translateY(-.5px)}
-  html[data-gm-page="adventures"] .gm-theme-toggle{right:92px}
+<style id="gallery-manager-dark-ui-style">
+  :root{color-scheme:dark;--gm-bg:#050505;--gm-bg-soft:#0b0b0c;--gm-surface:rgba(17,18,19,.72);--gm-surface-solid:#111213;--gm-text:#f7f7f5;--gm-muted:rgba(247,247,245,.62);--gm-border:rgba(255,255,255,.12);--gm-shadow:rgba(0,0,0,.55);--gm-photo-mat:#050505;--gm-accent:#9dffb1}
+  html,body{background:#050505 !important;color:#f7f7f5 !important}
   html[data-gm-page="home"] .gm-centered-brand{position:absolute !important;left:50% !important;right:auto !important;margin-left:0 !important;margin-right:0 !important;transform:translateX(-50%) !important;z-index:20 !important}
-
-  /* Shared light glass chrome. Photos and hero media remain photographic rather than inverted. */
-  html[data-gm-theme="light"] .topbar,
-  html[data-gm-theme="light"] .site-header,
-  html[data-gm-theme="light"] header,
-  html[data-gm-theme="light"] .gallery-nav{
-    color:var(--gm-text) !important;background:linear-gradient(180deg,rgba(250,250,247,.90),rgba(250,250,247,.62) 70%,rgba(250,250,247,.08)) !important;
-    border-color:var(--gm-header-edge) !important;box-shadow:0 10px 30px rgba(30,32,30,.07)
-  }
-  html[data-gm-theme="light"] .project-grid{background:var(--gm-bg) !important}
-  html[data-gm-theme="light"] .project-card{border-color:rgba(20,22,20,.10) !important;box-shadow:0 18px 42px rgba(22,24,22,.13)}
-  html[data-gm-theme="light"] .gm-section,html[data-gm-theme="light"] .gallery-footer{color:var(--gm-text);border-color:rgba(20,22,20,.10) !important}
-  html[data-gm-theme="light"] .gallery-grid{background:var(--gm-bg) !important}
-  html[data-gm-theme="light"] .photo,html[data-gm-theme="light"] .photo-button,html[data-gm-theme="light"] .photo img{background:var(--gm-photo-mat) !important}
-  html[data-gm-theme="light"] .gallery-footer a{color:var(--gm-text) !important}
-  html[data-gm-theme="light"] .gallery-nav a{color:var(--gm-text) !important}
-  html[data-gm-theme="light"] .gallery-nav{border-bottom:1px solid rgba(20,22,20,.08) !important}
-  html[data-gm-theme="light"] .project-number,
-  html[data-gm-theme="light"] .project-open{background:rgba(250,250,247,.76) !important;color:#171817 !important;border-color:rgba(20,22,20,.12) !important;box-shadow:0 8px 24px rgba(20,22,20,.12),inset 0 1px 0 rgba(255,255,255,.8) !important}
-
-  /* Keep fullscreen viewing deliberately dark in every website theme. */
   dialog.lightbox,.lightbox::backdrop,.lightbox-stage,.lightbox-media{background:#050505 !important;color:#fff !important}
   .lightbox-close,.lightbox-prev,.lightbox-next{color:#fff !important;background:rgba(20,20,20,.62) !important;border-color:rgba(255,255,255,.12) !important}
   .lightbox-info{color:#fff !important;background:rgba(18,18,18,.5) !important;border-color:rgba(255,255,255,.1) !important}
-
-  @media(max-width:760px){
-    .gm-theme-toggle{right:14px;top:max(14px,calc(env(safe-area-inset-top,0px) + 8px));width:40px;height:40px}
-    html[data-gm-page="adventures"] .gm-theme-toggle{right:68px}
-    html[data-gm-page="home"] .gm-centered-brand{left:50% !important;transform:translateX(-50%) !important}
-  }
-  @media(prefers-reduced-motion:reduce){.gm-theme-toggle,body,main,.page,.site,.site-wrapper,.content,.content-wrapper{transition:none !important}}
+  @media(max-width:760px){html[data-gm-page="home"] .gm-centered-brand{left:50% !important;transform:translateX(-50%) !important}}
 </style>
-<script id="gallery-manager-theme-ui">
+<script id="gallery-manager-dark-ui-home-logo">
 (()=>{
-  if(window.__gmThemeUIInstalled)return;window.__gmThemeUIInstalled=true;
+  if(window.__gmDarkUIInstalled)return;window.__gmDarkUIInstalled=true;
   const init=()=>{
-    const api=window.__gmTheme;if(!api)return;
-    if(document.documentElement.dataset.gmPage==='home'){
-      const candidates=[...document.querySelectorAll('header a,header .logo,header .site-logo,header .brand,.topbar a,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header a,.site-header .logo,.site-header .site-logo,.site-header .brand')];
-      const named=candidates.find(el=>/basiciggy/i.test((el.textContent||el.getAttribute?.('aria-label')||el.getAttribute?.('alt')||'').trim()));
-      const visual=document.querySelector('header .logo,header .site-logo,header .brand,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header .logo,.site-header .site-logo,.site-header .brand');
-      const brand=named||(visual?.closest?.('a')||visual);
-      if(brand)brand.classList.add('gm-centered-brand');
-    }
-    let button=document.querySelector('.gm-theme-toggle');
-    if(!button){
-      button=document.createElement('button');button.type='button';button.className='gm-theme-toggle';document.body.appendChild(button);
-    }
-    const order=['system','light','dark'];
-    const render=()=>{
-      const pref=api.preference;const icon=pref==='light'?'☀':pref==='dark'?'☾':'◐';
-      const next=order[(order.indexOf(pref)+1)%order.length];
-      button.innerHTML='<span aria-hidden="true">'+icon+'</span>';
-      button.setAttribute('aria-label','Theme: '+pref+'. Switch to '+next+'.');
-      button.title='Theme: '+pref[0].toUpperCase()+pref.slice(1)+' · click for '+next;
-    };
-    button.addEventListener('click',()=>{const pref=api.preference;api.set(order[(order.indexOf(pref)+1)%order.length]);render()});
-    window.addEventListener('gm-theme-change',render);render();
+    document.querySelectorAll('.gm-theme-toggle').forEach(node=>node.remove());
+    if(document.documentElement.dataset.gmPage!=='home')return;
+    const candidates=[...document.querySelectorAll('header a,header .logo,header .site-logo,header .brand,.topbar a,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header a,.site-header .logo,.site-header .site-logo,.site-header .brand')];
+    const named=candidates.find(el=>/basiciggy/i.test((el.textContent||el.getAttribute?.('aria-label')||el.getAttribute?.('alt')||'').trim()));
+    const visual=document.querySelector('header .logo,header .site-logo,header .brand,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header .logo,.site-header .site-logo,.site-header .brand');
+    const brand=named||(visual?.closest?.('a')||visual);
+    if(brand)brand.classList.add('gm-centered-brand');
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
@@ -271,17 +191,20 @@
   .project-grid .project-card .project-open{position:absolute !important;z-index:4 !important;top:18px !important;right:18px !important;bottom:auto !important;left:auto !important;margin:0 !important;padding:0 !important;transform:none !important;width:44px !important;height:44px !important;display:grid !important;place-items:center !important;line-height:1 !important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(20,20,20,.48);border-radius:999px}
   .project-grid .project-card .project-open svg{display:block !important;width:20px !important;height:20px !important;margin:0 !important;transform:none !important}
   @media(max-width:760px){
-    /* Mobile stack: each new card glides above the previous one. The card underneath
-       stays visible just long enough to read as a physical layered stack. */
-    .project-grid{display:flex !important;flex-direction:column !important;gap:18px !important;overflow:visible !important;align-items:stretch !important;padding-bottom:clamp(42px,12vh,110px) !important;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 92px);background:#020202 !important}
+    /* Mobile abyss rail: cards remain in normal document flow instead of stacking.
+       As each card approaches the top of the viewport, JavaScript sinks it into a
+       black fade zone so it appears to disappear into depth rather than being covered. */
+    .project-grid{display:flex !important;flex-direction:column !important;gap:18px !important;overflow:visible !important;align-items:stretch !important;padding-bottom:clamp(42px,12vh,110px) !important;background:#020202 !important;position:relative !important}
+    .project-grid::before{content:"";position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:20;display:block;height:clamp(120px,20vh,210px);margin-bottom:calc(clamp(120px,20vh,210px) * -1);pointer-events:none;background:linear-gradient(180deg,#020202 0%,rgba(2,2,2,.96) 26%,rgba(2,2,2,.72) 56%,rgba(2,2,2,0) 100%)}
     .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:auto !important}
     .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important;width:100% !important}
     .project-grid .project-card{
-      position:sticky !important;
-      top:calc(env(safe-area-inset-top,0px) + 82px) !important;
+      position:relative !important;
+      top:auto !important;
+      z-index:auto !important;
       border-radius:28px;
-      will-change:transform,filter;
-      transform-origin:center 82%;
+      will-change:transform,filter,opacity;
+      transform-origin:center 24%;
       backface-visibility:hidden;
       -webkit-backface-visibility:hidden;
       touch-action:pan-y;
@@ -293,8 +216,8 @@
       transition:box-shadow .34s cubic-bezier(.16,1,.3,1),filter .28s ease,opacity .24s ease;
       --gm-shadow-fade:0;
     }
-    /* As a card slips behind the next sticky card, this veil turns it into shadow
-       instead of leaving a bright rectangle visible underneath. */
+    /* As a card enters the upper abyss zone, this veil turns it into shadow
+       instead of leaving a bright rectangle visible while it fades out. */
     .project-grid .project-card::before{content:"";position:absolute;z-index:3;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 -150px 145px rgba(0,0,0,var(--gm-shadow-fade,0));background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,var(--gm-shadow-fade,0)) 72%,rgba(0,0,0,var(--gm-shadow-fade,0)) 100%);opacity:1;transition:background .12s linear,box-shadow .12s linear}
     .project-grid .project-card:active{box-shadow:0 24px 54px rgba(0,0,0,.52),0 9px 24px rgba(0,0,0,.34),0 2px 0 rgba(255,255,255,.08) inset}
     .project-grid .project-card .project-name{left:0 !important;right:0 !important;bottom:16px !important;padding:18px 18px 24px !important;font-size:clamp(42px,19vw,126px) !important;line-height:.72 !important;letter-spacing:-.082em !important;font-weight:720 !important;color:rgba(255,255,255,.72) !important;text-shadow:0 5px 34px rgba(0,0,0,.42) !important;text-align:center !important;justify-content:center !important;white-space:nowrap !important;transition:opacity .24s ease,transform .34s cubic-bezier(.16,1,.3,1)}
@@ -409,7 +332,7 @@
     const vh=window.innerHeight||document.documentElement.clientHeight;
 
     // Desktop gets a restrained abyss exit as rows pass under the fixed header.
-    // Mobile keeps the sticky stack and gets the full sink-into-darkness treatment.
+    // Mobile uses a non-stacking abyss rail and gets the full sink-into-darkness treatment.
     if(!media.matches){
       const fadeStart=Math.max(118,Math.min(170,vh*.16));
       list.forEach((card,index)=>{
@@ -434,64 +357,54 @@
       return;
     }
 
-    const visualOffset=window.visualViewport?.offsetTop||0;
-    const stickyTopFor=(card)=>{
-      // Safari resolves env(safe-area-inset-top) into the computed sticky top.
-      // Reading it from the card keeps the abyss trigger aligned with the real
-      // Dynamic Island/notch safe area and with the collapsing browser toolbar.
-      const cssTop=parseFloat(getComputedStyle(card).top);
-      if(Number.isFinite(cssTop))return Math.max(0,cssTop+visualOffset);
-      return Math.max(82,Math.min(142,vh*.105));
+    const safeTop=()=>{
+      const viewportOffset=window.visualViewport?.offsetTop||0;
+      const probe=document.documentElement;
+      const cssSafe=parseFloat(getComputedStyle(probe).getPropertyValue('--gm-safe-top'))||0;
+      return Math.max(74+viewportOffset+cssSafe,Math.min(146,vh*.12));
     };
 
     list.forEach((card,index)=>{
-      // Later cards sit above earlier cards when their sticky positions overlap.
-      card.style.zIndex=String(40+index);
+      // Mobile deliberately does NOT use sticky positioning anymore. Keeping cards in
+      // document flow prevents the "deck of cards" look from hiding the fade.
+      card.style.zIndex='1';
 
       const rect=card.getBoundingClientRect();
-      const next=list[index+1];
-      const nextRect=next?.getBoundingClientRect();
       const cardH=Math.max(rect.height,1);
-      const stickyTop=stickyTopFor(card);
+      const abyssEnd=safeTop();
+      const abyssStart=Math.max(abyssEnd+cardH*.72,vh*.43);
+      const raw=clamp((abyssStart-rect.top)/Math.max(abyssStart-abyssEnd,1));
+      const fade=smooth(raw);
 
-      // Start the disappearance well before the incoming card reaches the pinned card.
-      // This makes the abyss visible on phone screens instead of hiding underneath the
-      // next sticky card before the darkening can be perceived.
-      let covered=0;
-      if(nextRect && rect.top<=stickyTop+10){
-        const start=stickyTop+cardH*1.42;
-        const end=stickyTop+cardH*.18;
-        covered=smooth(clamp((start-nextRect.top)/(start-end)));
-      }
-
-      const scale=1-covered*.105;
-      const sink=-covered*34;
-      const rotate=((index%2===0)?-.46:.46)*covered;
-      const fade=smooth(clamp((covered-.01)/.99));
-      const brightness=1-fade*.90;
-      const saturation=1-fade*.78;
-      const blur=fade*3.6;
-      const opacity=1-fade*.92;
-      const shadowFade=Math.min(1,fade);
+      // The card begins normal, then sinks upward and gets swallowed by black as its
+      // top edge moves through the upper portion of the screen.
+      const scale=1-fade*.085;
+      const sink=-fade*46;
+      const rotate=((index%2===0)?-.34:.34)*fade;
+      const brightness=1-fade*.94;
+      const saturation=1-fade*.82;
+      const blur=fade*3.2;
+      const opacity=1-fade*.95;
+      const shadowFade=Math.min(1,fade*1.08);
 
       card.style.transform=`translate3d(0,${sink}px,0) rotate(${rotate}deg) scale(${scale})`;
       card.style.opacity=String(opacity);
       card.style.filter=`brightness(${brightness}) saturate(${saturation}) blur(${blur}px)`;
-      card.style.setProperty('--gm-stack-depth',String(covered));
+      card.style.setProperty('--gm-stack-depth',String(fade));
       card.style.setProperty('--gm-shadow-fade',String(shadowFade));
-      card.style.boxShadow=`0 ${46+fade*68}px ${92+fade*108}px rgba(0,0,0,${.70+fade*.28}), 0 ${20+fade*28}px ${48+fade*56}px rgba(0,0,0,${.56+fade*.38}), 0 2px 0 rgba(255,255,255,.07) inset, 0 -1px 0 rgba(0,0,0,.42) inset`;
+      card.style.boxShadow=`0 ${34+fade*86}px ${78+fade*132}px rgba(0,0,0,${.62+fade*.36}), 0 ${10+fade*38}px ${36+fade*78}px rgba(0,0,0,${.46+fade*.48}), 0 2px 0 rgba(255,255,255,.06) inset`;
 
       const img=card.querySelector(':scope > img');
       if(img){
         const center=(rect.top+rect.height*.5-vh*.5)/Math.max(vh,1);
-        const parallax=clamp(center,-1,1)*-6-covered*3;
-        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.04+covered*.028})`;
+        const parallax=clamp(center,-1,1)*-6-fade*8;
+        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.035+fade*.045})`;
       }
 
       const title=card.querySelector('.project-name');
       if(title){
-        title.style.transform=`translate3d(0,${covered*5}px,0) scale(${1-covered*.032})`;
-        title.style.opacity=String(1-fade*.96);
+        title.style.transform=`translate3d(0,${fade*8}px,0) scale(${1-fade*.045})`;
+        title.style.opacity=String(1-fade*.98);
       }
     });
   };
@@ -836,6 +749,10 @@
 })();
 </script>
 <!-- GALLERY_MANAGER:CINEMATIC_CARDS:END -->
+
+
+
+
 
 
 
