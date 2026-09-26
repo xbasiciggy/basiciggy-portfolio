@@ -195,7 +195,18 @@
        As each card approaches the top of the viewport, JavaScript sinks it into a
        black fade zone so it appears to disappear into depth rather than being covered. */
     .project-grid{display:flex !important;flex-direction:column !important;gap:18px !important;overflow:visible !important;align-items:stretch !important;padding-bottom:clamp(42px,12vh,110px) !important;background:#020202 !important;position:relative !important}
-    .project-grid::before{content:"";position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:20;display:block;height:clamp(120px,20vh,210px);margin-bottom:calc(clamp(120px,20vh,210px) * -1);pointer-events:none;background:linear-gradient(180deg,#020202 0%,rgba(2,2,2,.96) 26%,rgba(2,2,2,.72) 56%,rgba(2,2,2,0) 100%)}
+    .project-grid::before{content:none !important}
+    .gm-mobile-abyss-curtain{
+      display:block;
+      position:fixed;
+      z-index:1200;
+      left:0;
+      right:0;
+      top:calc(env(safe-area-inset-top,0px) + 54px);
+      height:118px;
+      pointer-events:none;
+      background:linear-gradient(180deg,#020202 0%,#020202 48%,rgba(2,2,2,.995) 62%,rgba(2,2,2,.93) 74%,rgba(2,2,2,.58) 88%,rgba(2,2,2,0) 100%);
+    }
     .project-grid>.project-card[data-card-width="wide"],.project-grid>.project-card[data-card-width="full"]{grid-column:auto !important}
     .project-grid>.project-card,.project-grid>.project-card[data-card-aspect]{aspect-ratio:16/9 !important;min-height:0 !important;height:auto !important;width:100% !important}
     .project-grid .project-card{
@@ -218,7 +229,7 @@
     }
     /* As a card enters the upper abyss zone, this veil turns it into shadow
        instead of leaving a bright rectangle visible while it fades out. */
-    .project-grid .project-card::before{content:"";position:absolute;z-index:3;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 -150px 145px rgba(0,0,0,var(--gm-shadow-fade,0));background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,var(--gm-shadow-fade,0)) 72%,rgba(0,0,0,var(--gm-shadow-fade,0)) 100%);opacity:1;transition:background .12s linear,box-shadow .12s linear}
+    .project-grid .project-card::before{content:"";position:absolute;z-index:3;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 -165px 150px rgba(0,0,0,var(--gm-shadow-fade,0));background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,calc(var(--gm-shadow-fade,0) * .42)) 56%,rgba(0,0,0,var(--gm-shadow-fade,0)) 100%);opacity:1;transition:background .10s linear,box-shadow .10s linear}
     .project-grid .project-card:active{box-shadow:0 24px 54px rgba(0,0,0,.52),0 9px 24px rgba(0,0,0,.34),0 2px 0 rgba(255,255,255,.08) inset}
     .project-grid .project-card .project-name{left:0 !important;right:0 !important;bottom:16px !important;padding:18px 18px 24px !important;font-size:clamp(42px,19vw,126px) !important;line-height:.72 !important;letter-spacing:-.082em !important;font-weight:720 !important;color:rgba(255,255,255,.72) !important;text-shadow:0 5px 34px rgba(0,0,0,.42) !important;text-align:center !important;justify-content:center !important;white-space:nowrap !important;transition:opacity .24s ease,transform .34s cubic-bezier(.16,1,.3,1)}
     .project-grid .project-card .project-number{left:14px !important;top:14px !important;padding:9px 14px !important;font-size:13px !important;box-shadow:0 8px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.10) !important}
@@ -309,6 +320,14 @@
   const clamp=(v,min=0,max=1)=>Math.max(min,Math.min(max,v));
   const smooth=t=>t*t*(3-2*t);
 
+  let curtain=document.querySelector('.gm-mobile-abyss-curtain');
+  if(!curtain){
+    curtain=document.createElement('div');
+    curtain.className='gm-mobile-abyss-curtain';
+    curtain.setAttribute('aria-hidden','true');
+    document.body.appendChild(curtain);
+  }
+
   const reset=()=>cards().forEach((card,index)=>{
     card.style.transform='';
     card.style.opacity='';
@@ -317,6 +336,7 @@
     card.style.setProperty('--gm-stack-depth','0');
     card.style.setProperty('--gm-shadow-fade','0');
     card.style.boxShadow='';
+    card.style.borderColor='';
     const img=card.querySelector(':scope > img');
     if(img)img.style.transform='';
     const title=card.querySelector('.project-name');
@@ -357,54 +377,55 @@
       return;
     }
 
-    const safeTop=()=>{
-      const viewportOffset=window.visualViewport?.offsetTop||0;
-      const probe=document.documentElement;
-      const cssSafe=parseFloat(getComputedStyle(probe).getPropertyValue('--gm-safe-top'))||0;
-      return Math.max(74+viewportOffset+cssSafe,Math.min(146,vh*.12));
-    };
+    const curtainRect=curtain?.getBoundingClientRect?.();
+    const curtainBottom=curtainRect && curtainRect.height>0
+      ? curtainRect.bottom
+      : Math.max(136,Math.min(176,vh*.20));
 
     list.forEach((card,index)=>{
-      // Mobile deliberately does NOT use sticky positioning anymore. Keeping cards in
-      // document flow prevents the "deck of cards" look from hiding the fade.
+      // Keep cards in normal flow. The browser's natural scroll is the only upward motion;
+      // we no longer translate the whole card upward, which previously exposed a bright
+      // rounded top edge near the status/header area.
       card.style.zIndex='1';
 
       const rect=card.getBoundingClientRect();
       const cardH=Math.max(rect.height,1);
-      const abyssEnd=safeTop();
-      const abyssStart=Math.max(abyssEnd+cardH*.72,vh*.43);
+
+      // Finish the fade BEFORE the card reaches the opaque curtain. That guarantees there
+      // is never a visible card edge/line passing across the top of the phone viewport.
+      const abyssEnd=curtainBottom+18;
+      const abyssStart=Math.max(abyssEnd+cardH*.92,vh*.52);
       const raw=clamp((abyssStart-rect.top)/Math.max(abyssStart-abyssEnd,1));
       const fade=smooth(raw);
 
-      // The card begins normal, then sinks upward and gets swallowed by black as its
-      // top edge moves through the upper portion of the screen.
-      const scale=1-fade*.085;
-      const sink=-fade*46;
-      const rotate=((index%2===0)?-.34:.34)*fade;
-      const brightness=1-fade*.94;
-      const saturation=1-fade*.82;
-      const blur=fade*3.2;
-      const opacity=1-fade*.95;
-      const shadowFade=Math.min(1,fade*1.08);
+      const scale=1-fade*.075;
+      const settle=fade*8; // slight downward resistance instead of an artificial upward push
+      const rotate=((index%2===0)?-.20:.20)*fade;
+      const brightness=Math.max(.03,1-fade*.97);
+      const saturation=Math.max(.10,1-fade*.90);
+      const blur=fade*3.6;
+      const opacity=Math.max(0,1-fade);
+      const shadowFade=Math.min(1,fade*1.18);
 
-      card.style.transform=`translate3d(0,${sink}px,0) rotate(${rotate}deg) scale(${scale})`;
+      card.style.transform=`translate3d(0,${settle}px,0) rotate(${rotate}deg) scale(${scale})`;
       card.style.opacity=String(opacity);
       card.style.filter=`brightness(${brightness}) saturate(${saturation}) blur(${blur}px)`;
+      card.style.borderColor=`rgba(255,255,255,${Math.max(0,.08*(1-fade))})`;
       card.style.setProperty('--gm-stack-depth',String(fade));
       card.style.setProperty('--gm-shadow-fade',String(shadowFade));
-      card.style.boxShadow=`0 ${34+fade*86}px ${78+fade*132}px rgba(0,0,0,${.62+fade*.36}), 0 ${10+fade*38}px ${36+fade*78}px rgba(0,0,0,${.46+fade*.48}), 0 2px 0 rgba(255,255,255,.06) inset`;
+      card.style.boxShadow=`0 ${38+fade*92}px ${84+fade*148}px rgba(0,0,0,${.66+fade*.32}), 0 ${12+fade*42}px ${42+fade*90}px rgba(0,0,0,${.50+fade*.46})`;
 
       const img=card.querySelector(':scope > img');
       if(img){
         const center=(rect.top+rect.height*.5-vh*.5)/Math.max(vh,1);
-        const parallax=clamp(center,-1,1)*-6-fade*8;
-        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.035+fade*.045})`;
+        const parallax=clamp(center,-1,1)*-4;
+        img.style.transform=`translate3d(0,${parallax}px,0) scale(${1.03+fade*.035})`;
       }
 
       const title=card.querySelector('.project-name');
       if(title){
-        title.style.transform=`translate3d(0,${fade*8}px,0) scale(${1-fade*.045})`;
-        title.style.opacity=String(1-fade*.98);
+        title.style.transform=`translate3d(0,${fade*5}px,0) scale(${1-fade*.04})`;
+        title.style.opacity=String(1-fade);
       }
     });
   };
@@ -658,7 +679,7 @@
 (()=>{
   if(window.__gmCinematicCardsInstalled)return;
   window.__gmCinematicCardsInstalled=true;
-  const previewMap={"\/adventures\/banff\/":["\/adventures\/banff\/medium\/002.jpg","\/adventures\/banff\/medium\/003.jpg","\/adventures\/banff\/medium\/004.jpg"],"\/adventures\/oahu\/":["\/adventures\/oahu\/medium\/001.jpg","\/adventures\/oahu\/medium\/002.jpg","\/adventures\/oahu\/medium\/003.jpg"],"\/adventures\/sequoia\/":["\/adventures\/sequoia\/medium\/001.jpg","\/adventures\/sequoia\/medium\/002.jpg","\/adventures\/sequoia\/medium\/003.jpg"],"\/adventures\/wyoming\/":["\/adventures\/wyoming\/medium\/001.jpg","\/adventures\/wyoming\/medium\/002.jpg","\/adventures\/wyoming\/medium\/003.jpg"]};
+  const previewMap={"\/adventures\/banff\/":["\/adventures\/banff\/medium\/002.jpg","\/adventures\/banff\/medium\/003.jpg","\/adventures\/banff\/medium\/004.jpg"],"\/adventures\/oahu\/":["\/adventures\/oahu\/medium\/001.jpg","\/adventures\/oahu\/medium\/002.jpg","\/adventures\/oahu\/medium\/003.jpg"],"\/adventures\/wyoming\/":["\/adventures\/wyoming\/medium\/001.jpg","\/adventures\/wyoming\/medium\/002.jpg","\/adventures\/wyoming\/medium\/003.jpg"]};
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canHover=window.matchMedia('(hover: hover) and (pointer: fine)');
   const normalize=value=>{
@@ -749,6 +770,10 @@
 })();
 </script>
 <!-- GALLERY_MANAGER:CINEMATIC_CARDS:END -->
+
+
+
+
 
 
 
