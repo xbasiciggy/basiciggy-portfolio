@@ -3,6 +3,123 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08080a"><title>Adventures — Basiciggy</title>
 <link rel="stylesheet" href="../assets/styles.css">
+
+<!-- GALLERY_MANAGER:THEME_SYSTEM:START -->
+<script id="gallery-manager-theme-boot">
+(()=>{
+  const key='basiciggy-theme';
+  let pref='system';
+  try{const saved=localStorage.getItem(key);if(['light','dark','system'].includes(saved))pref=saved;}catch(e){}
+  const mq=window.matchMedia('(prefers-color-scheme: dark)');
+  const resolved=()=>pref==='system'?(mq.matches?'dark':'light'):pref;
+  document.documentElement.dataset.gmThemePreference=pref;
+  document.documentElement.dataset.gmTheme=resolved();
+  document.documentElement.dataset.gmPage='adventures';
+  window.__gmTheme={
+    get preference(){return pref},
+    set(value){
+      pref=['light','dark','system'].includes(value)?value:'system';
+      try{localStorage.setItem(key,pref)}catch(e){}
+      document.documentElement.dataset.gmThemePreference=pref;
+      document.documentElement.dataset.gmTheme=resolved();
+      window.dispatchEvent(new CustomEvent('gm-theme-change',{detail:{preference:pref,resolved:resolved()}}));
+    },
+    refresh(){if(pref==='system')document.documentElement.dataset.gmTheme=resolved()}
+  };
+  mq.addEventListener?.('change',()=>window.__gmTheme.refresh());
+})();
+</script>
+<style id="gallery-manager-theme-style">
+  :root{
+    color-scheme:dark light;
+    --gm-bg:#050505;--gm-bg-soft:#0b0b0c;--gm-surface:rgba(17,18,19,.72);--gm-surface-solid:#111213;
+    --gm-text:#f7f7f5;--gm-muted:rgba(247,247,245,.62);--gm-border:rgba(255,255,255,.12);--gm-header:rgba(7,8,9,.66);
+    --gm-header-edge:rgba(255,255,255,.06);--gm-shadow:rgba(0,0,0,.55);--gm-photo-mat:#050505;--gm-accent:#9dffb1;
+  }
+  html[data-gm-theme="light"]{
+    color-scheme:light;
+    --gm-bg:#f7f7f3;--gm-bg-soft:#efefeb;--gm-surface:rgba(255,255,252,.78);--gm-surface-solid:#fff;
+    --gm-text:#151615;--gm-muted:rgba(21,22,21,.58);--gm-border:rgba(20,22,20,.12);--gm-header:rgba(250,250,247,.76);
+    --gm-header-edge:rgba(20,22,20,.08);--gm-shadow:rgba(24,27,24,.16);--gm-photo-mat:#efefec;--gm-accent:#176a32;
+  }
+  html,body{background:var(--gm-bg);color:var(--gm-text)}
+  body,main,.page,.site,.site-wrapper,.content,.content-wrapper{transition:background-color .34s ease,color .28s ease}
+  body{background-color:var(--gm-bg) !important;color:var(--gm-text) !important}
+  body>main,main:not(.lightbox-stage){color:var(--gm-text)}
+  a{color:inherit}
+  .gm-theme-toggle{
+    position:fixed;z-index:2147482000;right:18px;top:max(16px,calc(env(safe-area-inset-top,0px) + 10px));width:42px;height:42px;padding:0;
+    display:grid;place-items:center;border-radius:999px;border:1px solid var(--gm-border);color:var(--gm-text);background:var(--gm-surface);
+    box-shadow:0 10px 34px var(--gm-shadow),inset 0 1px 0 rgba(255,255,255,.10);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+    cursor:pointer;font:600 17px/1 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;transition:transform .2s ease,background .25s ease,color .25s ease,border-color .25s ease
+  }
+  .gm-theme-toggle:hover{transform:scale(1.06)}.gm-theme-toggle:active{transform:scale(.96)}
+  .gm-theme-toggle span{display:block;transform:translateY(-.5px)}
+  html[data-gm-page="adventures"] .gm-theme-toggle{right:92px}
+  html[data-gm-page="home"] .gm-centered-brand{position:absolute !important;left:50% !important;right:auto !important;margin-left:0 !important;margin-right:0 !important;transform:translateX(-50%) !important;z-index:20 !important}
+
+  /* Shared light glass chrome. Photos and hero media remain photographic rather than inverted. */
+  html[data-gm-theme="light"] .topbar,
+  html[data-gm-theme="light"] .site-header,
+  html[data-gm-theme="light"] header,
+  html[data-gm-theme="light"] .gallery-nav{
+    color:var(--gm-text) !important;background:linear-gradient(180deg,rgba(250,250,247,.90),rgba(250,250,247,.62) 70%,rgba(250,250,247,.08)) !important;
+    border-color:var(--gm-header-edge) !important;box-shadow:0 10px 30px rgba(30,32,30,.07)
+  }
+  html[data-gm-theme="light"] .project-grid{background:var(--gm-bg) !important}
+  html[data-gm-theme="light"] .project-card{border-color:rgba(20,22,20,.10) !important;box-shadow:0 18px 42px rgba(22,24,22,.13)}
+  html[data-gm-theme="light"] .gm-section,html[data-gm-theme="light"] .gallery-footer{color:var(--gm-text);border-color:rgba(20,22,20,.10) !important}
+  html[data-gm-theme="light"] .gallery-grid{background:var(--gm-bg) !important}
+  html[data-gm-theme="light"] .photo,html[data-gm-theme="light"] .photo-button,html[data-gm-theme="light"] .photo img{background:var(--gm-photo-mat) !important}
+  html[data-gm-theme="light"] .gallery-footer a{color:var(--gm-text) !important}
+  html[data-gm-theme="light"] .gallery-nav a{color:var(--gm-text) !important}
+  html[data-gm-theme="light"] .gallery-nav{border-bottom:1px solid rgba(20,22,20,.08) !important}
+  html[data-gm-theme="light"] .project-number,
+  html[data-gm-theme="light"] .project-open{background:rgba(250,250,247,.76) !important;color:#171817 !important;border-color:rgba(20,22,20,.12) !important;box-shadow:0 8px 24px rgba(20,22,20,.12),inset 0 1px 0 rgba(255,255,255,.8) !important}
+
+  /* Keep fullscreen viewing deliberately dark in every website theme. */
+  dialog.lightbox,.lightbox::backdrop,.lightbox-stage,.lightbox-media{background:#050505 !important;color:#fff !important}
+  .lightbox-close,.lightbox-prev,.lightbox-next{color:#fff !important;background:rgba(20,20,20,.62) !important;border-color:rgba(255,255,255,.12) !important}
+  .lightbox-info{color:#fff !important;background:rgba(18,18,18,.5) !important;border-color:rgba(255,255,255,.1) !important}
+
+  @media(max-width:760px){
+    .gm-theme-toggle{right:14px;top:max(14px,calc(env(safe-area-inset-top,0px) + 8px));width:40px;height:40px}
+    html[data-gm-page="adventures"] .gm-theme-toggle{right:68px}
+    html[data-gm-page="home"] .gm-centered-brand{left:50% !important;transform:translateX(-50%) !important}
+  }
+  @media(prefers-reduced-motion:reduce){.gm-theme-toggle,body,main,.page,.site,.site-wrapper,.content,.content-wrapper{transition:none !important}}
+</style>
+<script id="gallery-manager-theme-ui">
+(()=>{
+  if(window.__gmThemeUIInstalled)return;window.__gmThemeUIInstalled=true;
+  const init=()=>{
+    const api=window.__gmTheme;if(!api)return;
+    if(document.documentElement.dataset.gmPage==='home'){
+      const candidates=[...document.querySelectorAll('header a,header .logo,header .site-logo,header .brand,.topbar a,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header a,.site-header .logo,.site-header .site-logo,.site-header .brand')];
+      const named=candidates.find(el=>/basiciggy/i.test((el.textContent||el.getAttribute?.('aria-label')||el.getAttribute?.('alt')||'').trim()));
+      const visual=document.querySelector('header .logo,header .site-logo,header .brand,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header .logo,.site-header .site-logo,.site-header .brand');
+      const brand=named||(visual?.closest?.('a')||visual);
+      if(brand)brand.classList.add('gm-centered-brand');
+    }
+    let button=document.querySelector('.gm-theme-toggle');
+    if(!button){
+      button=document.createElement('button');button.type='button';button.className='gm-theme-toggle';document.body.appendChild(button);
+    }
+    const order=['system','light','dark'];
+    const render=()=>{
+      const pref=api.preference;const icon=pref==='light'?'☀':pref==='dark'?'☾':'◐';
+      const next=order[(order.indexOf(pref)+1)%order.length];
+      button.innerHTML='<span aria-hidden="true">'+icon+'</span>';
+      button.setAttribute('aria-label','Theme: '+pref+'. Switch to '+next+'.');
+      button.title='Theme: '+pref[0].toUpperCase()+pref.slice(1)+' · click for '+next;
+    };
+    button.addEventListener('click',()=>{const pref=api.preference;api.set(order[(order.indexOf(pref)+1)%order.length]);render()});
+    window.addEventListener('gm-theme-change',render);render();
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<!-- GALLERY_MANAGER:THEME_SYSTEM:END -->
 </head>
 <body class="">
 <div class="site-noise"></div>
@@ -317,7 +434,15 @@
       return;
     }
 
-    const stickyTop=Math.max(82,Math.min(126,vh*.105));
+    const visualOffset=window.visualViewport?.offsetTop||0;
+    const stickyTopFor=(card)=>{
+      // Safari resolves env(safe-area-inset-top) into the computed sticky top.
+      // Reading it from the card keeps the abyss trigger aligned with the real
+      // Dynamic Island/notch safe area and with the collapsing browser toolbar.
+      const cssTop=parseFloat(getComputedStyle(card).top);
+      if(Number.isFinite(cssTop))return Math.max(0,cssTop+visualOffset);
+      return Math.max(82,Math.min(142,vh*.105));
+    };
 
     list.forEach((card,index)=>{
       // Later cards sit above earlier cards when their sticky positions overlap.
@@ -327,32 +452,34 @@
       const next=list[index+1];
       const nextRect=next?.getBoundingClientRect();
       const cardH=Math.max(rect.height,1);
+      const stickyTop=stickyTopFor(card);
 
-      // Start the disappearance earlier so the outgoing card visibly sinks into
-      // black before the incoming card fully covers it.
+      // Start the disappearance well before the incoming card reaches the pinned card.
+      // This makes the abyss visible on phone screens instead of hiding underneath the
+      // next sticky card before the darkening can be perceived.
       let covered=0;
-      if(nextRect && rect.top<=stickyTop+4){
-        const start=stickyTop+cardH*1.24;
-        const end=stickyTop+cardH*.28;
+      if(nextRect && rect.top<=stickyTop+10){
+        const start=stickyTop+cardH*1.42;
+        const end=stickyTop+cardH*.18;
         covered=smooth(clamp((start-nextRect.top)/(start-end)));
       }
 
-      const scale=1-covered*.082;
-      const sink=-covered*24;
-      const rotate=((index%2===0)?-.38:.38)*covered;
-      const fade=smooth(clamp((covered-.02)/.98));
-      const brightness=1-fade*.82;
-      const saturation=1-fade*.70;
-      const blur=fade*2.8;
-      const opacity=1-fade*.86;
-      const shadowFade=Math.min(.98,fade*.98);
+      const scale=1-covered*.105;
+      const sink=-covered*34;
+      const rotate=((index%2===0)?-.46:.46)*covered;
+      const fade=smooth(clamp((covered-.01)/.99));
+      const brightness=1-fade*.90;
+      const saturation=1-fade*.78;
+      const blur=fade*3.6;
+      const opacity=1-fade*.92;
+      const shadowFade=Math.min(1,fade);
 
       card.style.transform=`translate3d(0,${sink}px,0) rotate(${rotate}deg) scale(${scale})`;
       card.style.opacity=String(opacity);
       card.style.filter=`brightness(${brightness}) saturate(${saturation}) blur(${blur}px)`;
       card.style.setProperty('--gm-stack-depth',String(covered));
       card.style.setProperty('--gm-shadow-fade',String(shadowFade));
-      card.style.boxShadow=`0 ${42+fade*54}px ${82+fade*88}px rgba(0,0,0,${.66+fade*.30}), 0 ${18+fade*20}px ${42+fade*46}px rgba(0,0,0,${.52+fade*.34}), 0 2px 0 rgba(255,255,255,.07) inset, 0 -1px 0 rgba(0,0,0,.36) inset`;
+      card.style.boxShadow=`0 ${46+fade*68}px ${92+fade*108}px rgba(0,0,0,${.70+fade*.28}), 0 ${20+fade*28}px ${48+fade*56}px rgba(0,0,0,${.56+fade*.38}), 0 2px 0 rgba(255,255,255,.07) inset, 0 -1px 0 rgba(0,0,0,.42) inset`;
 
       const img=card.querySelector(':scope > img');
       if(img){
@@ -364,7 +491,7 @@
       const title=card.querySelector('.project-name');
       if(title){
         title.style.transform=`translate3d(0,${covered*5}px,0) scale(${1-covered*.032})`;
-        title.style.opacity=String(1-fade*.90);
+        title.style.opacity=String(1-fade*.96);
       }
     });
   };
@@ -599,6 +726,10 @@
 
 
 
+
+
+
+
 <!-- GALLERY_MANAGER:RECOVERED_CARDS:START -->
 <div id="gallery-manager-recovered-galleries" hidden>
 <a class="project-card gm-recovered-card" data-gallery-recovered="true" data-gallery-legacy-slug="oahu" href="/adventures/oahu/" data-gallery-id="BA929CFC-03B8-4461-8A9A-D001F0E51D73" data-gallery-sort-order="2">
@@ -615,6 +746,111 @@
 </a>
 </div>
 <!-- GALLERY_MANAGER:RECOVERED_CARDS:END -->
+
+<!-- GALLERY_MANAGER:CINEMATIC_CARDS:START -->
+<style id="gallery-manager-cinematic-cards-style">
+  .project-grid .project-card{isolation:isolate}
+  .project-grid .project-card .gm-hover-preview{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;z-index:0 !important;object-fit:cover !important;object-position:center !important;opacity:0 !important;pointer-events:none !important;transition:opacity .58s cubic-bezier(.2,.7,.2,1),transform .72s cubic-bezier(.2,.7,.2,1),filter .5s ease !important;will-change:opacity,transform}
+  .project-grid .project-card .gm-hover-preview.gm-preview-visible{opacity:1 !important}
+  .gm-card-flight{position:fixed !important;z-index:2147483001 !important;margin:0 !important;pointer-events:none !important;max-width:none !important;max-height:none !important;will-change:left,top,width,height,border-radius,transform,filter;transition:left .48s cubic-bezier(.2,.8,.2,1),top .48s cubic-bezier(.2,.8,.2,1),width .48s cubic-bezier(.2,.8,.2,1),height .48s cubic-bezier(.2,.8,.2,1),border-radius .42s ease,transform .48s cubic-bezier(.2,.8,.2,1),filter .38s ease !important;box-shadow:0 36px 110px rgba(0,0,0,.58)}
+  .gm-card-flight-backdrop{position:fixed;z-index:2147483000;inset:0;background:#050505;opacity:0;pointer-events:none;transition:opacity .42s ease}
+  @media(prefers-reduced-motion:reduce){.project-grid .project-card .gm-hover-preview{transition:none !important}}
+</style>
+<script id="gallery-manager-cinematic-cards">
+(()=>{
+  if(window.__gmCinematicCardsInstalled)return;
+  window.__gmCinematicCardsInstalled=true;
+  const previewMap={"\/adventures\/banff\/":["\/adventures\/banff\/medium\/002.jpg","\/adventures\/banff\/medium\/003.jpg","\/adventures\/banff\/medium\/004.jpg"],"\/adventures\/oahu\/":["\/adventures\/oahu\/medium\/001.jpg","\/adventures\/oahu\/medium\/002.jpg","\/adventures\/oahu\/medium\/003.jpg"],"\/adventures\/sequoia\/":["\/adventures\/sequoia\/medium\/001.jpg","\/adventures\/sequoia\/medium\/002.jpg"],"\/adventures\/wyoming\/":["\/adventures\/wyoming\/medium\/001.jpg","\/adventures\/wyoming\/medium\/002.jpg","\/adventures\/wyoming\/medium\/003.jpg"]};
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canHover=window.matchMedia('(hover: hover) and (pointer: fine)');
+  const normalize=value=>{
+    try{
+      const url=new URL(value,location.href);
+      let path=url.pathname.replace(/\/+$/,'/') || '/';
+      if(!path.endsWith('/')) path += '/';
+      return path;
+    }catch(_){return value||'';}
+  };
+  const cards=[...document.querySelectorAll('.project-grid .project-card')];
+  cards.forEach(card=>{
+    const route=normalize(card.getAttribute('href')||'');
+    const urls=previewMap[route]||[];
+    if(urls.length && canHover.matches && !reduce){
+      const overlay=new Image();
+      overlay.className='gm-hover-preview';
+      overlay.alt='';
+      overlay.setAttribute('aria-hidden','true');
+      overlay.decoding='async';
+      card.appendChild(overlay);
+      let timer=0,swapTimer=0,index=0,active=false;
+      const swap=()=>{
+        if(!active||!urls.length)return;
+        const url=urls[index++%urls.length];
+        const preload=new Image();
+        preload.decoding='async';
+        preload.onload=()=>{
+          if(!active)return;
+          overlay.classList.remove('gm-preview-visible');
+          clearTimeout(swapTimer);
+          swapTimer=window.setTimeout(()=>{
+            if(!active)return;
+            overlay.src=url;
+            requestAnimationFrame(()=>overlay.classList.add('gm-preview-visible'));
+          },220);
+        };
+        preload.src=url;
+      };
+      card.addEventListener('mouseenter',()=>{
+        active=true; index=0; swap();
+        clearInterval(timer);
+        timer=window.setInterval(swap,1650);
+      });
+      card.addEventListener('mouseleave',()=>{
+        active=false; clearInterval(timer); clearTimeout(swapTimer);
+        overlay.classList.remove('gm-preview-visible');
+      });
+    }
+  });
+
+  if(reduce)return;
+  let navigating=false;
+  cards.forEach(card=>card.addEventListener('click',event=>{
+    if(navigating||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    if(card.target && card.target!=='_self')return;
+    const href=card.href;
+    if(!href)return;
+    let targetURL;
+    try{targetURL=new URL(href,location.href);}catch(_){return;}
+    if(targetURL.origin!==location.origin)return;
+    const visiblePreview=card.querySelector('.gm-hover-preview.gm-preview-visible');
+    const source=visiblePreview||card.querySelector(':scope > img:not(.gm-hover-preview)');
+    if(!source)return;
+    event.preventDefault();
+    navigating=true;
+    const rect=source.getBoundingClientRect();
+    const flight=source.cloneNode(true);
+    flight.className='gm-card-flight';
+    flight.removeAttribute('loading');
+    Object.assign(flight.style,{
+      left:`${rect.left}px`,top:`${rect.top}px`,width:`${rect.width}px`,height:`${rect.height}px`,
+      objectFit:getComputedStyle(source).objectFit||'cover',objectPosition:getComputedStyle(source).objectPosition||'center',
+      borderRadius:getComputedStyle(card).borderRadius||'0px',transform:'translateZ(0) scale(1)',filter:'brightness(1)'
+    });
+    const backdrop=document.createElement('div');
+    backdrop.className='gm-card-flight-backdrop';
+    document.body.append(backdrop,flight);
+    try{sessionStorage.setItem('gm-gallery-entry',targetURL.pathname);}catch(_){}
+    const mobile=window.matchMedia('(max-width: 720px)').matches;
+    const heroHeight=mobile?Math.max(440,Math.round(innerHeight*.62)):Math.max(500,Math.min(760,Math.round(innerHeight*.72)));
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      backdrop.style.opacity='.72';
+      Object.assign(flight.style,{left:'0px',top:'0px',width:`${innerWidth}px`,height:`${heroHeight}px`,borderRadius:'0px',transform:'translateZ(0) scale(1.008)',filter:'brightness(.9)'});
+    }));
+    window.setTimeout(()=>location.assign(targetURL.href),470);
+  }));
+})();
+</script>
+<!-- GALLERY_MANAGER:CINEMATIC_CARDS:END -->
 
 <!-- GALLERY_MANAGER:HIDDEN_GUARD:START -->
 <script id="gallery-manager-hidden-guard">

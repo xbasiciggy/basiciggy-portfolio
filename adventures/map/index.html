@@ -9,6 +9,123 @@
   <style>
     *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#070809;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}.map-shell{position:relative;width:100%;height:100%;overflow:hidden}.map{position:absolute;inset:0;background:#0a0b0c}.map-top{position:absolute;z-index:1000;left:18px;right:18px;top:max(16px,env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;pointer-events:none}.map-top a,.map-top .count{pointer-events:auto;color:#fff;text-decoration:none;background:rgba(10,10,12,.68);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:999px;padding:11px 15px;font-size:12px;font-weight:600}.map-top .brand{letter-spacing:.16em;text-transform:uppercase}.map-bottom{position:absolute;z-index:900;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(720px,calc(100% - 28px));pointer-events:none}.map-note{pointer-events:auto;background:rgba(10,10,12,.72);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:22px;padding:14px 16px;color:rgba(255,255,255,.7);font-size:12px;text-align:center}.leaflet-container{font-family:inherit;background:#0a0b0c}.leaflet-control-attribution{background:rgba(0,0,0,.46)!important;color:rgba(255,255,255,.5)!important}.leaflet-control-attribution a{color:rgba(255,255,255,.72)!important}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#111214;color:#fff}.leaflet-popup-content-wrapper{border-radius:18px;padding:0;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 18px 60px rgba(0,0,0,.45)}.leaflet-popup-content{margin:0;width:260px!important}.gm-popup img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.gm-popup-copy{padding:13px}.gm-popup h3{margin:0 0 4px;font-size:25px;letter-spacing:-.045em}.gm-popup p{margin:0;color:rgba(255,255,255,.55);font-size:12px}.gm-popup a{display:inline-flex;margin-top:12px;color:#fff;text-decoration:none;font-size:12px;font-weight:700;padding:9px 12px;border-radius:999px;background:#1ccf63}.gm-pin{width:18px;height:18px;border-radius:999px;background:#40ff7e;border:3px solid rgba(7,8,9,.92);box-shadow:0 0 0 3px rgba(64,255,126,.22),0 6px 20px rgba(0,0,0,.35)}
   </style>
+
+<!-- GALLERY_MANAGER:THEME_SYSTEM:START -->
+<script id="gallery-manager-theme-boot">
+(()=>{
+  const key='basiciggy-theme';
+  let pref='system';
+  try{const saved=localStorage.getItem(key);if(['light','dark','system'].includes(saved))pref=saved;}catch(e){}
+  const mq=window.matchMedia('(prefers-color-scheme: dark)');
+  const resolved=()=>pref==='system'?(mq.matches?'dark':'light'):pref;
+  document.documentElement.dataset.gmThemePreference=pref;
+  document.documentElement.dataset.gmTheme=resolved();
+  document.documentElement.dataset.gmPage='map';
+  window.__gmTheme={
+    get preference(){return pref},
+    set(value){
+      pref=['light','dark','system'].includes(value)?value:'system';
+      try{localStorage.setItem(key,pref)}catch(e){}
+      document.documentElement.dataset.gmThemePreference=pref;
+      document.documentElement.dataset.gmTheme=resolved();
+      window.dispatchEvent(new CustomEvent('gm-theme-change',{detail:{preference:pref,resolved:resolved()}}));
+    },
+    refresh(){if(pref==='system')document.documentElement.dataset.gmTheme=resolved()}
+  };
+  mq.addEventListener?.('change',()=>window.__gmTheme.refresh());
+})();
+</script>
+<style id="gallery-manager-theme-style">
+  :root{
+    color-scheme:dark light;
+    --gm-bg:#050505;--gm-bg-soft:#0b0b0c;--gm-surface:rgba(17,18,19,.72);--gm-surface-solid:#111213;
+    --gm-text:#f7f7f5;--gm-muted:rgba(247,247,245,.62);--gm-border:rgba(255,255,255,.12);--gm-header:rgba(7,8,9,.66);
+    --gm-header-edge:rgba(255,255,255,.06);--gm-shadow:rgba(0,0,0,.55);--gm-photo-mat:#050505;--gm-accent:#9dffb1;
+  }
+  html[data-gm-theme="light"]{
+    color-scheme:light;
+    --gm-bg:#f7f7f3;--gm-bg-soft:#efefeb;--gm-surface:rgba(255,255,252,.78);--gm-surface-solid:#fff;
+    --gm-text:#151615;--gm-muted:rgba(21,22,21,.58);--gm-border:rgba(20,22,20,.12);--gm-header:rgba(250,250,247,.76);
+    --gm-header-edge:rgba(20,22,20,.08);--gm-shadow:rgba(24,27,24,.16);--gm-photo-mat:#efefec;--gm-accent:#176a32;
+  }
+  html,body{background:var(--gm-bg);color:var(--gm-text)}
+  body,main,.page,.site,.site-wrapper,.content,.content-wrapper{transition:background-color .34s ease,color .28s ease}
+  body{background-color:var(--gm-bg) !important;color:var(--gm-text) !important}
+  body>main,main:not(.lightbox-stage){color:var(--gm-text)}
+  a{color:inherit}
+  .gm-theme-toggle{
+    position:fixed;z-index:2147482000;right:18px;top:max(16px,calc(env(safe-area-inset-top,0px) + 10px));width:42px;height:42px;padding:0;
+    display:grid;place-items:center;border-radius:999px;border:1px solid var(--gm-border);color:var(--gm-text);background:var(--gm-surface);
+    box-shadow:0 10px 34px var(--gm-shadow),inset 0 1px 0 rgba(255,255,255,.10);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+    cursor:pointer;font:600 17px/1 -apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;transition:transform .2s ease,background .25s ease,color .25s ease,border-color .25s ease
+  }
+  .gm-theme-toggle:hover{transform:scale(1.06)}.gm-theme-toggle:active{transform:scale(.96)}
+  .gm-theme-toggle span{display:block;transform:translateY(-.5px)}
+  html[data-gm-page="adventures"] .gm-theme-toggle{right:92px}
+  html[data-gm-page="home"] .gm-centered-brand{position:absolute !important;left:50% !important;right:auto !important;margin-left:0 !important;margin-right:0 !important;transform:translateX(-50%) !important;z-index:20 !important}
+
+  /* Shared light glass chrome. Photos and hero media remain photographic rather than inverted. */
+  html[data-gm-theme="light"] .topbar,
+  html[data-gm-theme="light"] .site-header,
+  html[data-gm-theme="light"] header,
+  html[data-gm-theme="light"] .gallery-nav{
+    color:var(--gm-text) !important;background:linear-gradient(180deg,rgba(250,250,247,.90),rgba(250,250,247,.62) 70%,rgba(250,250,247,.08)) !important;
+    border-color:var(--gm-header-edge) !important;box-shadow:0 10px 30px rgba(30,32,30,.07)
+  }
+  html[data-gm-theme="light"] .project-grid{background:var(--gm-bg) !important}
+  html[data-gm-theme="light"] .project-card{border-color:rgba(20,22,20,.10) !important;box-shadow:0 18px 42px rgba(22,24,22,.13)}
+  html[data-gm-theme="light"] .gm-section,html[data-gm-theme="light"] .gallery-footer{color:var(--gm-text);border-color:rgba(20,22,20,.10) !important}
+  html[data-gm-theme="light"] .gallery-grid{background:var(--gm-bg) !important}
+  html[data-gm-theme="light"] .photo,html[data-gm-theme="light"] .photo-button,html[data-gm-theme="light"] .photo img{background:var(--gm-photo-mat) !important}
+  html[data-gm-theme="light"] .gallery-footer a{color:var(--gm-text) !important}
+  html[data-gm-theme="light"] .gallery-nav a{color:var(--gm-text) !important}
+  html[data-gm-theme="light"] .gallery-nav{border-bottom:1px solid rgba(20,22,20,.08) !important}
+  html[data-gm-theme="light"] .project-number,
+  html[data-gm-theme="light"] .project-open{background:rgba(250,250,247,.76) !important;color:#171817 !important;border-color:rgba(20,22,20,.12) !important;box-shadow:0 8px 24px rgba(20,22,20,.12),inset 0 1px 0 rgba(255,255,255,.8) !important}
+
+  /* Keep fullscreen viewing deliberately dark in every website theme. */
+  dialog.lightbox,.lightbox::backdrop,.lightbox-stage,.lightbox-media{background:#050505 !important;color:#fff !important}
+  .lightbox-close,.lightbox-prev,.lightbox-next{color:#fff !important;background:rgba(20,20,20,.62) !important;border-color:rgba(255,255,255,.12) !important}
+  .lightbox-info{color:#fff !important;background:rgba(18,18,18,.5) !important;border-color:rgba(255,255,255,.1) !important}
+
+  @media(max-width:760px){
+    .gm-theme-toggle{right:14px;top:max(14px,calc(env(safe-area-inset-top,0px) + 8px));width:40px;height:40px}
+    html[data-gm-page="adventures"] .gm-theme-toggle{right:68px}
+    html[data-gm-page="home"] .gm-centered-brand{left:50% !important;transform:translateX(-50%) !important}
+  }
+  @media(prefers-reduced-motion:reduce){.gm-theme-toggle,body,main,.page,.site,.site-wrapper,.content,.content-wrapper{transition:none !important}}
+</style>
+<script id="gallery-manager-theme-ui">
+(()=>{
+  if(window.__gmThemeUIInstalled)return;window.__gmThemeUIInstalled=true;
+  const init=()=>{
+    const api=window.__gmTheme;if(!api)return;
+    if(document.documentElement.dataset.gmPage==='home'){
+      const candidates=[...document.querySelectorAll('header a,header .logo,header .site-logo,header .brand,.topbar a,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header a,.site-header .logo,.site-header .site-logo,.site-header .brand')];
+      const named=candidates.find(el=>/basiciggy/i.test((el.textContent||el.getAttribute?.('aria-label')||el.getAttribute?.('alt')||'').trim()));
+      const visual=document.querySelector('header .logo,header .site-logo,header .brand,.topbar .logo,.topbar .site-logo,.topbar .brand,.site-header .logo,.site-header .site-logo,.site-header .brand');
+      const brand=named||(visual?.closest?.('a')||visual);
+      if(brand)brand.classList.add('gm-centered-brand');
+    }
+    let button=document.querySelector('.gm-theme-toggle');
+    if(!button){
+      button=document.createElement('button');button.type='button';button.className='gm-theme-toggle';document.body.appendChild(button);
+    }
+    const order=['system','light','dark'];
+    const render=()=>{
+      const pref=api.preference;const icon=pref==='light'?'☀':pref==='dark'?'☾':'◐';
+      const next=order[(order.indexOf(pref)+1)%order.length];
+      button.innerHTML='<span aria-hidden="true">'+icon+'</span>';
+      button.setAttribute('aria-label','Theme: '+pref+'. Switch to '+next+'.');
+      button.title='Theme: '+pref[0].toUpperCase()+pref.slice(1)+' · click for '+next;
+    };
+    button.addEventListener('click',()=>{const pref=api.preference;api.set(order[(order.indexOf(pref)+1)%order.length]);render()});
+    window.addEventListener('gm-theme-change',render);render();
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<!-- GALLERY_MANAGER:THEME_SYSTEM:END -->
 </head>
 <body>
   <div class="map-shell">
@@ -19,7 +136,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
   (()=>{
-    const pins=[{"photoCount":24,"longitude":-104.8199,"title":"Wyoming","cover":"\/adventures\/wyoming\/photos\/024.jpg","location":"Wyoming, USA","id":"B097918A-720F-4EC7-8E91-BC0AB0B842A2","latitude":41.139800000000001,"url":"\/adventures\/wyoming\/"},{"cover":"\/adventures\/banff\/photos\/001.jpg","longitude":-115.570936,"title":"Banff","photoCount":18,"latitude":51.176588000000002,"location":"Banff Canada","url":"\/adventures\/banff\/","id":"8ABC018D-F18A-4E48-8D85-7BB2F661428D"},{"title":"Oahu","id":"BA929CFC-03B8-4461-8A9A-D001F0E51D73","latitude":21.305053999999998,"longitude":-157.85816399999999,"photoCount":19,"cover":"\/adventures\/oahu\/photos\/014.jpg","url":"\/adventures\/oahu\/","location":"honolulu hawaii"},{"location":"sequoia national park","cover":"\/adventures\/sequoia\/photos\/017.jpg","title":"Sequoia","latitude":36.604365999999999,"url":"\/adventures\/sequoia\/","longitude":-118.73095000000001,"photoCount":18,"id":"542A09B9-27A1-4188-804F-A130C97BD641"}];
+    const pins=[{"id":"B097918A-720F-4EC7-8E91-BC0AB0B842A2","url":"\/adventures\/wyoming\/","location":"Wyoming, USA","latitude":41.139800000000001,"photoCount":24,"title":"Wyoming","longitude":-104.8199,"cover":"\/adventures\/wyoming\/photos\/024.jpg"},{"photoCount":18,"latitude":51.176588000000002,"title":"Banff","longitude":-115.570936,"url":"\/adventures\/banff\/","id":"8ABC018D-F18A-4E48-8D85-7BB2F661428D","location":"Banff Canada","cover":"\/adventures\/banff\/photos\/001.jpg"},{"url":"\/adventures\/oahu\/","latitude":21.305053999999998,"location":"honolulu hawaii","longitude":-157.85816399999999,"id":"BA929CFC-03B8-4461-8A9A-D001F0E51D73","title":"Oahu","cover":"\/adventures\/oahu\/photos\/014.jpg","photoCount":19},{"latitude":36.604365999999999,"photoCount":18,"cover":"\/adventures\/sequoia\/photos\/017.jpg","longitude":-118.73095000000001,"url":"\/adventures\/sequoia\/","id":"542A09B9-27A1-4188-804F-A130C97BD641","location":"sequoia national park","title":"Sequoia"}];
     const map=L.map('map',{zoomControl:false,worldCopyJump:true,attributionControl:true});
     L.control.zoom({position:'bottomright'}).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
