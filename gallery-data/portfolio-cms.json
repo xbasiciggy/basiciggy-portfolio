@@ -298,7 +298,7 @@
       "coverFileName" : "001-001-IJGX1309.webp",
       "date" : "2026-09-25T21:02:50Z",
       "featured" : false,
-      "hidden" : true,
+      "hidden" : false,
       "id" : "9EE842BC-A15B-4A81-B739-42C22A292E9A",
       "location" : "",
       "path" : "\/adventures\/hwy395\/",
@@ -343,7 +343,7 @@
       "route" : "adventures",
       "slug" : "hwy395",
       "sortOrder" : 7,
-      "state" : "hidden",
+      "state" : "published",
       "title" : "HWY 395"
     },
     {
@@ -351,7 +351,7 @@
       "coverFileName" : "001-001-_JG_3618.webp",
       "date" : "2026-09-25T21:02:50Z",
       "featured" : false,
-      "hidden" : true,
+      "hidden" : false,
       "id" : "8F7F23AA-4031-4CC2-AFFB-4FAE756491F4",
       "location" : "",
       "path" : "\/adventures\/thailand-c6ztr\/",
@@ -434,7 +434,7 @@
       "route" : "adventures",
       "slug" : "thailand-c6ztr",
       "sortOrder" : 8,
-      "state" : "hidden",
+      "state" : "published",
       "title" : "Thailand"
     },
     {
@@ -582,6 +582,6 @@
       "title" : "Abandoned USC Hospital"
     }
   ],
-  "generatedAt" : "2026-09-26T17:31:48Z",
+  "generatedAt" : "2026-09-26T17:35:00Z",
   "schemaVersion" : 2
 }

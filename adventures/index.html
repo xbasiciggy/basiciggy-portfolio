@@ -153,7 +153,7 @@
   .project-grid .project-card[data-card-image-position="right"]>img{object-position:right center}
   .project-grid .project-card[data-card-image-position="center"]>img{object-position:center center}
   .project-grid .project-card::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.02) 42%,rgba(0,0,0,.35) 100%)}
-  .project-grid .project-card:hover>img{transform:scale(1.025);filter:saturate(1) brightness(.92)}
+  .project-grid .project-card:hover>img{transform:none;filter:saturate(1) brightness(.92)}
   .project-grid .project-card .featured-tag{display:none !important}
   .project-grid .project-card .featured-content{position:static !important}
   .project-grid .project-card .project-name{
@@ -415,7 +415,7 @@
 <!-- GALLERY_MANAGER:CARD_ORDER:START -->
 <script id="gallery-manager-card-order">
 (()=>{
-  const order=["6BE961DF-7BE9-4CD5-B718-47691F44C7DF","8ABC018D-F18A-4E48-8D85-7BB2F661428D","B097918A-720F-4EC7-8E91-BC0AB0B842A2","BA929CFC-03B8-4461-8A9A-D001F0E51D73","542A09B9-27A1-4188-804F-A130C97BD641","8093331F-E1FB-4CEC-ADE8-6E4DF9854AEA","64647E55-C539-4A10-944F-C16B8812E3A9"];
+  const order=["6BE961DF-7BE9-4CD5-B718-47691F44C7DF","8ABC018D-F18A-4E48-8D85-7BB2F661428D","B097918A-720F-4EC7-8E91-BC0AB0B842A2","BA929CFC-03B8-4461-8A9A-D001F0E51D73","542A09B9-27A1-4188-804F-A130C97BD641","8093331F-E1FB-4CEC-ADE8-6E4DF9854AEA","64647E55-C539-4A10-944F-C16B8812E3A9","9EE842BC-A15B-4A81-B739-42C22A292E9A","8F7F23AA-4031-4CC2-AFFB-4FAE756491F4"];
   const run=()=>{
     const grid=document.querySelector('.project-grid');
     if(!grid)return;
@@ -592,22 +592,17 @@
 <style id="gallery-manager-cinematic-cards-style">
   .project-grid .project-card,.gm-grid .project-card,.gm-grid .gm-card{isolation:isolate}
   .project-grid .project-card .gm-hover-preview-stage,.gm-grid .project-card .gm-hover-preview-stage,.gm-grid .gm-card .gm-hover-preview-stage{position:absolute !important;inset:0 !important;z-index:0 !important;overflow:hidden !important;pointer-events:none !important}
-  .project-grid .project-card .gm-hover-preview,.gm-grid .project-card .gm-hover-preview,.gm-grid .gm-card .gm-hover-preview{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:cover !important;object-position:center !important;opacity:0 !important;pointer-events:none !important;transform:scale(1.012);filter:brightness(.98) saturate(.98);transition:opacity .44s cubic-bezier(.2,.7,.2,1),transform 1.75s cubic-bezier(.2,.7,.2,1),filter .44s ease !important;will-change:opacity,transform}
-  .project-grid .project-card .gm-hover-preview.gm-preview-visible,.gm-grid .project-card .gm-hover-preview.gm-preview-visible,.gm-grid .gm-card .gm-hover-preview.gm-preview-visible{opacity:1 !important;transform:scale(1.025);filter:brightness(1) saturate(1)}
-  @media(hover:hover) and (pointer:fine) and (min-width:761px){
-    .project-grid .project-card,.gm-grid .project-card,.gm-grid .gm-card{scale:1;transition:scale .38s cubic-bezier(.2,.78,.2,1),box-shadow .32s ease,border-color .32s ease;transform-origin:center center}
-    .project-grid.gm-card-hovering .project-card,.gm-grid.gm-card-hovering .project-card,.gm-grid.gm-card-hovering .gm-card{scale:.95}
-    .project-grid.gm-card-hovering .project-card.gm-card-hovered,.gm-grid.gm-card-hovering .project-card.gm-card-hovered,.gm-grid.gm-card-hovering .gm-card.gm-card-hovered{scale:1.04;z-index:12}
-  }
+  .project-grid .project-card .gm-hover-preview,.gm-grid .project-card .gm-hover-preview,.gm-grid .gm-card .gm-hover-preview{position:absolute !important;inset:0 !important;width:100% !important;height:100% !important;object-fit:cover !important;object-position:center !important;opacity:0 !important;pointer-events:none !important;transform:none !important;filter:brightness(.98) saturate(.98);transition:opacity .44s cubic-bezier(.2,.7,.2,1),filter .44s ease !important;will-change:opacity}
+  .project-grid .project-card .gm-hover-preview.gm-preview-visible,.gm-grid .project-card .gm-hover-preview.gm-preview-visible,.gm-grid .gm-card .gm-hover-preview.gm-preview-visible{opacity:1 !important;transform:none !important;filter:brightness(1) saturate(1)}
   .gm-card-flight{position:fixed !important;z-index:2147483001 !important;margin:0 !important;pointer-events:none !important;max-width:none !important;max-height:none !important;will-change:left,top,width,height,border-radius,transform,filter;transition:left .48s cubic-bezier(.2,.8,.2,1),top .48s cubic-bezier(.2,.8,.2,1),width .48s cubic-bezier(.2,.8,.2,1),height .48s cubic-bezier(.2,.8,.2,1),border-radius .42s ease,transform .48s cubic-bezier(.2,.8,.2,1),filter .38s ease !important;box-shadow:0 36px 110px rgba(0,0,0,.58)}
   .gm-card-flight-backdrop{position:fixed;z-index:2147483000;inset:0;background:#050505;opacity:0;pointer-events:none;transition:opacity .42s ease}
-  @media(prefers-reduced-motion:reduce){.project-grid .project-card .gm-hover-preview,.gm-grid .project-card .gm-hover-preview,.gm-grid .gm-card .gm-hover-preview{transition:none !important}.project-grid .project-card,.gm-grid .project-card,.gm-grid .gm-card{scale:1 !important}}
+  @media(prefers-reduced-motion:reduce){.project-grid .project-card .gm-hover-preview,.gm-grid .project-card .gm-hover-preview,.gm-grid .gm-card .gm-hover-preview{transition:none !important}}
 </style>
 <script id="gallery-manager-cinematic-cards">
 (()=>{
   if(window.__gmCinematicCardsInstalled)return;
   window.__gmCinematicCardsInstalled=true;
-  const previewMap={"\/adventures\/banff\/":["\/adventures\/banff\/medium\/002.jpg","\/adventures\/banff\/medium\/003.jpg","\/adventures\/banff\/medium\/004.jpg"],"\/adventures\/italy-63ply\/":["\/adventures\/italy-63ply\/medium\/001 3.jpg","\/adventures\/italy-63ply\/medium\/002 3.jpg","\/adventures\/italy-63ply\/medium\/002.jpg"],"\/adventures\/japan\/":["\/adventures\/japan\/medium\/002.jpg","\/adventures\/japan\/medium\/003.jpg","\/adventures\/japan\/medium\/004.jpg"],"\/adventures\/oahu\/":["\/adventures\/oahu\/medium\/001.jpg","\/adventures\/oahu\/medium\/002.jpg","\/adventures\/oahu\/medium\/003.jpg"],"\/adventures\/paris\/":["\/adventures\/paris\/medium\/002.jpg","\/adventures\/paris\/medium\/003.jpg","\/adventures\/paris\/medium\/004.jpg"],"\/adventures\/sequoia\/":["\/adventures\/sequoia\/medium\/001.jpg","\/adventures\/sequoia\/medium\/002.jpg","\/adventures\/sequoia\/medium\/003.jpg"],"\/adventures\/wyoming\/":["\/adventures\/wyoming\/medium\/001.jpg","\/adventures\/wyoming\/medium\/002.jpg","\/adventures\/wyoming\/medium\/003.jpg"]};
+  const previewMap={"\/adventures\/banff\/":["\/adventures\/banff\/medium\/002.jpg","\/adventures\/banff\/medium\/003.jpg","\/adventures\/banff\/medium\/004.jpg"],"\/adventures\/hwy395\/":["\/adventures\/hwy395\/medium\/002.jpg","\/adventures\/hwy395\/medium\/003.jpg","\/adventures\/hwy395\/medium\/004.jpg"],"\/adventures\/italy-63ply\/":["\/adventures\/italy-63ply\/medium\/001 3.jpg","\/adventures\/italy-63ply\/medium\/002 3.jpg","\/adventures\/italy-63ply\/medium\/002.jpg"],"\/adventures\/japan\/":["\/adventures\/japan\/medium\/002.jpg","\/adventures\/japan\/medium\/003.jpg","\/adventures\/japan\/medium\/004.jpg"],"\/adventures\/oahu\/":["\/adventures\/oahu\/medium\/001.jpg","\/adventures\/oahu\/medium\/002.jpg","\/adventures\/oahu\/medium\/003.jpg"],"\/adventures\/paris\/":["\/adventures\/paris\/medium\/002.jpg","\/adventures\/paris\/medium\/003.jpg","\/adventures\/paris\/medium\/004.jpg"],"\/adventures\/sequoia\/":["\/adventures\/sequoia\/medium\/001.jpg","\/adventures\/sequoia\/medium\/002.jpg","\/adventures\/sequoia\/medium\/003.jpg"],"\/adventures\/thailand-c6ztr\/":["\/adventures\/thailand-c6ztr\/medium\/002.jpg","\/adventures\/thailand-c6ztr\/medium\/003.jpg","\/adventures\/thailand-c6ztr\/medium\/004.jpg"],"\/adventures\/wyoming\/":["\/adventures\/wyoming\/medium\/001.jpg","\/adventures\/wyoming\/medium\/002.jpg","\/adventures\/wyoming\/medium\/003.jpg"]};
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const canHover=window.matchMedia('(hover: hover) and (pointer: fine)');
   const normalize=value=>{
@@ -620,30 +615,11 @@
   };
   const cardSelector='.project-grid .project-card, .gm-grid .project-card, .gm-grid .gm-card';
   const cards=[...document.querySelectorAll(cardSelector)];
-  const hoverGroups=new Set();
-  const setupHoverFocus=card=>{
-    if(!canHover.matches||reduce)return;
-    const group=card.closest('.project-grid,.gm-grid');
-    if(!group)return;
-    hoverGroups.add(group);
-    card.addEventListener('mouseenter',()=>{
-      group.classList.add('gm-card-hovering');
-      group.querySelectorAll('.gm-card-hovered').forEach(item=>item.classList.remove('gm-card-hovered'));
-      card.classList.add('gm-card-hovered');
-    });
-    card.addEventListener('mouseleave',()=>{
-      requestAnimationFrame(()=>{
-        if(group.querySelector('.project-card:hover,.gm-card:hover'))return;
-        group.classList.remove('gm-card-hovering');
-        group.querySelectorAll('.gm-card-hovered').forEach(item=>item.classList.remove('gm-card-hovered'));
-      });
-    });
-  };
   cards.forEach(card=>{
-    setupHoverFocus(card);
-    const route=normalize(card.getAttribute('href')||card.querySelector('a[href]')?.getAttribute('href')||'');
-    const urls=previewMap[route]||[];
-    if(urls.length && canHover.matches && !reduce){
+    const rawHref=card.getAttribute('href')||card.querySelector('a[href]')?.getAttribute('href')||'';
+    const route=normalize(rawHref);
+    let urls=[...(previewMap[route]||[])];
+    if(canHover.matches && !reduce){
       const stage=document.createElement('span');
       stage.className='gm-hover-preview-stage';
       stage.setAttribute('aria-hidden','true');
@@ -657,7 +633,63 @@
         return image;
       });
       card.appendChild(stage);
-      let timer=0,index=0,active=false,session=0,current=-1;
+      let timer=0,index=0,active=false,session=0,current=-1,fallbackPromise=null;
+      const pageURL=()=>{
+        try{
+          const target=new URL(rawHref,location.href);
+          const currentHost=location.hostname.replace(/^www\./i,'').toLowerCase();
+          const targetHost=target.hostname.replace(/^www\./i,'').toLowerCase();
+          if(currentHost===targetHost||targetHost==='basiciggy.com')return target.pathname+target.search;
+          return target.href;
+        }catch(_){return rawHref;}
+      };
+      const discoverFallbackUrls=()=>{
+        if(urls.length)return Promise.resolve(urls);
+        if(fallbackPromise)return fallbackPromise;
+        fallbackPromise=(async()=>{
+          if(!rawHref)return [];
+          try{
+            const response=await fetch(pageURL(),{credentials:'same-origin',cache:'force-cache'});
+            if(!response.ok)return [];
+            const text=await response.text();
+            const doc=new DOMParser().parseFromString(text,'text/html');
+            const found=[];
+            const seen=new Set();
+            const cover=card.querySelector(':scope > img:not(.gm-hover-preview), img:not(.gm-hover-preview)');
+            let coverURL='';
+            try{if(cover?.src)coverURL=new URL(cover.src,location.href).href;}catch(_){}
+            const add=(raw,node)=>{
+              if(!raw)return;
+              const descriptor=`${raw} ${node?.getAttribute?.('alt')||''} ${node?.getAttribute?.('class')||''}`;
+              if(/logo|favicon|avatar|sprite|icon/i.test(descriptor))return;
+              try{
+                const absolute=new URL(raw,response.url||rawHref||location.href).href;
+                if(absolute===coverURL)return;
+                const parsed=new URL(absolute);
+                const path=parsed.pathname.toLowerCase();
+                const imageHost=/images\.squarespace-cdn\.com$/i.test(parsed.hostname)||/static1\.squarespace\.com$/i.test(parsed.hostname);
+                const looksLikeImage=/\.(?:jpe?g|png|webp|avif|gif)$/i.test(path)||imageHost||/\bformat=(?:jpe?g|png|webp|avif)\b/i.test(parsed.search);
+                if(!looksLikeImage||seen.has(absolute))return;
+                seen.add(absolute);
+                found.push(absolute);
+              }catch(_){}
+            };
+            doc.querySelectorAll('img').forEach(img=>{
+              add(img.getAttribute('data-src'),img);
+              add(img.getAttribute('data-image'),img);
+              add(img.getAttribute('src'),img);
+              const srcset=img.getAttribute('srcset')||img.getAttribute('data-srcset')||'';
+              srcset.split(',').forEach(part=>add(part.trim().split(/\s+/)[0],img));
+            });
+            doc.querySelectorAll('source[srcset]').forEach(source=>{
+              (source.getAttribute('srcset')||'').split(',').forEach(part=>add(part.trim().split(/\s+/)[0],source));
+            });
+            urls=found.slice(0,5);
+            return urls;
+          }catch(_){return [];}
+        })();
+        return fallbackPromise;
+      };
       const warm=src=>{
         const preload=new Image();
         preload.decoding='async';
@@ -699,15 +731,17 @@
         const shown=await present(url,token);
         if(shown&&active&&token===session)timer=window.setTimeout(()=>advance(token),1650);
       };
-      card.addEventListener('mouseenter',()=>{
+      card.addEventListener('mouseenter',async()=>{
         active=true;
         session+=1;
         const token=session;
         index=0;
         current=-1;
         clearTimeout(timer);
-        urls.forEach(warm);
         layers.forEach(layer=>{layer.classList.remove('gm-preview-visible','gm-preview-current');layer.style.zIndex='0';});
+        const available=await discoverFallbackUrls();
+        if(!active||token!==session||!available.length)return;
+        available.forEach(warm);
         advance(token);
       });
       card.addEventListener('mouseleave',()=>{
@@ -962,8 +996,40 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- GALLERY_MANAGER:RECOVERED_CARDS:START -->
 <div id="gallery-manager-recovered-galleries" hidden>
+<a class="project-card gm-recovered-card" data-gallery-recovered="true" data-gallery-legacy-slug="hwy395" href="/adventures/hwy395/" data-gallery-id="9EE842BC-A15B-4A81-B739-42C22A292E9A" data-gallery-sort-order="7">
+  <img src="/adventures/hwy395/photos/001.jpg" alt="HWY 395" loading="lazy" decoding="async">
+  <div class="project-number">35 moments</div>
+  <div class="project-name">HWY 395</div>
+  <span class="project-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+</a>
 <a class="project-card gm-recovered-card" data-gallery-recovered="true" data-gallery-legacy-slug="italy-63ply" href="/adventures/italy-63ply/" data-gallery-id="8093331F-E1FB-4CEC-ADE8-6E4DF9854AEA" data-gallery-sort-order="5">
   <img src="/adventures/italy-63ply/photos/001.jpg" alt="Italy" loading="lazy" decoding="async">
   <div class="project-number">40 moments</div>
@@ -994,15 +1060,19 @@
   <div class="project-name">Sequoia</div>
   <span class="project-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
 </a>
+<a class="project-card gm-recovered-card" data-gallery-recovered="true" data-gallery-legacy-slug="thailand-c6ztr" href="/adventures/thailand-c6ztr/" data-gallery-id="8F7F23AA-4031-4CC2-AFFB-4FAE756491F4" data-gallery-sort-order="8">
+  <img src="/adventures/thailand-c6ztr/photos/001.jpg" alt="Thailand" loading="lazy" decoding="async">
+  <div class="project-number">73 moments</div>
+  <div class="project-name">Thailand</div>
+  <span class="project-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+</a>
 </div>
 <!-- GALLERY_MANAGER:RECOVERED_CARDS:END -->
-
-
 
 <!-- GALLERY_MANAGER:HIDDEN_GUARD:START -->
 <script id="gallery-manager-hidden-guard">
 (()=>{
-  const hidden=[{id:\"9ee842bc-a15b-4a81-b739-42c22a292e9a\",path:\"/adventures/hwy395/\",slug:\"hwy395\",title:\"hwy 395\"},{id:\"8f7f23aa-4031-4cc2-affb-4fae756491f4\",path:\"/adventures/thailand-c6ztr/\",slug:\"thailand-c6ztr\",title:\"thailand\"},{id:\"952b41d5-1269-465e-85be-9f6c6ce74c7d\",path:\"/adventures/flynyon/\",slug:\"flynyon\",title:\"flynyon ny\"},{id:\"c9562342-9e22-4a66-9a2a-a9ca6f467ed2\",path:\"/adventures/canadian-outback-rafting-pkgl9/\",slug:\"canadian-outback-rafting-pkgl9\",title:\"canadian outback rafting\"},{id:\"6d7af230-5e22-4288-ad72-5c86b0b86e57\",path:\"/adventures/new-york-4epsh/\",slug:\"new-york-4epsh\",title:\"new york\"},{id:\"4bfa9304-d709-4c0c-a6a8-4d96a1cb01fa\",path:\"/adventures/utah-8el4m/\",slug:\"utah-8el4m\",title:\"utah\"},{id:\"ae30b3e4-e4c3-4fa3-ab5b-d9c6a587768c\",path:\"/adventures/banzai-divers-hawaii-5thha/\",slug:\"banzai-divers-hawaii-5thha\",title:\"banzai divers hawaii\"},{id:\"274c86c7-d1bf-433d-b396-fe9d1afadd4d\",path:\"/adventures/happy-flights-cabo-parasailing-whmxb/\",slug:\"happy-flights-cabo-parasailing-whmxb\",title:\"happy flights cabo parasailing\"},{id:\"5054542b-e9ce-4758-9763-72d4534e3aec\",path:\"/adventures/havasupai-kb8en/\",slug:\"havasupai-kb8en\",title:\"havasupai\"},{id:\"f1c83d5a-acee-4dee-a0e9-342abe340506\",path:\"/adventures/abandoned-hospital-ymx8t/\",slug:\"abandoned-hospital-ymx8t\",title:\"abandoned usc hospital\"}];
+  const hidden=[{id:\"952b41d5-1269-465e-85be-9f6c6ce74c7d\",path:\"/adventures/flynyon/\",slug:\"flynyon\",title:\"flynyon ny\"},{id:\"c9562342-9e22-4a66-9a2a-a9ca6f467ed2\",path:\"/adventures/canadian-outback-rafting-pkgl9/\",slug:\"canadian-outback-rafting-pkgl9\",title:\"canadian outback rafting\"},{id:\"6d7af230-5e22-4288-ad72-5c86b0b86e57\",path:\"/adventures/new-york-4epsh/\",slug:\"new-york-4epsh\",title:\"new york\"},{id:\"4bfa9304-d709-4c0c-a6a8-4d96a1cb01fa\",path:\"/adventures/utah-8el4m/\",slug:\"utah-8el4m\",title:\"utah\"},{id:\"ae30b3e4-e4c3-4fa3-ab5b-d9c6a587768c\",path:\"/adventures/banzai-divers-hawaii-5thha/\",slug:\"banzai-divers-hawaii-5thha\",title:\"banzai divers hawaii\"},{id:\"274c86c7-d1bf-433d-b396-fe9d1afadd4d\",path:\"/adventures/happy-flights-cabo-parasailing-whmxb/\",slug:\"happy-flights-cabo-parasailing-whmxb\",title:\"happy flights cabo parasailing\"},{id:\"5054542b-e9ce-4758-9763-72d4534e3aec\",path:\"/adventures/havasupai-kb8en/\",slug:\"havasupai-kb8en\",title:\"havasupai\"},{id:\"f1c83d5a-acee-4dee-a0e9-342abe340506\",path:\"/adventures/abandoned-hospital-ymx8t/\",slug:\"abandoned-hospital-ymx8t\",title:\"abandoned usc hospital\"}];
   const norm=(raw)=>{try{const u=new URL(raw||'',location.href);let p=u.pathname.toLowerCase().replace(/\/{2,}/g,'/');if(!p.endsWith('/'))p+='/';return p}catch{return String(raw||'').toLowerCase()}};
   const run=()=>{
     document.querySelectorAll('.project-grid .project-card,.gm-grid .project-card').forEach(card=>{
